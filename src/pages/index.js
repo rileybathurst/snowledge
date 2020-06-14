@@ -9,6 +9,7 @@ import PhonePlaceholder from "../components/phonePlaceholder"
 import SEO from "../components/seo"
 
 import Logo from "../components/logo"
+import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 
 const IndexPage = () => (
@@ -53,15 +54,15 @@ const IndexPage = () => (
       </nav>
 
       <div id="header-byline">
-        <h2><em>Snowledge Is Powder</em></h2>
+        <h2><em>Snowledge&nbsp;Is&nbsp;Powder</em></h2>
         <h3><em>Discover. Ride. Share.</em></h3>
       </div>
       
       <Download />
 
       <div className="bottom-block">
-        <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-          <polygon fill="#fff" points="0,100 100,0 100,100"/>
+        <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 25">
+          <polygon fill="#fff" points="0,25 100,0 100,25"/>
         </svg>
       </div>
     </header>

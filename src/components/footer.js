@@ -2,13 +2,14 @@ import { Link } from "gatsby"
 import React from "react"
 
 import Logo from "./logo"
+import InstagramLogo from "./instagramLogo"
 import Download from "./download"
 
 const Footer = () => (
     <footer>
         {/* <h3 className="screen-reader">Snowledge</h3> */}
     
-        <h3 id="footer-title"><em>Down-<br />Load</em></h3>
+        
 
         <div className="footer-download-color-blocking">
             {/* gray trapezoid */}
@@ -18,6 +19,7 @@ const Footer = () => (
         </div>
 
         <div className="footer-download-badges">
+            <h3 id="footer-title"><em>DownLoad</em></h3>
             <Download />
         </div>
 
@@ -27,15 +29,31 @@ const Footer = () => (
             </svg>
         </div>{/* footer-download-badges-color-blocking */}
         
+        <ul id="footer-social">
+            <li><a href to="https://www.instagram.com/snowledge.co/">
+                instagram
+                <InstagramLogo />
+            </a></li>
+            <li><a href to="https://www.facebook.com/snowledge.co">facebook</a></li>
+            <li><a href to="https://www.youtube.com/channel/UCtao0k3KRU8kur7pyPJPK0w">YouTube</a></li>
+            <li><a href to="https://twitter.com/snowledge_co">twitter</a></li>
+        </ul>
+
+        <div id="footer-social-blocking">
+            <svg title="download-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <polygon fill="#1a1a1a" points="0,25 100,0 100,75 0,100"/>
+            </svg>
+        </div>
+
         <div className="footer-color-blocking-primary">
-            <svg title="footer-color-blocking-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <polygon fill="#009D9B" points="0,100 100,0 100,100"/>
+            <svg title="footer-color-blocking-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 25">
+                <polygon fill="#009D9B" points="0,25 100,0 100,25"/>
             </svg>
         </div>
 
         <div className="footer-color-blocking-black">
-            <svg title="footer-color-blocking-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <polygon fill="#000" points="0,100 100,0 100,100"/>
+            <svg title="footer-color-blocking-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 25">
+                <polygon fill="#000" points="0,25 100,0 100,25"/>
             </svg>
         </div>
 
@@ -58,12 +76,7 @@ const Footer = () => (
                 </ul>
             </nav>
 
-            <ul id="footer-social">
-                <li><a href to="https://www.instagram.com/snowledge.co/">instagram</a></li>
-                <li><a href to="https://www.facebook.com/snowledge.co">facebook</a></li>
-                <li><a href to="https://www.youtube.com/channel/UCtao0k3KRU8kur7pyPJPK0w">YouTube</a></li>
-                <li><a href to="https://twitter.com/snowledge_co">twitter</a></li>
-            </ul>
+            
         </div>{/* #footer-color */}
     </footer>
 )
