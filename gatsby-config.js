@@ -13,6 +13,22 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: 'http://159.65.99.246',
+        contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
+          'anythings',
+          // 'user'
+        ],
+        queryLimit: 1000,
+        // // Possibility to login with a strapi user, when content types are not publically available (optional).
+        /* loginData: {
+          identifier: "strapi",
+          password: "hytsyp-8xEtqe-gownyv",
+        }, */
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

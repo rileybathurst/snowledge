@@ -12,7 +12,7 @@ import Logo from "../components/logo"
 import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <>
     <SEO title="Home" />
     <header id="header-hero">
@@ -114,7 +114,26 @@ const IndexPage = () => (
       </ul>
     </main>
     <Footer />
+
+
+    {data.allStrapiAnythings.edges.map(document => (
+          <h2>{document.node.title}</h2>
+      ))}
+
+
   </>
 )
 
 export default IndexPage
+
+export const pageQuery = graphql`  
+  query IndexQuery {
+    allStrapiAnythings {
+      edges {
+        node {
+          title
+        }
+      }
+    }
+  }
+`
