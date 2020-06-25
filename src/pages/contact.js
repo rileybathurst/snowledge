@@ -12,10 +12,7 @@ import Logo from "../components/logo"
 import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 
-import "../components/layout.css"
-import "../styles/atoms.scss"
-
-const IndexPage = ({ data }) => (
+const ContactPage = ({ data }) => (
   <>
     <SEO title="Home" />
     <header id="header-hero">
@@ -127,10 +124,10 @@ const IndexPage = ({ data }) => (
   </>
 )
 
-export default IndexPage
+export default ContactPage
 
 export const pageQuery = graphql`  
-  query IndexQuery {
+  query ContactQuery {
     allStrapiAnythings {
       edges {
         node {
