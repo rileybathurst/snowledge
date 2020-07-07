@@ -12,6 +12,8 @@ import Logo from "../components/logo"
 import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 
+import TextSlider from "../components/textSlider"
+
 import "../components/layout.css"
 import "../styles/atoms.scss"
 
@@ -58,16 +60,15 @@ const IndexPage = ({ data }) => (
 
       <div id="header-byline">
         <h2><em>Snowledge&nbsp;Is&nbsp;Powder</em></h2>
-        <h3><em>Discover. Ride. Share.</em></h3>
+        <h3><em>Discover. Ride. Share. Discover. Ride. Share.</em></h3>
       </div>
       
       <Download />
 
-      <div className="bottom-block">
-        <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 25">
-          <polygon fill="#fff" points="0,25 100,0 100,25"/>
-        </svg>
+      <div className="hero-phone">
+        <PhonePlaceholder />
       </div>
+
     </header>
 
 
@@ -115,13 +116,16 @@ const IndexPage = ({ data }) => (
         <li>Customize your profile, bio, and gallery, and view detailed activity summaries of your days skied.</li>
         <li>Get lift status updates, conditions, and parking information, as well as offers and contests from your favorite resorts.</li>
       </ul>
+
+      <div className="home-blank">{/* fill the bottom of the grid this shouldnt be needed if everything is great */}</div>
     </main>
     <Footer />
 
 
-    {data.allStrapiAnythings.edges.map(document => (
+{/*     Just a quick check that strapi is working
+      {data.allStrapiAnythings.edges.map(document => (
           <h2>{document.node.title}</h2>
-      ))}
+      ))} */}
 
 
   </>
