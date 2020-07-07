@@ -12,7 +12,9 @@ import Logo from "../components/logo"
 import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 
-import TextSlider from "../components/textSlider"
+// import TextSlider from "../components/textSlider"
+import HelloMessage from "../components/hello"
+
 
 import "../components/layout.css"
 import "../styles/atoms.scss"
@@ -30,7 +32,12 @@ const IndexPage = ({ data }) => (
         </svg>
       </div>
 
-      <button id="menu">Menu</button>
+      <button id="menu" className="io-push">Menu</button>
+
+      {/* <div id="grabber">
+        this is here as a tester
+      </div> */}
+      <HelloMessage />
       
       <nav>
         {/* <ul id="off-canvas">
