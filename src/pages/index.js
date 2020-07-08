@@ -13,14 +13,105 @@ import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 
 // import TextSlider from "../components/textSlider"
-import HelloMessage from "../components/hello"
+// import HelloMessage from "../components/hello"
 
 
 import "../components/layout.css"
 import "../styles/atoms.scss"
 
+
+
+
+
+
+
+
+// needs an off as well but this is a start with on
+
+class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    };
+  }
+
+  render() {
+    return (
+      <button
+        className={this.state.value}
+        onClick={() => this.setState({value: 'X'})}
+        >
+          {this.state.value}
+        </button>
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+// https://medium.com/walmartlabs/lazy-loading-images-intersectionobserver-8c5bff730920
+class Mart extends React.Component {
+
+  componentDidMount() {
+    this.observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const { isIntersecting } = entry;
+          if (isIntersecting) {
+            this.element.src = this.props.src;
+            this.observer = this.observer.disconnect();
+          }
+        });
+      }, {}
+    );
+    
+    this.observer.observe(this.element);
+  } // componentDidMount
+
+  render() {
+    return <img ref={el => this.element = el} />;
+  } // render
+
+} // class Mart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const IndexPage = ({ data }) => (
   <>
+
+<Mart />
+
+<Square />
+      
+
+
+
+
+
     <SEO title="Home" />
     <header id="header-hero">
       <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
@@ -37,8 +128,11 @@ const IndexPage = ({ data }) => (
       {/* <div id="grabber">
         this is here as a tester
       </div> */}
-      <HelloMessage />
-      
+      {/* <HelloMessage />
+                 */}
+
+
+
       <nav>
         {/* <ul id="off-canvas">
           <li><Link to="/#features">Features</Link></li>
