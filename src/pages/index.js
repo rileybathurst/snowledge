@@ -51,6 +51,8 @@ class Trouble extends Component {
     
     // defaults
     this.state = {
+
+      // this doesnt work with one???
       things: [
         {
           id: 'a',
@@ -68,11 +70,18 @@ class Trouble extends Component {
           text: "Must go faster. God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs. Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists. My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard!",
         },
       ],
+
+      // defaults
       activeThing: { id: null, ratio: 0 },
     };
 
+    // https://reactjs.org/docs/refs-and-the-dom.html
+    // Triggering imperative animations // maybe this could be a prop?
     this.rootRef = React.createRef();
 
+    // this is kinda a forEach? to give defaults?
+    // what is the acc??? active?
+    // 
     this.singleRefs = this.state.things.reduce((acc, value) => {
       acc[value.id] = {
         ref: React.createRef(),
@@ -84,16 +93,15 @@ class Trouble extends Component {
     }, {});
 
 
-    // console.log("hey");
-
-
 
     const callback = entries => {
       // console.log(entries); // this is working now 🐱
+
+
       entries.forEach(
         entry =>
           (this.singleRefs[entry.target.id].ratio =
-            entry.intersectionRatio),
+            entry.intersectionRatio), // how is this the only reference to this?
       );
 
       const activeThing = Object.values(this.singleRefs).reduce(
@@ -101,13 +109,9 @@ class Trouble extends Component {
         this.state.activeThing,
       );
 
+      // 
       if (activeThing.ratio > this.state.activeThing.ratio) {
         this.setState({ activeThing });
-      }
-
-
-      if (activeThing === this.state.activeThing.id) {
-        this.setState({value: 'X'})
       }
     };
 
@@ -116,6 +120,7 @@ class Trouble extends Component {
     this.observer = new IntersectionObserver(callback, {
       root: this.rootRef.current,
       threshold: new Array(101).fill(0).map((v, i) => i * 0.01),
+      // what is this Array doing???
     });
 
     // console.log("inside the constructor");
@@ -131,7 +136,7 @@ class Trouble extends Component {
 
 
   render() {
-    var percentage = this.state.activeThing.ratio + '%';
+    var percentage = this.state.activeThing.ratio * 10 + '%';
 
     return (
       <div>
@@ -157,7 +162,9 @@ class Trouble extends Component {
               id={thing.id}
               ref={this.singleRefs[thing.id].ref}
             >
-              <h1>{thing.headline}</h1>
+              <h1
+                style={{margin: percentage}}
+              >{thing.headline}</h1>
               <p>{thing.text}</p>
             </div>
           ))}
@@ -166,6 +173,88 @@ class Trouble extends Component {
     );
   } // render
 } // Trouble 
+
+
+
+
+
+
+
+
+
+
+
+
+// https://www.robinwieruch.de/react-intersection-observer-api
+// io animations
+class Santigold extends Component {
+  constructor(props) {
+    super(props);
+
+    // maybe these should be in a this.state
+    const numSteps = 20.0;
+
+    let boxElement;
+    let prevRatio = 0.0;
+    let increasingColor = "rgba(40, 40, 190, ratio)";
+    let decreasingColor = "rgba(190, 40, 40, ratio)";
+
+
+    boxElement = document.querySelector("#box");
+
+    createObserver();
+
+    function createObserver() {
+      let observer;
+    
+      let options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: buildThresholdList()
+      };
+    
+      observer = new IntersectionObserver(handleIntersect, options);
+      observer.observe(boxElement);
+    }
+
+    function buildThresholdList() {
+      let thresholds = [];
+      let numSteps = 20;
+    
+      for (let i=1.0; i<=numSteps; i++) {
+        let ratio = i/numSteps;
+        thresholds.push(ratio);
+      }
+    
+      thresholds.push(0);
+      return thresholds;
+    }
+
+    function handleIntersect(entries, observer) {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio > prevRatio) {
+          entry.target.style.backgroundColor = increasingColor.replace("ratio", entry.intersectionRatio);
+        } else {
+          entry.target.style.backgroundColor = decreasingColor.replace("ratio", entry.intersectionRatio);
+        }
+    
+        prevRatio = entry.intersectionRatio;
+      });
+    }
+
+  } // constructor
+
+
+  render() {
+    return (
+      <div id="box">
+        <div class="vertical">
+          Welcome to <strong>The Box!</strong>
+        </div>
+      </div>
+    );
+  } // render
+} // Santigold 
 
 
 
@@ -191,6 +280,7 @@ class Trouble extends Component {
 
 const IndexPage = ({ data }) => (
   <>
+<Santigold />
 <Trouble />
 
 <Square />
