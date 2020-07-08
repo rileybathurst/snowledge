@@ -8,6 +8,8 @@ import YouTubeLogo from "./youtubeLogo"
 import TwitterLogo from "./twitterLogo"
 import Download from "./download"
 
+import Chimp from "./chimp"
+
 const Footer = () => (
     <footer>
         {/* <h3 className="screen-reader">Snowledge</h3> */}
@@ -92,17 +94,7 @@ const Footer = () => (
             </nav>
 
 
-            <form name="chimp" netlify>
-                <p>
-                    <label>Name <input type="text" name="name" /></label>
-                </p>
-                <p>
-                    <label>Email <input type="email" name="email" /></label>
-                </p>
-                <p>
-                    <button type="submit">Send</button>
-                </p>
-            </form>
+            <Chimp />
 
             
         </div>{/* #footer-color */}
