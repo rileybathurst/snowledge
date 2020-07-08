@@ -9,281 +9,23 @@ import PhonePlaceholder from "../components/phonePlaceholder"
 import SEO from "../components/seo"
 
 import Logo from "../components/logo"
-import LogoGreen from "../components/logoGreen"
+// import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 
-// import TextSlider from "../components/textSlider"
-// import HelloMessage from "../components/hello"
+import TextSlider from "../components/textSlider"
 
+// testing things Im not using other than reference
+// import Santigold from "../components/santigold" // testing the IO animations // these still need work to be more reacty
+// import Square from "../components/square" // testing click
 
+// styles
 import "../components/layout.css"
 import "../styles/atoms.scss"
 
-// click on stuff from react docs
-// needs an off as well but this is a start with on
-class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    };
-  }
-
-  render() {
-    return (
-      <button
-        className={this.state.value}
-        onClick={() => this.setState({value: 'X'})}
-        >
-          {this.state.value}
-        </button>
-    );
-  }
-}
-
-
-
-// https://www.robinwieruch.de/react-intersection-observer-api
-// io animations
-class Trouble extends Component {
-  constructor(props) {
-    super(props);
-    
-    // defaults
-    this.state = {
-
-      // this doesnt work with one???
-      things: [
-        {
-          id: 'a',
-          headline: 'React',
-          text: "You're a very talented young man, with your own clever thoughts and ideas. Do you need a manager? Forget the fat lady! You're obsessed with the fat lady! Drive us out of here! You're a very talented young man, with your own clever thoughts and ideas. Do you need a manager?",
-        },
-        {
-          id: 'b',
-          headline: 'Redux',
-          text: "Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Life finds a way. Must go faster. They're using our own satellites against us. And the clock is ticking. I gave it a cold? I gave it a virus. A computer virus. Life finds a way.",
-        },
-        {
-          id: 'c',
-          headline: 'GraphQL',
-          text: "Must go faster. God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs. Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists. My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard!",
-        },
-      ],
-
-      // defaults
-      activeThing: { id: null, ratio: 0 },
-    };
-
-    // https://reactjs.org/docs/refs-and-the-dom.html
-    // Triggering imperative animations // maybe this could be a prop?
-    this.rootRef = React.createRef();
-
-    // this is kinda a forEach? to give defaults?
-    // what is the acc??? active?
-    // 
-    this.singleRefs = this.state.things.reduce((acc, value) => {
-      acc[value.id] = {
-        ref: React.createRef(),
-        id: value.id,
-        ratio: 0,
-      };
-
-      return acc;
-    }, {});
-
-
-
-    const callback = entries => {
-      // console.log(entries); // this is working now 🐱
-
-
-      entries.forEach(
-        entry =>
-          (this.singleRefs[entry.target.id].ratio =
-            entry.intersectionRatio), // how is this the only reference to this?
-      );
-
-      const activeThing = Object.values(this.singleRefs).reduce(
-        (acc, value) => (value.ratio > acc.ratio ? value : acc),
-        this.state.activeThing,
-      );
-
-      // 
-      if (activeThing.ratio > this.state.activeThing.ratio) {
-        this.setState({ activeThing });
-      }
-    };
-
-
-
-    this.observer = new IntersectionObserver(callback, {
-      root: this.rootRef.current,
-      threshold: new Array(101).fill(0).map((v, i) => i * 0.01),
-      // what is this Array doing???
-    });
-
-    // console.log("inside the constructor");
-  } // constructor
-
-  componentDidMount() {
-    Object.values(this.singleRefs).forEach(value =>
-      this.observer.observe(value.ref.current),
-    );
-
-    // console.log("can i console log here?");
-  }
-
-
-  render() {
-    var percentage = this.state.activeThing.ratio * 10 + '%';
-
-    return (
-      <div>
-        <nav>
-          {this.state.things.map(thing => (
-            <div key={thing.id}>
-              <a
-                href={`#${thing.id}`}
-                selected={thing.id === this.state.activeThing.id}
-                style={{margin: percentage}}
-              >
-                {this.state.activeThing.id}
-                
-              </a>
-            </div>
-          ))}
-        </nav>
-
-        <article ref={this.rootRef}>
-          {this.state.things.map(thing => (
-            <div
-              key={thing.id}
-              id={thing.id}
-              ref={this.singleRefs[thing.id].ref}
-            >
-              <h1
-                style={{margin: percentage}}
-              >{thing.headline}</h1>
-              <p>{thing.text}</p>
-            </div>
-          ))}
-        </article>
-      </div>
-    );
-  } // render
-} // Trouble 
-
-
-
-
-
-
-
-
-
-
-
-
-// https://www.robinwieruch.de/react-intersection-observer-api
-// io animations
-class Santigold extends Component {
-  constructor(props) {
-    super(props);
-
-    // maybe these should be in a this.state
-    const numSteps = 20.0;
-
-    let boxElement;
-    let prevRatio = 0.0;
-    let increasingColor = "rgba(40, 40, 190, ratio)";
-    let decreasingColor = "rgba(190, 40, 40, ratio)";
-
-
-    boxElement = document.querySelector("#box");
-
-    createObserver();
-
-    function createObserver() {
-      let observer;
-    
-      let options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: buildThresholdList()
-      };
-    
-      observer = new IntersectionObserver(handleIntersect, options);
-      observer.observe(boxElement);
-    }
-
-    function buildThresholdList() {
-      let thresholds = [];
-      let numSteps = 20;
-    
-      for (let i=1.0; i<=numSteps; i++) {
-        let ratio = i/numSteps;
-        thresholds.push(ratio);
-      }
-    
-      thresholds.push(0);
-      return thresholds;
-    }
-
-    function handleIntersect(entries, observer) {
-      entries.forEach((entry) => {
-        if (entry.intersectionRatio > prevRatio) {
-          entry.target.style.backgroundColor = increasingColor.replace("ratio", entry.intersectionRatio);
-        } else {
-          entry.target.style.backgroundColor = decreasingColor.replace("ratio", entry.intersectionRatio);
-        }
-    
-        prevRatio = entry.intersectionRatio;
-      });
-    }
-
-  } // constructor
-
-
-  render() {
-    return (
-      <div id="box">
-        <div class="vertical">
-          Welcome to <strong>The Box!</strong>
-        </div>
-      </div>
-    );
-  } // render
-} // Santigold 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const IndexPage = ({ data }) => (
   <>
-<Santigold />
-<Trouble />
 
-<Square />
+
       
 
 
@@ -291,9 +33,44 @@ const IndexPage = ({ data }) => (
 
 
     <SEO title="Home" />
-    <header id="header-hero">
+
+    <section id="top-bar">
       <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
-      <Logo />
+        <Logo />
+
+        <button id="menu" className="io-push">Menu</button>
+  </section>
+
+  <nav>
+          {/* <ul id="off-canvas">
+            <li><Link to="/#features">Features</Link></li>
+            <li><Link to="/team">Team</Link></li>
+            <li><Link to="/partner-resorts">Partner Resorts</Link>
+              <ul>
+                <li><Link to="/partner-resorts/west">West</Link></li>
+                <li><Link to="/partner-resorts/rockies">Rockies</Link></li>
+                <li><Link to="/partner-resorts/midwest">Midwest</Link></li>
+                <li><Link to="/partner-resorts/northeast">Northeast</Link></li>
+                <li><Link to="/partner-resorts/canada">Canada</Link></li>
+              </ul>
+            </li>
+            <li><Link to="/blog">Blog</Link></li>
+            <li>
+              <ul>
+                <li><a href to="https://www.instagram.com/snowledge.co/">instagram</a></li>
+                <li><a href to="https://www.facebook.com/snowledge.co">facebook</a></li>
+                <li><a href to="https://www.youtube.com/channel/UCtao0k3KRU8kur7pyPJPK0w">YouTube</a></li>
+                <li><a href to="https://twitter.com/snowledge_co">twitter</a></li>
+              </ul>
+            </li>
+            <li><Link to="/download">Download</Link></li>
+          </ul> */}
+        </nav>
+
+
+
+    <header id="header-hero">
+      
       <HeroImage />
       <div className="header-hero_color-blocking">
         <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -301,46 +78,9 @@ const IndexPage = ({ data }) => (
         </svg>
       </div>
 
-      <button id="menu" className="io-push">Menu</button>
+      
 
-      {/* <div id="grabber">
-        this is here as a tester
-      </div> */}
-      {/* <HelloMessage />
-                 */}
-
-
-
-      <nav>
-        {/* <ul id="off-canvas">
-          <li><Link to="/#features">Features</Link></li>
-          <li><Link to="/team">Team</Link></li>
-          <li><Link to="/partner-resorts">Partner Resorts</Link>
-            <ul>
-              <li><Link to="/partner-resorts/west">West</Link></li>
-              <li><Link to="/partner-resorts/rockies">Rockies</Link></li>
-              <li><Link to="/partner-resorts/midwest">Midwest</Link></li>
-              <li><Link to="/partner-resorts/northeast">Northeast</Link></li>
-              <li><Link to="/partner-resorts/canada">Canada</Link></li>
-            </ul>
-          </li>
-          <li><Link to="/blog">Blog</Link></li>
-          <li>
-            <ul>
-              <li><a href to="https://www.instagram.com/snowledge.co/">instagram</a></li>
-              <li><a href to="https://www.facebook.com/snowledge.co">facebook</a></li>
-              <li><a href to="https://www.youtube.com/channel/UCtao0k3KRU8kur7pyPJPK0w">YouTube</a></li>
-              <li><a href to="https://twitter.com/snowledge_co">twitter</a></li>
-            </ul>
-          </li>
-          <li><Link to="/download">Download</Link></li>
-        </ul> */}
-      </nav>
-
-      <div id="header-byline">
-        <h2><em>Snowledge&nbsp;Is&nbsp;Powder</em></h2>
-        <h3><em>Discover. Ride. Share. Discover. Ride. Share.</em></h3>
-      </div>
+      <TextSlider />
       
       <Download />
 
@@ -400,7 +140,9 @@ const IndexPage = ({ data }) => (
     </main>
     <Footer />
 
-
+    // couple testing things incase I want reference
+{/* <Santigold /> */}
+{/* <Square /> */}
 {/*     Just a quick check that strapi is working
       {data.allStrapiAnythings.edges.map(document => (
           <h2>{document.node.title}</h2>
