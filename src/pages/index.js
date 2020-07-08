@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import { Link } from "gatsby"
 
 // import Layout from "../components/layout"
@@ -19,15 +19,8 @@ import Download from "../components/download"
 import "../components/layout.css"
 import "../styles/atoms.scss"
 
-
-
-
-
-
-
-
+// click on stuff from react docs
 // needs an off as well but this is a start with on
-
 class Square extends React.Component {
   constructor(props) {
     super(props);
@@ -50,37 +43,133 @@ class Square extends React.Component {
 
 
 
+// https://www.robinwieruch.de/react-intersection-observer-api
+// io animations
+class Trouble extends Component {
+  constructor(props) {
+    super(props);
+    
+    // defaults
+    this.state = {
+      things: [
+        {
+          id: 'a',
+          headline: 'React',
+          text: "You're a very talented young man, with your own clever thoughts and ideas. Do you need a manager? Forget the fat lady! You're obsessed with the fat lady! Drive us out of here! You're a very talented young man, with your own clever thoughts and ideas. Do you need a manager?",
+        },
+        {
+          id: 'b',
+          headline: 'Redux',
+          text: "Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? Life finds a way. Must go faster. They're using our own satellites against us. And the clock is ticking. I gave it a cold? I gave it a virus. A computer virus. Life finds a way.",
+        },
+        {
+          id: 'c',
+          headline: 'GraphQL',
+          text: "Must go faster. God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs. Yeah, but John, if The Pirates of the Caribbean breaks down, the pirates don’t eat the tourists. My dad once told me, laugh and the world laughs with you, Cry, and I'll give you something to cry about you little bastard!",
+        },
+      ],
+      activeThing: { id: null, ratio: 0 },
+    };
+
+    this.rootRef = React.createRef();
+
+    this.singleRefs = this.state.things.reduce((acc, value) => {
+      acc[value.id] = {
+        ref: React.createRef(),
+        id: value.id,
+        ratio: 0,
+      };
+
+      return acc;
+    }, {});
+
+
+    // console.log("hey");
 
 
 
+    const callback = entries => {
+      // console.log(entries); // this is working now 🐱
+      entries.forEach(
+        entry =>
+          (this.singleRefs[entry.target.id].ratio =
+            entry.intersectionRatio),
+      );
+
+      const activeThing = Object.values(this.singleRefs).reduce(
+        (acc, value) => (value.ratio > acc.ratio ? value : acc),
+        this.state.activeThing,
+      );
+
+      if (activeThing.ratio > this.state.activeThing.ratio) {
+        this.setState({ activeThing });
+      }
+
+
+      if (activeThing === this.state.activeThing.id) {
+        this.setState({value: 'X'})
+      }
+    };
 
 
 
+    this.observer = new IntersectionObserver(callback, {
+      root: this.rootRef.current,
+      threshold: new Array(101).fill(0).map((v, i) => i * 0.01),
+    });
 
-// https://medium.com/walmartlabs/lazy-loading-images-intersectionobserver-8c5bff730920
-class Mart extends React.Component {
+    // console.log("inside the constructor");
+  } // constructor
 
   componentDidMount() {
-    this.observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          const { isIntersecting } = entry;
-          if (isIntersecting) {
-            this.element.src = this.props.src;
-            this.observer = this.observer.disconnect();
-          }
-        });
-      }, {}
+    Object.values(this.singleRefs).forEach(value =>
+      this.observer.observe(value.ref.current),
     );
-    
-    this.observer.observe(this.element);
-  } // componentDidMount
+
+    // console.log("can i console log here?");
+  }
+
 
   render() {
-    return <img ref={el => this.element = el} />;
-  } // render
+    var percentage = this.state.activeThing.ratio + '%';
 
-} // class Mart
+    return (
+      <div>
+        <nav>
+          {this.state.things.map(thing => (
+            <div key={thing.id}>
+              <a
+                href={`#${thing.id}`}
+                selected={thing.id === this.state.activeThing.id}
+                style={{margin: percentage}}
+              >
+                {this.state.activeThing.id}
+                
+              </a>
+            </div>
+          ))}
+        </nav>
+
+        <article ref={this.rootRef}>
+          {this.state.things.map(thing => (
+            <div
+              key={thing.id}
+              id={thing.id}
+              ref={this.singleRefs[thing.id].ref}
+            >
+              <h1>{thing.headline}</h1>
+              <p>{thing.text}</p>
+            </div>
+          ))}
+        </article>
+      </div>
+    );
+  } // render
+} // Trouble 
+
+
+
+
 
 
 
@@ -102,8 +191,7 @@ class Mart extends React.Component {
 
 const IndexPage = ({ data }) => (
   <>
-
-<Mart />
+<Trouble />
 
 <Square />
       
