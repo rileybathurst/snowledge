@@ -8,7 +8,7 @@ import HeroImage from "../components/hero-image"
 import PhonePlaceholder from "../components/phonePlaceholder"
 import SEO from "../components/seo"
 
-import Logo from "../components/logo"
+import TopBar from "../components/TopBar"
 // import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 
@@ -24,51 +24,9 @@ import "../styles/atoms.scss"
 
 const IndexPage = ({ data }) => (
   <>
-
-
-      
-
-
-
-
-
     <SEO title="Home" />
 
-    <section id="top-bar">
-      <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
-        <Logo />
-
-        <button id="menu" className="io-push">Menu</button>
-  </section>
-
-  <nav>
-          {/* <ul id="off-canvas">
-            <li><Link to="/#features">Features</Link></li>
-            <li><Link to="/team">Team</Link></li>
-            <li><Link to="/partner-resorts">Partner Resorts</Link>
-              <ul>
-                <li><Link to="/partner-resorts/west">West</Link></li>
-                <li><Link to="/partner-resorts/rockies">Rockies</Link></li>
-                <li><Link to="/partner-resorts/midwest">Midwest</Link></li>
-                <li><Link to="/partner-resorts/northeast">Northeast</Link></li>
-                <li><Link to="/partner-resorts/canada">Canada</Link></li>
-              </ul>
-            </li>
-            <li><Link to="/blog">Blog</Link></li>
-            <li>
-              <ul>
-                <li><a href to="https://www.instagram.com/snowledge.co/">instagram</a></li>
-                <li><a href to="https://www.facebook.com/snowledge.co">facebook</a></li>
-                <li><a href to="https://www.youtube.com/channel/UCtao0k3KRU8kur7pyPJPK0w">YouTube</a></li>
-                <li><a href to="https://twitter.com/snowledge_co">twitter</a></li>
-              </ul>
-            </li>
-            <li><Link to="/download">Download</Link></li>
-          </ul> */}
-        </nav>
-
-
-
+    <TopBar />
     <header id="header-hero">
       
       <HeroImage />
@@ -77,8 +35,6 @@ const IndexPage = ({ data }) => (
           <polygon fill="#239C9B" points="0,25 100,0 100,75 0,100"/>
         </svg>
       </div>
-
-      
 
       <TextSlider />
       
@@ -140,13 +96,18 @@ const IndexPage = ({ data }) => (
     </main>
     <Footer />
 
-    // couple testing things incase I want reference
+    {/* couple testing things incase I want reference */}
 {/* <Santigold /> */}
 {/* <Square /> */}
-{/*     Just a quick check that strapi is working
+    {/* Just a quick check that strapi is working 
       {data.allStrapiAnythings.edges.map(document => (
           <h2>{document.node.title}</h2>
       ))} */}
+
+
+{data.allStrapiPartnerResorts.edges.map(document => (
+                    <li><Link to={`partner-resorts/${document.node.slug}`}>{document.node.name}</Link></li>
+                ))}
 
 
   </>
@@ -160,6 +121,15 @@ export const pageQuery = graphql`
       edges {
         node {
           title
+        }
+      }
+    }
+
+    allStrapiPartnerResorts {
+      edges {
+        node {
+          name
+          slug
         }
       }
     }

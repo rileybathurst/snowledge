@@ -33,6 +33,7 @@ exports.createPages = ({ actions, graphql }) => {
           node {
             id
             name
+            slug
           }
         }
       }
@@ -41,7 +42,7 @@ exports.createPages = ({ actions, graphql }) => {
     // Create pages for each partner resorts.
     result.data.allStrapiPartnerResorts.edges.forEach(({ node }) => {
       createPage({
-        path: `/${node.name}`,
+        path: `/partner-resorts/${node.slug}`,
         component: path.resolve(`src/templates/partner-resorts.js`),
         context: {
           id: node.id,
