@@ -54,3 +54,42 @@ exports.createPages = ({ actions, graphql }) => {
   // Query for articles nodes to use in creating pages.
   return getPartnerResorts;
 }; // exports.createPages
+
+
+
+
+
+
+
+
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+  
+  const getBlogs = makeRequest(graphql, `
+    {
+      allStrapiBlogs {
+        edges {
+          node {
+            id
+            title
+            content
+          }
+        }
+      }
+    }
+    `).then(result => {
+    // Create pages for each blogs.
+    result.data.allStrapiBlogs.edges.forEach(({ node }) => {
+      createPage({
+        path: `/blogs/${node.title}`,
+        component: path.resolve(`src/templates/blogs.js`),
+        context: {
+          id: node.id,
+        },
+      })
+    })
+  });
+  
+  // Query for blog nodes to use in creating pages.
+  return getBlogs;
+}; // exports.createPages

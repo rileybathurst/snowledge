@@ -20,7 +20,8 @@ module.exports = {
         contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
           'anythings',
           // 'user',
-          'partner-resorts'
+          'partner-resorts',
+          'blogs'
         ],
         queryLimit: 1000,
         // // Possibility to login with a strapi user, when content types are not publically available (optional).
