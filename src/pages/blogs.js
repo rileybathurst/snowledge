@@ -10,7 +10,7 @@ const BlogsPage = ({ data }) => (
       {data.allStrapiBlogs.edges.map(document => (
         <>
             <h2>
-                <Link to={`/blogs/${document.node.title}`}>
+                <Link to={`/blogs/${document.node.slug}`}>
                     {document.node.title}
                 </Link>
             </h2>
@@ -32,6 +32,7 @@ export const pageQuery = graphql`
           id
           title
           content
+          slug
         }
       }
     }

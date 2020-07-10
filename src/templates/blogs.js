@@ -2,11 +2,17 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 
+import ReactMarkdown from "react-markdown"
+
 const BlogTemplate = ({ data }) => (
   <Layout>
 
     <h1>{data.strapiBlogs.title}</h1>
-    <p>{data.strapiBlogs.content}</p>
+
+    <ReactMarkdown
+   source={data.strapiBlogs.content}
+   />
+    {/* <p>{data.strapiBlogs.content}</p> */}
   </Layout>
 )
 
