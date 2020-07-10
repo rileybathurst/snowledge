@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 import { Link, graphql } from "gatsby"
 
-import Logo from "./logo"
-import SmallMenu from "../components/smallMenu"
+// import Logo from "./logo"
+// import SmallMenu from "./smallMenu"
 
-const TopBar = ({ data }) => (
+const TopBar = () => (
     <section id="top-bar">
         <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
-        <Logo />
+        {/* <Logo /> */}
 
         <nav id="menu_small" className="menu-small hide-for-print inactive"> {/* inactive */}
             <ul id="off-canvas" className="text-center">
@@ -39,16 +39,16 @@ const TopBar = ({ data }) => (
             </ul>
         </nav>
 
-        <div id="menu_toggle" className="bg-secondary shadow-darker text-center">
-            <SmallMenu />
-        </div>
+{/*         <div id="menu_toggle" className="bg-secondary shadow-darker text-center">
+             <SmallMenu /> 
+        </div> */}
 
     </section>
 )
 
 export default TopBar
 
-export const topBarQuery = graphql`  
+/* export const topBarQuery = graphql`  
     query topBarQuery {
         allStrapiPartnerResorts {
             edges {
@@ -59,4 +59,4 @@ export const topBarQuery = graphql`
             }
         }
     }
-`
+` */
