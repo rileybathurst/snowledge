@@ -636,13 +636,12 @@ $snowledge-green_lighten: #39C4C5;
 
 #top-bar {
   display: grid;
-  // width: 100%;
-  justify-content: space-between;
+  width: 100%;
 
   .logo {
-    max-width: 20rem;
+    width: 100%;
+    max-width: 10rem;
     margin: 2rem;
-    justify-self: end;
   }
 
   nav {
@@ -653,6 +652,8 @@ $snowledge-green_lighten: #39C4C5;
   #menu_toggle {
     grid-column: 2;
     grid-row: 1;
+    max-width: 10rem;
+    justify-self: end;
   }
 
   #menu { // button

@@ -161,9 +161,9 @@ const IndexPage = ({ data }) => (
       ))} */}
 
 
-{data.allStrapiPartnerResorts.edges.map(document => (
+{/* {data.allStrapiPartnerResorts.edges.map(document => (
                     <li><Link to={`partner-resorts/${document.node.slug}`}>{document.node.name}</Link></li>
-                ))}
+                ))} */}
 
 
 
