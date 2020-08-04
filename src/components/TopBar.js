@@ -11,11 +11,11 @@ const TopBar = () => (
 
         <nav id="menu_small" className="menu-small hide-for-print inactive"> {/* inactive */}
             <ul id="off-canvas" className="text-center">
-{/*                 {data.allStrapiPartnerResorts.edges.map(document => (
+                 {data.allStrapiPartnerResorts.edges.map(document => (
                     <li><Link to={`partner-resorts/${document.node.slug}`}>{document.node.name}</Link></li>
                 ))}  */}
 
-                {/* <li><Link to="/#features">Features</Link></li>
+                <li><Link to="/#features">Features</Link></li>
                 <li><Link to="/team">Team</Link></li>
                 <li><Link to="/partner-resorts">Partner Resorts</Link>
                 <ul>

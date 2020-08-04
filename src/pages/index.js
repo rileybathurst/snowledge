@@ -48,7 +48,7 @@ const IndexPage = ({ data }) => (
         <nav id="menu_small" className="menu-small hide-for-print inactive"> {/* inactive */}
             <ul id="off-canvas" className="text-center">
             <Top />
-            <li><Link to="/blogs">Blogs</Link></li>
+            {/* <li><Link to="/blogs">Blogs</Link></li> */}
                 {/* <li><Link to="/#features">Features</Link></li>
                 <li><Link to="/team">Team</Link></li>
                 <li><Link to="/partner-resorts">Partner Resorts</Link>

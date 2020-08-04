@@ -6,15 +6,14 @@ import Logo from "./logo"
 
 const Header = ({ siteTitle }) => (
   <>
-    <section id="top-bar">
-      <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
+    <header>
+      <section id="top-bar">
+
+        <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
         <Logo />
 
-        <button id="menu" className="io-push">Menu</button>
-    </section>
-
-    <header>
-      {/* <Logo /> */}
+        <button id="menu" className="io-push">Menu</button>{/* io-push? seems like the wrong thing */}
+      </section>
     </header>
   </>
 )

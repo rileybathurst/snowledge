@@ -93,10 +93,8 @@ const Footer = () => (
                 </ul>
             </nav>
 
+            {/* <Chimp /> testing for this it will be used later */}
 
-            <Chimp />
-
-            
         </div>{/* #footer-color */}
     </footer>
 )
