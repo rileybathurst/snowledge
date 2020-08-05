@@ -5,10 +5,10 @@ import Layout from '../components/layout'
 const PartnerResortsPage = ({ data }) => (
   <Layout>
       <section className="team--grid"> {/* is this a section? ddouble check that */}
-        {data.allStrapiTeam.edges.map(document => (
+        {data.allStrapiPartnerResorts.edges.map(document => (
             <article className="">{/* again check this HTML */}
                 <h2>
-                    <Link to={`/team/${document.node.slug}`}>
+                    <Link to={`/partner-resorts/${document.node.slug}`}>
                         {document.node.name}
                     </Link>
                 </h2>
@@ -29,6 +29,7 @@ export const pageQuery = graphql`
         node {
           id
           name
+          slug
         }
       }
     }

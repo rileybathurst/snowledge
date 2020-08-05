@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+// import { Link, graphql } from 'gatsby'
 // import Img from 'gatsby-image'
 import Layout from '../components/layout'
-import Logo from '../components/logo'
-import SmallMenu from '../components/smallMenu'
+// import Logo from '../components/logo'
+// import SmallMenu from '../components/smallMenu'
 
 const PartnerResortTemplate = ({ data }) => (
   <Layout>
