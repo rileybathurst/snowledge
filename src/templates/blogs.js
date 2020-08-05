@@ -10,9 +10,8 @@ const BlogTemplate = ({ data }) => (
     <h1>{data.strapiBlogs.title}</h1>
 
     <ReactMarkdown
-   source={data.strapiBlogs.content}
-   />
-    {/* <p>{data.strapiBlogs.content}</p> */}
+      source={data.strapiBlogs.content}
+    />
   </Layout>
 )
 

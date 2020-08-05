@@ -59,9 +59,6 @@ exports.createPages = ({ actions, graphql }) => {
 
 
 
-
-
-
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
   
@@ -93,4 +90,49 @@ exports.createPages = ({ actions, graphql }) => {
   
   // Query for blog nodes to use in creating pages.
   return getBlogs;
+}; // exports.createPages
+
+
+
+
+
+
+
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+  
+  const getTeam = makeRequest(graphql, `
+    {
+      allStrapiTeam {
+        edges {
+          node {
+            id
+            name
+            slug
+            profile {
+              childImageSharp {
+                  fluid(maxWidth: 300) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+            }
+          }
+        }
+      }
+    }
+    `).then(result => {
+    // Create pages for each team member.
+    result.data.allStrapiTeam.edges.forEach(({ node }) => {
+      createPage({
+        path: `/team/${node.slug}`,
+        component: path.resolve(`src/templates/team.js`),
+        context: {
+          id: node.id,
+        },
+      })
+    })
+  });
+  
+  // Query for blog nodes to use in creating pages.
+  return getTeam;
 }; // exports.createPages

@@ -13,7 +13,7 @@ const TopBar = () => (
             <ul id="off-canvas" className="text-center">
                  {data.allStrapiPartnerResorts.edges.map(document => (
                     <li><Link to={`partner-resorts/${document.node.slug}`}>{document.node.name}</Link></li>
-                ))}  */}
+                ))}
 
                 <li><Link to="/#features">Features</Link></li>
                 <li><Link to="/team">Team</Link></li>

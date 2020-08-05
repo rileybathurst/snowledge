@@ -12,10 +12,10 @@ import React from "react"
 
 
 class TextSliderTitle extends React.Component {
-    constructor(props) {
-      super(props);
+    // constructor(props) {
+    //   super(props);
   
-    } // constructor
+    // } // constructor
   
     // I think this makes the go between
     // Object.values(this
@@ -29,8 +29,8 @@ class TextSliderTitle extends React.Component {
       let changeElement
       let prevRatio = 0.0;
 
-      let increasingColor = "rgba(40, 40, 190, ratio)";
-      let decreasingColor = "rgba(190, 40, 40, ratio)";
+      // let increasingColor = "rgba(40, 40, 190, ratio)";
+      // let decreasingColor = "rgba(190, 40, 40, ratio)";
 
       let increasingMargin = "ratioem";
       let decreasingMargin = "ratioem";

@@ -1413,3 +1413,21 @@ footer {
     margin: 1rem 2rem;
   }
 }
+
+.team--grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 80rem;
+  margin: 0 auto;
+
+  article {
+    margin: 1rem;
+  }
+}
+
+.profile {
+  width: 100%;
+  max-width: 300px; // specific max size of these images
+  border-radius: 2px;
+}

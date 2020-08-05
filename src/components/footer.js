@@ -8,7 +8,7 @@ import YouTubeLogo from "./youtubeLogo"
 import TwitterLogo from "./twitterLogo"
 import Download from "./download"
 
-import Chimp from "./chimp"
+// import Chimp from "./chimp"
 
 const Footer = () => (
     <footer>

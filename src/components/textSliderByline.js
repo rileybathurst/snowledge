@@ -9,10 +9,10 @@ import React from "react"
 
 
 class TextSliderByline extends React.Component {
-    constructor(props) {
-      super(props);
+    // constructor(props) {
+    //   super(props);
   
-    } // constructor
+    // } // constructor
   
     // I think this makes the go between
     // Object.values(this
