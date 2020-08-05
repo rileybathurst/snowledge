@@ -21,10 +21,6 @@ const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
   )
 }); // makeRequests
 
-
-
-
-
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data.
 exports.createPages = ({ actions, graphql }) => {
@@ -55,17 +51,6 @@ exports.createPages = ({ actions, graphql }) => {
     })
   });
   
-  // Query for articles nodes to use in creating pages.
-  return getPartnerResorts;
-}; // exports.createPages
-
-
-
-
-
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
-  
   const getBlogs = makeRequest(graphql, `
     {
       allStrapiBlogs {
@@ -91,19 +76,6 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
   });
-  
-  // Query for blog nodes to use in creating pages.
-  return getBlogs;
-}; // exports.createPages
-
-
-
-
-
-
-
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
   
   const getTeam = makeRequest(graphql, `
     {
@@ -131,5 +103,9 @@ exports.createPages = ({ actions, graphql }) => {
   });
   
   // Query for blog nodes to use in creating pages.
-  return getTeam;
+  return Promise.all([
+    getPartnerResorts,
+    getBlogs,
+    getTeam,
+  ])
 }; // exports.createPages

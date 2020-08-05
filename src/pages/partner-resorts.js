@@ -5,8 +5,14 @@ import Layout from '../components/layout'
 const PartnerResortsPage = ({ data }) => (
   <Layout>
       <section className="team--grid"> {/* is this a section? ddouble check that */}
-        {data.allStrapiPartnerResorts.edges.map(document => (
+
+        <h3>Region</h3>
+        <hr />
+        <h3>West</h3>
+
+        {data.west.edges.map(document => (
             <article className="">{/* again check this HTML */}
+
                 <h2>
                     <Link to={`/partner-resorts/${document.node.slug}`}>
                         {document.node.name}
@@ -17,6 +23,21 @@ const PartnerResortsPage = ({ data }) => (
             </article>
         ))}
     </section>
+
+
+    <h3>Rockies</h3>
+    {data.rockies.edges.map(document => (
+            <article className="">{/* again check this HTML */}
+
+                <h2>
+                    <Link to={`/partner-resorts/${document.node.slug}`}>
+                        {document.node.name}
+                    </Link>
+                </h2>
+
+                {/* <p>{document.node.Content}</p> */}
+            </article>
+        ))}
   </Layout>
 )
 
@@ -24,7 +45,17 @@ export default PartnerResortsPage
 
 export const pageQuery = graphql`  
   query PartnerResortQuery {
-    allStrapiPartnerResorts {
+    west: allStrapiPartnerResorts (filter: {region: {eq: "west"}}) {
+      edges {
+        node {
+          id
+          name
+          slug
+        }
+      }
+    }
+
+    rockies: allStrapiPartnerResorts (filter: {region: {eq: "rockies"}}) {
       edges {
         node {
           id
@@ -35,3 +66,8 @@ export const pageQuery = graphql`
     }
   }
 `
+
+/* 
+  Aliases
+  https://atheros.ai/blog/how-to-use-graphql-aliases
+*/

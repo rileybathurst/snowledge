@@ -20,7 +20,7 @@ const TeamTemplate = ({ data }) => (
         {data.strapiTeam.blogs.map(blog => (
           <li>
             <h2>
-              <Link to={`/blogs/`}>{blog.title}</Link>
+              <Link to={`/blogs/${blog.slug}`}>{blog.title}</Link>
             </h2>
             <p>{blog.content}</p>
           </li>
