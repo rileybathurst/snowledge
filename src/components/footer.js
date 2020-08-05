@@ -8,8 +8,6 @@ import YouTubeLogo from "./youtubeLogo"
 import TwitterLogo from "./twitterLogo"
 import Download from "./download"
 
-// import Chimp from "./chimp"
-
 const Footer = () => (
     <footer>
         {/* <h3 className="screen-reader">Snowledge</h3> */}
@@ -88,12 +86,10 @@ const Footer = () => (
                     <li><Link to="/privacy-policy">Privacy Policy</Link></li>
                     <li><Link to="/terms-of-use">Terms of Use</Link></li>
                     <li><Link to="/affiliate-disclaimer">Affiliate Disclaimer</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/support">Support</Link></li>
+                    <li><Link to="/contact-us">Contact</Link></li>
+                    <li><a href="https://snowledge.zendesk.com/hc/en-us" target="_blank" rel="nofollow" >Support</a></li>
                 </ul>
             </nav>
-
-            {/* <Chimp /> testing for this it will be used later */}
 
         </div>{/* #footer-color */}
     </footer>

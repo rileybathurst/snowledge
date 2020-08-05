@@ -26,7 +26,7 @@ const TopBar = () => (
                     <li><Link to="/partner-resorts/canada">Canada</Link></li>
                 </ul>
                 </li>
-                <li><Link to="/blog">Blog</Link></li>
+                <li><Link to="/blogs">Blog</Link></li>
                 <li>
                 <ul>
                     <li><a href to="https://www.instagram.com/snowledge.co/">instagram</a></li>

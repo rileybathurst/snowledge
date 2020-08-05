@@ -5,10 +5,9 @@ import Layout from '../components/layout'
 const PartnerResortsPage = ({ data }) => (
   <Layout>
       <section className="team--grid"> {/* is this a section? ddouble check that */}
-
-        <h3>Region</h3>
-        <hr />
         <h3>West</h3>
+
+        <hr />
 
         {data.west.edges.map(document => (
             <article className="">{/* again check this HTML */}
@@ -24,20 +23,81 @@ const PartnerResortsPage = ({ data }) => (
         ))}
     </section>
 
+    <section className="team--grid">
+      <h3>Rockies</h3>
 
-    <h3>Rockies</h3>
-    {data.rockies.edges.map(document => (
-            <article className="">{/* again check this HTML */}
+      <hr />
 
-                <h2>
-                    <Link to={`/partner-resorts/${document.node.slug}`}>
-                        {document.node.name}
-                    </Link>
-                </h2>
+      {data.rockies.edges.map(document => (
+        <article className="">{/* again check this HTML */}
 
-                {/* <p>{document.node.Content}</p> */}
-            </article>
-        ))}
+          <h2>
+            <Link to={`/partner-resorts/${document.node.slug}`}>
+              {document.node.name}
+            </Link>
+           </h2>
+
+          {/* <p>{document.node.Content}</p> */}
+        </article>
+      ))}
+    </section>
+
+    <section className="team--grid">
+      <h3>Midwest</h3>
+
+      <hr />
+      
+      {data.midwest.edges.map(document => (
+        <article className="">{/* again check this HTML */}
+
+          <h2>
+            <Link to={`/partner-resorts/${document.node.slug}`}>
+              {document.node.name}
+            </Link>
+           </h2>
+
+          {/* <p>{document.node.Content}</p> */}
+        </article>
+      ))}
+    </section>
+
+    <section className="team--grid">
+      <h3>Northeast</h3>
+
+      <hr />
+      
+      {data.northeast.edges.map(document => (
+        <article className="">{/* again check this HTML */}
+
+          <h2>
+            <Link to={`/partner-resorts/${document.node.slug}`}>
+              {document.node.name}
+            </Link>
+           </h2>
+
+          {/* <p>{document.node.Content}</p> */}
+        </article>
+      ))}
+    </section>
+
+    <section className="team--grid">
+      <h3>Canada</h3>
+
+      <hr />
+      
+      {data.canada.edges.map(document => (
+        <article className="">{/* again check this HTML */}
+
+          <h2>
+            <Link to={`/partner-resorts/${document.node.slug}`}>
+              {document.node.name}
+            </Link>
+           </h2>
+
+          {/* <p>{document.node.Content}</p> */}
+        </article>
+      ))}
+    </section>
   </Layout>
 )
 
@@ -56,6 +116,36 @@ export const pageQuery = graphql`
     }
 
     rockies: allStrapiPartnerResorts (filter: {region: {eq: "rockies"}}) {
+      edges {
+        node {
+          id
+          name
+          slug
+        }
+      }
+    }
+
+    midwest: allStrapiPartnerResorts (filter: {region: {eq: "midwest"}}) {
+      edges {
+        node {
+          id
+          name
+          slug
+        }
+      }
+    }
+
+    northeast: allStrapiPartnerResorts (filter: {region: {eq: "northeast"}}) {
+      edges {
+        node {
+          id
+          name
+          slug
+        }
+      }
+    }
+
+    canada: allStrapiPartnerResorts (filter: {region: {eq: "canada"}}) {
       edges {
         node {
           id
