@@ -1435,3 +1435,34 @@ footer {
 hr {
   width: 100%;
 }
+
+.team-card {
+  display: grid;
+  padding: 2rem;
+
+  .profile {
+    border-radius: 50%;
+    grid-row: 1/3;
+    grid-column: 1;
+    width: 10rem;
+    border: 4px solid whitesmoke;
+  }
+
+  h2 {
+    grid-row: 2;
+    grid-column: 2;
+    margin: 2rem;
+  }
+
+  section {
+    grid-row: 3;
+    grid-column: 2;
+  }
+
+  .profile-background {
+    background: lightgray;
+    grid-row: 2/4;
+    grid-column: 1/3;
+    z-index: -1;
+  }
+}

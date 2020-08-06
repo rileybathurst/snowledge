@@ -15,7 +15,7 @@ const TopBar = () => (
                     <li><Link to={`partner-resorts/${document.node.slug}`}>{document.node.name}</Link></li>
                 ))}
 
-                <li><Link to="/#features">Features</Link></li>
+                <li><Link to="/#features-title">Features</Link></li>
                 <li><Link to="/team">Team</Link></li>
                 <li><Link to="/partner-resorts">Partner Resorts</Link>
                 <ul>

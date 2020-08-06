@@ -19,11 +19,8 @@ export default function Top() {
       render={data => (
         <header>
           <ul className="top-bar__Menu">
-            {/* {data.allStrapiPartnerResorts.edges.map(document => (
-              <li><Link to={`partner-resorts/${document.node.slug}`}>{document.node.name}</Link></li>
-            ))} */}
 
-              <li><Link to="/#features">Features</Link></li>
+              <li><Link to="/#features-list">Features</Link></li>
               <li><Link to="/team">Team</Link></li>
               <li><Link to="/partner-resorts">Partner Resorts</Link>
               <ul className="reveal-later">

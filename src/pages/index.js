@@ -1,5 +1,6 @@
 import React from "react"
 // import { Link } from "gatsby"
+import { graphql } from 'gatsby'
 
 // import Layout from "../components/layout"
 import Footer from "../components/footer"
@@ -8,23 +9,14 @@ import HeroImage from "../components/hero-image"
 import PhonePlaceholder from "../components/phonePlaceholder"
 import SEO from "../components/seo"
 
-
 import SmallMenu from "../components/smallMenu"
 import Logo from "../components/logo"
-
-
 // import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
-
 import TextSlider from "../components/textSlider"
-
 // testing things Im not using other than reference
-// import Santigold from "../components/santigold" // testing the IO animations // these still need work to be more reacty
 // import Square from "../components/square" // testing click
-
-
 import Top from "../components/top"
-
 
 // styles
 import "../components/layout.css"
@@ -32,59 +24,26 @@ import "../styles/atoms.scss"
 
 const IndexPage = ({ data }) => (
   <>
-
-
-
     <SEO title="Home" />
 
-    
     <section id="top-bar">
+      <Logo />
 
-  <Logo />
+      <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
 
-        <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
-        {/* <Logo /> */}
+      <nav id="menu_small" className="menu-small hide-for-print inactive"> {/* inactive */}
+        <ul id="off-canvas" className="text-center">
+          <Top />
+        </ul>
+      </nav>
 
-        <nav id="menu_small" className="menu-small hide-for-print inactive"> {/* inactive */}
-            <ul id="off-canvas" className="text-center">
-            <Top />
-            {/* <li><Link to="/blogs">Blogs</Link></li> */}
-                {/* <li><Link to="/#features">Features</Link></li>
-                <li><Link to="/team">Team</Link></li>
-                <li><Link to="/partner-resorts">Partner Resorts</Link>
-                <ul>
-                    <li><Link to="/partner-resorts/west">West</Link></li>
-                    <li><Link to="/partner-resorts/rockies">Rockies</Link></li>
-                    <li><Link to="/partner-resorts/midwest">Midwest</Link></li>
-                    <li><Link to="/partner-resorts/northeast">Northeast</Link></li>
-                    <li><Link to="/partner-resorts/canada">Canada</Link></li>
-                </ul>
-                </li>
- 
-                <li>
-                <ul>
-                    <li><a href to="https://www.instagram.com/snowledge.co/">instagram</a></li>
-                    <li><a href to="https://www.facebook.com/snowledge.co">facebook</a></li>
-                    <li><a href to="https://www.youtube.com/channel/UCtao0k3KRU8kur7pyPJPK0w">YouTube</a></li>
-                    <li><a href to="https://twitter.com/snowledge_co">twitter</a></li>
-                </ul>
-                </li>
-                <li><Link to="/download">Download</Link></li> */}
-            </ul>
-        </nav>
+      <div id="menu_toggle" className="bg-secondary shadow-darker text-center">
+        <SmallMenu /> 
+      </div> 
 
-         <div id="menu_toggle" className="bg-secondary shadow-darker text-center">
-             <SmallMenu /> 
-        </div> 
-
-    </section>
-
-
-
-
+    </section>{/* #top-bar */}
 
     <header id="header-hero">
-      
       <HeroImage />
       <div className="header-hero_color-blocking">
         <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -99,9 +58,7 @@ const IndexPage = ({ data }) => (
       <div className="hero-phone">
         <PhonePlaceholder />
       </div>
-
     </header>
-
 
     <main id="home-main">
       <h2 id="our-story-title"><em>Our<br />Story</em></h2>
@@ -153,19 +110,7 @@ const IndexPage = ({ data }) => (
     <Footer />
 
     {/* couple testing things incase I want reference */}
-{/* <Santigold /> */}
-{/* <Square /> */}
-    {/* Just a quick check that strapi is working 
-      {data.allStrapiAnythings.edges.map(document => (
-          <h2>{document.node.title}</h2>
-      ))} */}
-
-
-{/* {data.allStrapiPartnerResorts.edges.map(document => (
-                    <li><Link to={`partner-resorts/${document.node.slug}`}>{document.node.name}</Link></li>
-                ))} */}
-
-
+    {/* <Square /> */}
 
   </>
 )
@@ -174,14 +119,6 @@ export default IndexPage
 
 export const pageQuery = graphql`  
   query IndexQuery {
-    allStrapiAnythings {
-      edges {
-        node {
-          title
-        }
-      }
-    }
-
     allStrapiPartnerResorts {
       edges {
         node {

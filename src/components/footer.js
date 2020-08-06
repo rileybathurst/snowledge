@@ -87,7 +87,7 @@ const Footer = () => (
                     <li><Link to="/terms-of-use">Terms of Use</Link></li>
                     <li><Link to="/affiliate-disclaimer">Affiliate Disclaimer</Link></li>
                     <li><Link to="/contact-us">Contact</Link></li>
-                    <li><a href="https://snowledge.zendesk.com/hc/en-us" target="_blank" rel="nofollow" >Support</a></li>
+                    <li><a href="https://snowledge.zendesk.com/hc/en-us" target="_blank" rel="nofollow noreferrer" >Support</a></li>
                 </ul>
             </nav>
 

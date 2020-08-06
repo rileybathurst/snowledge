@@ -12,7 +12,7 @@ const Header = ({ siteTitle }) => (
         <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
         <Logo />
 
-        <button id="menu" className="io-push">Menu</button>{/* io-push? seems like the wrong thing */}
+        {/* <button id="menu" className="io-push">Menu</button>io-push? seems like the wrong thing */}
       </section>
     </header>
   </>
