@@ -753,7 +753,7 @@ $snowledge-green_lighten: #39C4C5;
       text-stroke: 2px white; // throws an error in VS Code but it's fine
       // font-size: 200px;
       overflow: hidden;
-      width: 180rem; // guess and check
+      width: 286rem; // guess and check
 
       @media (min-width: 60rem) {
         font-size: 200px;
@@ -762,15 +762,19 @@ $snowledge-green_lighten: #39C4C5;
         text-stroke: 4px white;
       }
 
-      margin-left: -10rem;
-      animation: 3s infinite 0s slidein;
+      
+      animation: 20s infinite slideLeft;
+      // animation-duration: 3s;
+      z-index: 999;
     }
 
-    @keyframes slidein {
-        from { margin-left: -10rem;
+
+
+     @keyframes slideLeft {
+        from { margin-left: 0rem;
       }
       to {
-        margin-left: 10rem; }
+        margin-left: -143rem; } // guess and check
       }
 
     h3 {
@@ -784,6 +788,15 @@ $snowledge-green_lighten: #39C4C5;
         font-size: 100px;
         height: 100px;
       }
+
+      animation: 20s infinite slideRight;
+    }
+
+    @keyframes slideRight {
+      from { margin-left: -60rem;
+    }
+    to {
+      margin-left: 0; } // guess and check
     }
   }
 

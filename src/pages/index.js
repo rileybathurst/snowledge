@@ -52,8 +52,8 @@ const IndexPage = ({ data }) => (
       </div>
 
       <div className="header--sliders">
-        <h2>SNOWLEDGE IS POWDER and then SNOWLEDGE IS POWDER</h2>
-        <h3>Discover. Ride. Share. Discover. Ride. Share.</h3>
+        <h2>SNOWLEDGE IS POWDER SNOWLEDGE IS POWDER</h2>
+        <h3>Discover. Ride. Share. Discover. Ride. Share. Discover. Ride. Share.</h3>
       </div>
 
       {/* <TextSlider /> */}
