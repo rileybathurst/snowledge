@@ -51,7 +51,12 @@ const IndexPage = ({ data }) => (
         </svg>
       </div>
 
-      <TextSlider />
+      <div className="header--sliders">
+        <h2>SNOWLEDGE IS POWDER and then SNOWLEDGE IS POWDER</h2>
+        <h3>Discover. Ride. Share. Discover. Ride. Share.</h3>
+      </div>
+
+      {/* <TextSlider /> */}
       
       <Download />
 
