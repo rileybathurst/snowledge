@@ -10,13 +10,14 @@ const TeamPage = ({ data }) => (
       <section className="team--grid"> {/* is this a section? ddouble check that */}
         {data.allStrapiTeam.edges.map(document => (
             <article className="team-card">{/* again check this HTML */}
-                <Link to={`/team/${document.node.slug}`} className="profile">
-                    <Img fluid={document.node.profile.childImageSharp.fluid}  className="profile"/>
+
+                <Link to={`/team/${document.node.slug}`} className="teamcoverimage">
+                  <Img fluid={document.node.teamcoverimage.childImageSharp.fluid} />
                 </Link>
 
-                {/* <Link to={`/team/${document.node.slug}`} className="profile">
-                    <Img fluid={document.node.teamcoverimage.childImageSharp.fluid}  className="teamcoverimage"/>
-                </Link> */}
+                <Link to={`/team/${document.node.slug}`} className="teamcoverprofile">
+                  <Img fluid={document.node.profile.childImageSharp.fluid}  className="profile"/>
+                </Link>
 
                 <h2>
                     <Link to={`/team/${document.node.slug}`}>
@@ -25,9 +26,9 @@ const TeamPage = ({ data }) => (
                 </h2>
 
                 <section>
-                  <p>Sport</p>
+                  <p>{document.node.Sport}</p>
+                  <p>{document.node.excerpt}</p>
                   <p>Mountain</p>
-                  <p>Excerpt</p>
                 </section>
 
                 <div className="profile-background">{/* stay gold */}</div>
@@ -51,6 +52,16 @@ export const pageQuery = graphql`
           bio
           instagram
           slug
+
+          teamcoverimage {
+            atime
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+
           profile {
             childImageSharp {
               fluid(maxWidth: 300) {
@@ -59,13 +70,8 @@ export const pageQuery = graphql`
             }
           }
 
-          teamcoverimage {
-            childImageSharp {
-              fluid(maxWidth: 300) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
+          Sport
+          excerpt
 
         }
       }

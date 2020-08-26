@@ -31,7 +31,7 @@ export default function Top() {
                   <li><Link to="/partner-resorts/canada">Canada</Link></li>
               </ul>
               </li>
-              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/blogs">Blog</Link></li>
                 {/* I'm really not sure we need this up here.
                 <li>
                   <ul>

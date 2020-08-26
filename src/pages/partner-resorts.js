@@ -10,7 +10,7 @@ const PartnerResortsPage = ({ data }) => (
         <hr />
 
         {data.west.edges.map(document => (
-            <article className="">{/* again check this HTML */}
+            <article className="team-card">{/* again check this HTML */}
 
                 <h2>
                     <Link to={`/partner-resorts/${document.node.slug}`}>
@@ -19,6 +19,7 @@ const PartnerResortsPage = ({ data }) => (
                 </h2>
 
                 {/* <p>{document.node.Content}</p> */}
+                <div className="profile-background">{/* stay gold */}</div>
             </article>
         ))}
     </section>
@@ -29,7 +30,7 @@ const PartnerResortsPage = ({ data }) => (
       <hr />
 
       {data.rockies.edges.map(document => (
-        <article className="">{/* again check this HTML */}
+        <article className="team-card">{/* again check this HTML */}
 
           <h2>
             <Link to={`/partner-resorts/${document.node.slug}`}>
@@ -38,6 +39,7 @@ const PartnerResortsPage = ({ data }) => (
            </h2>
 
           {/* <p>{document.node.Content}</p> */}
+          <div className="profile-background">{/* stay gold */}</div>
         </article>
       ))}
     </section>
@@ -48,7 +50,7 @@ const PartnerResortsPage = ({ data }) => (
       <hr />
       
       {data.midwest.edges.map(document => (
-        <article className="">{/* again check this HTML */}
+        <article className="team-card">{/* again check this HTML */}
 
           <h2>
             <Link to={`/partner-resorts/${document.node.slug}`}>
@@ -57,6 +59,7 @@ const PartnerResortsPage = ({ data }) => (
            </h2>
 
           {/* <p>{document.node.Content}</p> */}
+          <div className="profile-background">{/* stay gold */}</div>
         </article>
       ))}
     </section>
@@ -67,7 +70,7 @@ const PartnerResortsPage = ({ data }) => (
       <hr />
       
       {data.northeast.edges.map(document => (
-        <article className="">{/* again check this HTML */}
+        <article className="team-card">{/* again check this HTML */}
 
           <h2>
             <Link to={`/partner-resorts/${document.node.slug}`}>
@@ -76,6 +79,7 @@ const PartnerResortsPage = ({ data }) => (
            </h2>
 
           {/* <p>{document.node.Content}</p> */}
+          <div className="profile-background">{/* stay gold */}</div>
         </article>
       ))}
     </section>
@@ -86,7 +90,7 @@ const PartnerResortsPage = ({ data }) => (
       <hr />
       
       {data.canada.edges.map(document => (
-        <article className="">{/* again check this HTML */}
+        <article className="team-card">{/* again check this HTML */}
 
           <h2>
             <Link to={`/partner-resorts/${document.node.slug}`}>
@@ -95,6 +99,7 @@ const PartnerResortsPage = ({ data }) => (
            </h2>
 
           {/* <p>{document.node.Content}</p> */}
+          <div className="profile-background">{/* stay gold */}</div>
         </article>
       ))}
     </section>

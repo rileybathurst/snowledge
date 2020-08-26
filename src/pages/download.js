@@ -6,9 +6,11 @@ import Download from "../components/download"
 
 const DownloadPage = () => (
   <Layout>
-    <SEO title="Download" />
-    <h1>Download</h1>
-    <Download />
+    <main className="regular-page">
+      <SEO title="Download" />
+      <h1>Download</h1>
+      <Download />
+    </main>
   </Layout>
 )
 

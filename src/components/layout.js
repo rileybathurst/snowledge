@@ -10,12 +10,12 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 
-import Top from "./top"
+// import Top from "./top"
 
 import Header from "./header"
 import Footer from "./footer"
 
-import SmallMenu from "./smallMenu"
+// import SmallMenu from "./smallMenu"
 
 import "./layout.css"
 import "../styles/atoms.scss"
@@ -35,7 +35,8 @@ const Layout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
 
-      <nav id="menu_small" className="menu-small hide-for-print inactive"> {/* inactive */}
+      {/* <nav id="menu_small" className="menu-small hide-for-print inactive"> 
+       inactive 
         <ul id="off-canvas" className="text-center">
           <Top />
         </ul>
@@ -43,7 +44,7 @@ const Layout = ({ children }) => {
 
       <div id="menu_toggle" className="bg-secondary shadow-darker text-center">
         <SmallMenu /> 
-      </div> 
+      </div>  */}
 
       
       <main>{children}</main>

@@ -7,9 +7,11 @@ import Chimp from "../components/chimp"
 
 const DownloadPage = () => (
   <Layout>
+    {/* Has to be inside the top level <> */}
     <SEO title="Contact Us" />
-    <h1>Contact Us</h1>
-    <Chimp />
+    <main className="regular-page">
+      <Chimp />
+    </main>
   </Layout>
 )
 
