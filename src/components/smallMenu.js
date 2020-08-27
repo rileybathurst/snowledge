@@ -16,14 +16,16 @@ function SmallMenu() {
   
   return (
     <>
+    <button className="small_menu--opener" onClick={openUp}>
+          Menu
+      </button>
+      
       {/* <div className="small_menu--icon">=</div> fall back */}
       <div className="small_menu--icon"> {/* this cant be a line higher as its a display grid overwrite */}
         <span className="small_menu--icon-topline"></span>
         <span className="small_menu--icon-bottomline"></span>
       </div>
-      <button className="small_menu--opener" onClick={openUp}>
-          Menu
-      </button>
+      
     </>
   );
 }

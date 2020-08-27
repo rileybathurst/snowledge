@@ -37,7 +37,7 @@ const IndexPage = ({ data }) => (
         </ul>
       </nav>
 
-      <div id="menu_toggle" className="bg-secondary shadow-darker text-center">
+      <div id="menu_toggle" className="bg-secondary shadow-darker text-center" >
         <SmallMenu /> 
       </div> 
 
@@ -72,9 +72,13 @@ const IndexPage = ({ data }) => (
       <p id="our-story">The Snowledge team loves to ski and ride but was frustrated with all of the different resort and GPS tracker apps needed to plan, track, and share that perfect day of skiing or snowboarding. Together, we knew we could do better. Designed with input from our community of industry gurus and resort experts, Snowledge combines all the features skiers and riders need, works at every resort and in the backcountry—and it’s free.</p>
 
       <div className="main-color-blocking">
-        <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+{/*         <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
           <polygon fill="#F0F0F0" points="0,25 100,0 100,75 0,100"/>
-        </svg>
+        </svg> */}
+        {/* This is an invisible svg to keep the height where I want it this is pretty hacky tho so I should fix it */}
+        <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <polygon fill="none" points="0,25 100,0 100,75 0,100"/>
+        </svg> 
       </div>
 
       {/* <CoverVideo /> */}

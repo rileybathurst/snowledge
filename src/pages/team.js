@@ -28,7 +28,7 @@ const TeamPage = ({ data }) => (
                 <section>
                   <p>{document.node.Sport}</p>
                   <p>{document.node.excerpt}</p>
-                  <p>Mountain</p>
+                  {/* <p>Mountain</p> no one is on a partner resort as a home so mayeb we skip this for now? */}
                 </section>
 
                 <div className="profile-background">{/* stay gold */}</div>

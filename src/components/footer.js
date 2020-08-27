@@ -19,7 +19,8 @@ const Footer = () => (
             </svg>
         </div> */}
 
-        <h3 id="footer-title"><em>DownLoad</em></h3>
+        <h3 id="footer-title"><em>Down<br />
+            Load</em></h3>
 
         <div className="footer-download-badges">
             
@@ -78,7 +79,7 @@ const Footer = () => (
                 <Logo />
             </div>
 
-            <p className="footer-copyright">© 2020 Snowledge Corp., All Rights Reserved.</p> {/* this punctuation is really wierd but its how it is on the current site */}
+            <p className="footer-copyright">© 2020 Snowledge Corp. All Rights Reserved.</p> {/* this punctuation is really wierd but its how it is on the current site */}
             <nav>
                 <ul id="footer-info">
                     <li><Link to="/">Home</Link></li>
