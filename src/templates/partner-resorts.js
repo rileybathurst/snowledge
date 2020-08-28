@@ -1,14 +1,49 @@
 import React from 'react'
-// import { Link, graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 // import Img from 'gatsby-image'
 import Layout from '../components/layout'
 // import Logo from '../components/logo'
 // import SmallMenu from '../components/smallMenu'
 
+class Feed extends React.Component {
+
+  render() {
+    let test;
+    let that;
+
+    if (test === '' ) {
+      that = <p>hey</p>;
+    } else {
+      that = <p>there</p>;
+    }
+
+    return (
+      <>
+        {that}
+      </>
+    );
+  }
+}
+
 const PartnerResortTemplate = ({ data }) => (
   <Layout>
 
-    <h1>{data.strapiPartnerResorts.name}</h1>
+    <h1 className="regular-measure">{data.strapiPartnerResorts.name}</h1>
+
+    <h2 className="regular-measure"><Link to="download">Download Snowledge | Official App for {data.strapiPartnerResorts.name}</Link></h2>
+
+    <p className="regular-measure">We’re excited to announce that Snowledge is the official app for {data.strapiPartnerResorts.name}! Snowledge is the only app you need on the mountain, and it’s free. Use GPS to get real-time resort info, track your day on the slopes, and easily find and locate your friends and family. Be in the snow, #SnowledgeIsPowder!</p>
+
+    <Feed />
+
+    <ul id="features-list" className="regular-measure">
+        <li>View current snow conditions, and research info on nearby resorts, offers, and current contests.</li>
+        <li>Stay connected with friends, family, and your favorite resorts, and see what skiers and riders around the world are up to.</li>
+        <li>Find your friends on the mountain and track your day with stats, recorded weather, and maps showing runs skied.</li>
+        <li>Customize your profile, bio, and gallery, and view detailed activity summaries of your days skied.</li>
+        <li>Get lift status updates, conditions, and parking information, as well as offers and contests from your favorite resorts.</li>
+      </ul>
+
     <p>{data.strapiPartnerResorts.writeup}</p>
   </Layout>
 )

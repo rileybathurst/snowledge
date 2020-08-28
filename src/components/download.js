@@ -20,7 +20,7 @@ return <div className="download">
   {/* <button> & © Download</button>  */}
 
   {/* Apple */}
-  <a href="https://apple.co/2HytyE4" target="_blank">
+  <a href="https://apple.co/2HytyE4" target="_blank" rel="noreferrer">
     <svg id="livetype" xmlns="http://www.w3.org/2000/svg" width="119.66407" height="40" viewBox="0 0 119.66407 40">
       <title>Download_on_the_App_Store_Badge_US-UK_RGB_blk_4SVG_092917</title>
       <g>
@@ -70,7 +70,7 @@ return <div className="download">
   </a>
 
   {/* Google */}
-  <a href="https://play.google.com/store/apps/details?id=co.snowledge&hl=en" target="_blank">
+  <a href="https://play.google.com/store/apps/details?id=co.snowledge&hl=en" target="_blank" rel="noreferrer">
     <Img fluid={data.placeholderImage.childImageSharp.fluid} />
   </a>
 </div>

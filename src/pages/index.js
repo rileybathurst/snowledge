@@ -13,7 +13,7 @@ import SmallMenu from "../components/smallMenu"
 import Logo from "../components/logo"
 // import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
-import TextSlider from "../components/textSlider"
+// import TextSlider from "../components/textSlider"
 // testing things Im not using other than reference
 // import Square from "../components/square" // testing click
 import Top from "../components/top"

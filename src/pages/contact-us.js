@@ -9,7 +9,7 @@ const DownloadPage = () => (
   <Layout>
     {/* Has to be inside the top level <> */}
     <SEO title="Contact Us" />
-    <main className="regular-page">
+    <main className="regular-page regular-measure">
       <Chimp />
     </main>
   </Layout>

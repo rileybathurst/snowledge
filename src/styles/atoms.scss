@@ -754,42 +754,64 @@ $snowledge-green_lighten: #39C4C5;
       // font-size: 200px;
       overflow: hidden;
       width: 286rem; // guess and check
+      animation: 20s infinite SnowledgeSlide;
 
       @media (min-width: 60rem) {
         font-size: 200px;
         height: 230px; // guess and check
         -webkit-text-stroke: 4px white; 
         text-stroke: 4px white;
+        animation: 20s infinite slideLeft;
       }
-
-      
-      animation: 20s infinite slideLeft;
-      // animation-duration: 3s;
+      // animation: 20s infinite slideLeft;
       z-index: 999;
     }
 
-
-
-     @keyframes slideLeft {
-        from { margin-left: 0rem;
-      }
+     @keyframes SnowledgeSlide {
+        from {
+          // use translate as its a "cheap" animatable property
+          // https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/
+          transform: translate(0);
+        }
       to {
-        margin-left: -143rem; } // guess and check
+        transform: translate(-31rem); // guess and check
       }
+    }
+
+    @keyframes slideLeft {
+        from {
+          // margin-left: 0rem;
+          transform: translate(0);
+        }
+      to {
+        // margin-left: -143rem;
+        transform: translate(143rem);
+      } // guess and check
+    }
 
     h3 {
       color: whitesmoke;
       font-size: 100px;
       height: 100px;
       overflow: hidden;
-      width: 200vw;
+      width: 400vw; // guess and check I presume going over is better than under
+      animation: 20s infinite DiscoverSlide;
 
       @media (min-width: 60rem) {
         font-size: 100px;
         height: 100px;
+        animation: 20s infinite slideRight;
       }
 
-      animation: 20s infinite slideRight;
+    }
+
+    @keyframes DiscoverSlide {
+      from {
+        transform: translate(-67rem);
+      }
+      to {
+        transform: translate(0); // guess and check
+      } // guess and check
     }
 
     @keyframes slideRight {
@@ -797,41 +819,6 @@ $snowledge-green_lighten: #39C4C5;
     }
     to {
       margin-left: 0; } // guess and check
-    }
-  }
-
-  .download {
-    grid-row: 3;
-    grid-column: 2;
-    z-index: 2;
-
-    display: flex;
-    flex-direction: column;
-
-    svg {
-      padding: 1rem; // get this closer to the android
-      width: 100%;
-      max-width: 20rem;
-      min-height: 8rem; // guess and check
-      transition: 1s ease;
-    }
-
-     svg:hover {
-      transform: scale(1.1);
-    }
-
-    @media (min-width: 60rem) {
-      grid-column: 3;
-    }
-
-    > a > .gatsby-image-wrapper {
-      max-width: 20rem;
-      transition: 1s ease;
-    }
-
-    > a > .gatsby-image-wrapper:hover {
-      transform: scale(1.1);
-      // box-shadow: 2px 2px 2px lightgray; // this doesnt work as the image isnt the full box
     }
   } // #header-byline
 
@@ -866,6 +853,48 @@ $snowledge-green_lighten: #39C4C5;
     }
   }
 } // #header-hero
+
+.download {
+  grid-row: 3;
+  grid-column: 2;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  > a {
+    display: block;
+    width: 100%; 
+  }
+
+  > a > svg {
+    padding: 0 1rem; // get this closer to the android
+    width: 100%;
+    max-width: 20rem;
+    min-height: 8rem; // guess and check
+    transition: 1s ease;
+  }
+
+   svg:hover {
+    transform: scale(1.1);
+  }
+
+  @media (min-width: 60rem) {
+    grid-column: 3;
+  }
+
+  > a > .gatsby-image-wrapper {
+    max-width: 20rem;
+    transition: 1s ease;
+  }
+
+  > a > .gatsby-image-wrapper:hover {
+    transform: scale(1.1);
+    // box-shadow: 2px 2px 2px lightgray; // this doesnt work as the image isnt the full box
+  }
+} // .download
+
+
 
 .logo {
   // fill: whitesmoke;
@@ -937,9 +966,11 @@ a:hover {
 
 #home-main {
   display: grid;
-  @media (min-width: 76rem) { // this is the widest so it locks down
+  grid-gap: 2rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 78rem) { // this is the widest so it locks down
     grid-template-columns: 1fr 35rem 35rem 1fr;
-    grid-gap: 2rem;
   }
 
   #our-story-title {
@@ -1081,7 +1112,7 @@ a:hover {
   font-size: 2.441em;
   line-height: 1.5em;
   width: 100%;
-  max-width: 40rem;
+  max-width: 40rem; // this might have to fall back on regular-measure as it's now used in other places
   margin: 0 auto;
 
   @media (min-width: 60rem) {
@@ -1147,7 +1178,7 @@ footer {
     align-self: end;
     z-index: 99; // double check what I need to be over here and if I can do it better
     margin-top: 4rem;
-    margin-left: 1rem;
+    margin-left: 3rem;
     margin-right: 6rem; // guess and check
 
     @media (min-width: 76rem) {
@@ -1163,10 +1194,11 @@ footer {
     align-self: end;
     z-index: 99;
     max-width: 20rem; // guess and check
+    margin-left: 3rem;
     margin-right: 1rem;
 
     @media (min-width: 40rem) {
-      grid-column: 2;
+      grid-column: 1;
       
     }
 
@@ -1195,6 +1227,7 @@ footer {
     background: $snowledge-green;
     clip-path: polygon(0 3rem, 100% 1rem, 100% calc(100% - 1rem), 0 100% );
     z-index: 2;
+    margin-left: 2rem;
     
     @media (min-width: 76rem) {
       grid-row: 1/3;
@@ -1241,7 +1274,8 @@ footer {
     justify-self: start;
     z-index: 3;
     clip-path: polygon(0 1rem, 100% 0, 100% calc(100% - 2rem), 0 calc(100% - 1rem)); // needs work
-    
+    margin-right: 1rem;
+
     @media (min-width: 76rem) {
       grid-column: 4;
     }
@@ -1285,16 +1319,30 @@ footer {
 
 #footer-color {
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
+
+  @media (min-width: 76rem) {
+    grid-gap: 2rem;
+  }
 
   .footer-logo {
     grid-row: 1;
     grid-column: 1;
+    margin-left: 1rem;
+    margin-top: 1rem;
 
     max-width: 15em;
 
+    > a {
+      display: block;
+    }
+
     svg {
       fill: whitesmoke;
+    }
+
+    svg:hover {
+      fill: $snowledge-green_lighten;
     }
   }
 
@@ -1306,6 +1354,7 @@ footer {
   .footer-copyright {
     grid-row: 3;
     grid-column: 1;
+    margin: 0 1rem 3rem 1rem;
 
     color: whitesmoke;
 
@@ -1324,6 +1373,8 @@ footer {
 
   #footer-info {
     display: flex;
+    flex-direction: column;
+
     @media (min-width: 76rem) {
       flex-direction: row;
       justify-content: space-evenly;
@@ -1461,11 +1512,20 @@ footer {
 
 .top-bar__Menu {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-left: 0;
+
+  @media (min-width: 60rem) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
   li {
     list-style: none;
-    margin: 1rem 2rem;
+
+    @media (min-width: 60rem) {
+      margin: 1rem 2rem;
+    }
   }
 }
 
@@ -1503,30 +1563,51 @@ hr {
 
   .profile {
     border-radius: 50%;
-    grid-row: 1/4;
+    grid-row: 2;
     grid-column: 1;
     width: 10rem;
     border: 4px solid whitesmoke;
+
+    @media (min-width: 60rem) {
+      grid-row: 2;
+      grid-column: 1;
+    }
   }
 
   h2 {
-    grid-row: 2;
-    grid-column: 2;
+    grid-row: 3;
+    grid-column: 1;
     margin: 1rem;
     align-self: end;
+    @extend h4;
+
+    @media (min-width: 60rem) {
+      grid-row: 2;
+      grid-column: 2;
+    }
   }
 
   section {
-    grid-row: 3;
-    grid-column: 2;
+    grid-row: 4;
+    grid-column: 1;
     margin: 1rem;
+
+    @media (min-width: 60rem) {
+      grid-row: 3;
+      grid-column: 2;
+    }
   }
 
   .profile-background {
     background: whitesmoke;
-    grid-row: 2/4;
-    grid-column: 1/3;
+    grid-row: 1;
+    grid-column: 1;
     z-index: -1;
+
+    @media (min-width: 60rem) {
+      grid-row: 2/4;
+      grid-column: 1/3;
+    }
   }
 }
 
@@ -1565,6 +1646,10 @@ hr {
   align-self: center;
 }
 
+.teamcoverprofile:hover {
+  filter: brightness(0.8);
+}
+
 .teamcoverimage {
   grid-row: 1;
   grid-column: 1/3;
@@ -1572,6 +1657,10 @@ hr {
   .gatsby-image-wrapper {
     max-height: 10rem;
   }
+}
+
+.teamcoverimage:hover {
+  filter: brightness(0.8);
 }
 
 .team {
@@ -1630,7 +1719,10 @@ hr {
 
 .regular-measure {
   max-width: 60rem;
-  margin: 0 auto;
+  // margin: 0 auto;
+  // this breaks how big and small bottom margins should be
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mid-title {
