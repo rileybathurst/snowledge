@@ -1,6 +1,11 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 
+import InstagramLogo from "./instagramLogo"
+import FacebookLogo from "./facebookLogo"
+import YouTubeLogo from "./youtubelogo"
+import TwitterLogo from "./twitterLogo"
+
 export default function Top() {
   return (
     <StaticQuery
@@ -42,7 +47,14 @@ export default function Top() {
                 </ul> 
                 </li> */}
                 <li><Link to="/download">Download</Link></li>
-
+                <li className="top-bar__social-list">
+                  <ul className="top-bar__social">
+                    <li><InstagramLogo /></li>
+                    <li><FacebookLogo /></li>
+                    <li><YouTubeLogo /></li>
+                    <li><TwitterLogo /></li>
+                  </ul>
+                </li>
 
                 </ul>
 

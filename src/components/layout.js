@@ -34,19 +34,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-
-      {/* <nav id="menu_small" className="menu-small hide-for-print inactive"> 
-       inactive 
-        <ul id="off-canvas" className="text-center">
-          <Top />
-        </ul>
-      </nav>
-
-      <div id="menu_toggle" className="bg-secondary shadow-darker text-center">
-        <SmallMenu /> 
-      </div>  */}
-
-      
       <main>{children}</main>
       <Footer />
     </>

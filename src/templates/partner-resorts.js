@@ -1,28 +1,46 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-// import Img from 'gatsby-image'
+import Img from 'gatsby-image'
 import Layout from '../components/layout'
 // import Logo from '../components/logo'
 // import SmallMenu from '../components/smallMenu'
 
-class Feed extends React.Component {
+import DefaultFeedImage from '../components/default-feed'
+import DefaultProfileImage from '../components/default-profile'
+import DefaultActivityImage from '../components/default-activity'
 
-  render() {
-    let test;
-    let that;
-
-    if (test === '' ) {
-      that = <p>hey</p>;
-    } else {
-      that = <p>there</p>;
-    }
-
+// this is kinda annoying and double but needs to be for the null check
+function Feed(props) {
+  if (props.has) {
     return (
-      <>
-        {that}
-      </>
-    );
-  }
+      <Img fluid={props.photo} />
+    )
+  } 
+  return (
+    <><DefaultFeedImage />default </>
+  );
+}
+
+function Profile(props) {
+  if (props.has) {
+    return (
+      <Img fluid={props.photo} />
+    )
+  } 
+  return (
+    <><DefaultProfileImage />default </>
+  );
+}
+
+function Activity(props) {
+  if (props.has) {
+    return (
+      <Img fluid={props.photo} />
+    )
+  } 
+  return (
+    <><DefaultActivityImage />default </>
+  );
 }
 
 const PartnerResortTemplate = ({ data }) => (
@@ -34,7 +52,10 @@ const PartnerResortTemplate = ({ data }) => (
 
     <p className="regular-measure">We’re excited to announce that Snowledge is the official app for {data.strapiPartnerResorts.name}! Snowledge is the only app you need on the mountain, and it’s free. Use GPS to get real-time resort info, track your day on the slopes, and easily find and locate your friends and family. Be in the snow, #SnowledgeIsPowder!</p>
 
-    <Feed />
+{/* you have to skip the .childImageSharp.fluid as it cant do the null from above */}
+    <Feed has={data.strapiPartnerResorts.partner_resort_feed} photo={data.strapiPartnerResorts.partner_resort_feed.childImageSharp.fluid} />
+    <Profile has={data.strapiPartnerResorts.partner_resort_profile} photo={data.strapiPartnerResorts.partner_resort_profile.childImageSharp.fluid} />
+    <Activity has={data.strapiPartnerResorts.partner_resort_activity} photo={data.strapiPartnerResorts.partner_resort_activity.childImageSharp.fluid} />
 
     <ul id="features-list" className="regular-measure">
         <li>View current snow conditions, and research info on nearby resorts, offers, and current contests.</li>
@@ -55,6 +76,28 @@ export const query = graphql`
     strapiPartnerResorts(id: {eq: $id}) {
       name
       writeup
+
+      partner_resort_feed {
+        childImageSharp {
+          fluid(maxWidth: 960) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      partner_resort_profile {
+        childImageSharp {
+          fluid(maxWidth: 960) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      partner_resort_activity {
+        childImageSharp {
+          fluid(maxWidth: 960) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   }
 `

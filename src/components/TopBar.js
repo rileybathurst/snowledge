@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Link, graphql } from "gatsby"
+import FacebookLogo from "./facebookLogo"
 
 // import Logo from "./logo"
 // import SmallMenu from "./smallMenu"
@@ -35,14 +36,10 @@ const TopBar = () => (
                     <li><a href to="https://twitter.com/snowledge_co">twitter</a></li>
                 </ul>
                 </li>
-                <li><Link to="/download">Download</Link></li> */}
+                <li><Link to="/download">Download</Link></li>
+
             </ul>
         </nav>
-
-{/*         <div id="menu_toggle" className="bg-secondary shadow-darker text-center">
-             <SmallMenu /> 
-        </div> */}
-
     </section>
 )
 
