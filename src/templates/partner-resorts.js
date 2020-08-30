@@ -8,6 +8,7 @@ import Layout from '../components/layout'
 import DefaultFeedImage from '../components/default-feed'
 import DefaultProfileImage from '../components/default-profile'
 import DefaultActivityImage from '../components/default-activity'
+import DefaultFriendImage from '../components/default-friend'
 
 // this is kinda annoying and double but needs to be for the null check
 function Feed(props) {
@@ -52,10 +53,15 @@ const PartnerResortTemplate = ({ data }) => (
 
     <p className="regular-measure">We’re excited to announce that Snowledge is the official app for {data.strapiPartnerResorts.name}! Snowledge is the only app you need on the mountain, and it’s free. Use GPS to get real-time resort info, track your day on the slopes, and easily find and locate your friends and family. Be in the snow, #SnowledgeIsPowder!</p>
 
-{/* you have to skip the .childImageSharp.fluid as it cant do the null from above */}
-    <Feed has={data.strapiPartnerResorts.partner_resort_feed} photo={data.strapiPartnerResorts.partner_resort_feed.childImageSharp.fluid} />
-    <Profile has={data.strapiPartnerResorts.partner_resort_profile} photo={data.strapiPartnerResorts.partner_resort_profile.childImageSharp.fluid} />
-    <Activity has={data.strapiPartnerResorts.partner_resort_activity} photo={data.strapiPartnerResorts.partner_resort_activity.childImageSharp.fluid} />
+    {/* <p className="regular-measure">{data.strapiPartnerResorts.writeup}</p> */}
+
+    <div className="partner-resorts_screenshots">
+      {/* you have to skip the .childImageSharp.fluid as it cant do the null from above */}
+      <Feed has={data.strapiPartnerResorts.partner_resort_feed} photo={data.strapiPartnerResorts.partner_resort_feed.childImageSharp.fluid} />
+      <Profile has={data.strapiPartnerResorts.partner_resort_profile} photo={data.strapiPartnerResorts.partner_resort_profile.childImageSharp.fluid} />
+      <Activity has={data.strapiPartnerResorts.partner_resort_activity} photo={data.strapiPartnerResorts.partner_resort_activity.childImageSharp.fluid} />
+      <DefaultFriendImage />
+    </div>
 
     <ul id="features-list" className="regular-measure">
         <li>View current snow conditions, and research info on nearby resorts, offers, and current contests.</li>
@@ -65,7 +71,6 @@ const PartnerResortTemplate = ({ data }) => (
         <li>Get lift status updates, conditions, and parking information, as well as offers and contests from your favorite resorts.</li>
       </ul>
 
-    <p>{data.strapiPartnerResorts.writeup}</p>
   </Layout>
 )
 
