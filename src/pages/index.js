@@ -17,7 +17,7 @@ import Download from "../components/download"
 // testing things Im not using other than reference
 // import Square from "../components/square" // testing click
 import Top from "../components/top"
-// import ScreenshotSlideshow from "../components/screenshot-slideshow"
+import ScreenshotSlideshow from "../components/screenshot-slideshow"
 
 import Header from "../components/header"
 
@@ -49,7 +49,8 @@ const IndexPage = ({ data }) => (
       <Download />
 
       <div className="hero-phone">
-        <PhonePlaceholder />
+        <ScreenshotSlideshow />
+        {/* <PhonePlaceholder /> */}
       </div>
     </header>
 
@@ -108,10 +109,6 @@ const IndexPage = ({ data }) => (
 
     {/* couple testing things incase I want reference */}
     {/* <Square /> */}
-{/*       <h1>before</h1>
-      <ScreenshotSlideshow />
-      <h1>after</h1> */}
-
   </>
 )
 

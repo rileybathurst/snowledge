@@ -776,8 +776,8 @@ $snowledge-green_lighten: #39C4C5;
     h2 {
       color:transparent;
       text-transform: uppercase;
-      -webkit-text-stroke: 2px white; 
-      text-stroke: 2px white; // throws an error in VS Code but it's fine
+      -webkit-text-stroke: 2px whitesmoke; 
+      text-stroke: 2px whitesmoke; // throws an error in VS Code but it's fine
       // font-size: 200px;
       overflow: hidden;
       width: 286rem; // guess and check
@@ -786,8 +786,8 @@ $snowledge-green_lighten: #39C4C5;
       @media (min-width: 60rem) {
         font-size: 200px;
         height: 230px; // guess and check
-        -webkit-text-stroke: 4px white; 
-        text-stroke: 4px white;
+        -webkit-text-stroke: 4px whitesmoke; 
+        text-stroke: 4px whitesmoke;
         animation: 20s infinite slideLeft;
       }
       // animation: 20s infinite slideLeft;
@@ -812,7 +812,7 @@ $snowledge-green_lighten: #39C4C5;
         }
       to {
         // margin-left: -143rem;
-        transform: translate(143rem);
+        transform: translate(-143rem);
       } // guess and check
     }
 
@@ -1878,4 +1878,23 @@ hr {
     flex: 1 1 16rem;
     margin: 2rem;
   }
+}
+
+#slideshow {
+  display: grid;
+  max-width: 40rem;
+
+  > .screener {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  > .slider {
+    visibility: hidden;
+  }
+}
+
+.here {
+  visibility: visible !important;
+  // over the slider maybe this can be more specific
 }
