@@ -46,9 +46,12 @@ function Activity(props) {
 
 const PartnerResortTemplate = ({ data }) => (
   <Layout>
-
+before
+    <Img fluid="{data.strapiPartnerResorts.official.childImageSharp.fluid}" />
+after
     <h1 className="regular-measure">{data.strapiPartnerResorts.name}</h1>
 
+<hr />
     <h2 className="regular-measure"><Link to="download">Download Snowledge | Official App for {data.strapiPartnerResorts.name}</Link></h2>
 
     <p className="regular-measure">We’re excited to announce that Snowledge is the official app for {data.strapiPartnerResorts.name}! Snowledge is the only app you need on the mountain, and it’s free. Use GPS to get real-time resort info, track your day on the slopes, and easily find and locate your friends and family. Be in the snow, #SnowledgeIsPowder!</p>
@@ -58,8 +61,8 @@ const PartnerResortTemplate = ({ data }) => (
     <div className="partner-resorts_screenshots">
       {/* you have to skip the .childImageSharp.fluid as it cant do the null from above */}
       <Feed has={data.strapiPartnerResorts.partner_resort_feed} photo={data.strapiPartnerResorts.partner_resort_feed.childImageSharp.fluid} />
-      <Profile has={data.strapiPartnerResorts.partner_resort_profile} photo={data.strapiPartnerResorts.partner_resort_profile.childImageSharp.fluid} />
-      <Activity has={data.strapiPartnerResorts.partner_resort_activity} photo={data.strapiPartnerResorts.partner_resort_activity.childImageSharp.fluid} />
+      {/* <Profile has={data.strapiPartnerResorts.partner_resort_profile} photo={data.strapiPartnerResorts.partner_resort_profile.childImageSharp.fluid} />
+      <Activity has={data.strapiPartnerResorts.partner_resort_activity} photo={data.strapiPartnerResorts.partner_resort_activity.childImageSharp.fluid} /> */}
       <DefaultFriendImage />
     </div>
 
@@ -82,12 +85,21 @@ export const query = graphql`
       name
       writeup
 
+      official {
+        childImageSharp {
+          fluid(maxWidth: 960) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+
       partner_resort_feed {
         childImageSharp {
           fluid(maxWidth: 960) {
             ...GatsbyImageSharpFluid
           }
         }
+        id
       }
       partner_resort_profile {
         childImageSharp {
