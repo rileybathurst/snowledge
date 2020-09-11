@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/layout'
 
 const PartnerResortsPage = ({ data }) => (
@@ -12,14 +13,20 @@ const PartnerResortsPage = ({ data }) => (
         {data.west.edges.map(document => (
             <article className="team-card">{/* again check this HTML */}
 
-                <h2>
-                    <Link to={`/partner-resorts/${document.node.slug}`}>
-                        {document.node.name}
-                    </Link>
-                </h2>
+              <Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
+                <Img fluid={document.node.official.childImageSharp.fluid} />
+              </Link>
 
-                {/* <p>{document.node.Content}</p> */}
-                <div className="profile-background">{/* stay gold */}</div>
+              
+
+              <h2>
+                  <Link to={`/partner-resorts/${document.node.slug}`}>
+                      {document.node.name}
+                  </Link>
+              </h2>
+
+              {/* <p>{document.node.Content}</p> */}
+              <div className="profile-background">{/* stay gold */}</div>
             </article>
         ))}
     </section>
@@ -31,6 +38,10 @@ const PartnerResortsPage = ({ data }) => (
 
       {data.rockies.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
+
+<Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
+                <Img fluid={document.node.official.childImageSharp.fluid} />
+              </Link>
 
           <h2>
             <Link to={`/partner-resorts/${document.node.slug}`}>
@@ -52,6 +63,10 @@ const PartnerResortsPage = ({ data }) => (
       {data.midwest.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
 
+<Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
+                <Img fluid={document.node.official.childImageSharp.fluid} />
+              </Link>
+
           <h2>
             <Link to={`/partner-resorts/${document.node.slug}`}>
               {document.node.name}
@@ -71,6 +86,10 @@ const PartnerResortsPage = ({ data }) => (
       
       {data.northeast.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
+
+<Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
+                <Img fluid={document.node.official.childImageSharp.fluid} />
+              </Link>
 
           <h2>
             <Link to={`/partner-resorts/${document.node.slug}`}>
@@ -92,6 +111,10 @@ const PartnerResortsPage = ({ data }) => (
       {data.canada.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
 
+<Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
+                <Img fluid={document.node.official.childImageSharp.fluid} />
+              </Link>
+              
           <h2>
             <Link to={`/partner-resorts/${document.node.slug}`}>
               {document.node.name}
@@ -116,6 +139,15 @@ export const pageQuery = graphql`
           id
           name
           slug
+
+          official {
+            childImageSharp {
+              fluid(maxWidth: 960) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+
         }
       }
     }
@@ -126,6 +158,14 @@ export const pageQuery = graphql`
           id
           name
           slug
+
+          official {
+            childImageSharp {
+              fluid(maxWidth: 960) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
@@ -136,6 +176,14 @@ export const pageQuery = graphql`
           id
           name
           slug
+
+          official {
+            childImageSharp {
+              fluid(maxWidth: 960) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
@@ -146,6 +194,14 @@ export const pageQuery = graphql`
           id
           name
           slug
+
+          official {
+            childImageSharp {
+              fluid(maxWidth: 960) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
@@ -156,6 +212,14 @@ export const pageQuery = graphql`
           id
           name
           slug
+
+          official {
+            childImageSharp {
+              fluid(maxWidth: 960) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

@@ -46,9 +46,8 @@ function Activity(props) {
 
 const PartnerResortTemplate = ({ data }) => (
   <Layout>
-before
-    <Img fluid="{data.strapiPartnerResorts.official.childImageSharp.fluid}" />
-after
+    <Img fluid={data.strapiPartnerResorts.official.childImageSharp.fluid} />
+
     <h1 className="regular-measure">{data.strapiPartnerResorts.name}</h1>
 
 <hr />
@@ -61,8 +60,8 @@ after
     <div className="partner-resorts_screenshots">
       {/* you have to skip the .childImageSharp.fluid as it cant do the null from above */}
       <Feed has={data.strapiPartnerResorts.partner_resort_feed} photo={data.strapiPartnerResorts.partner_resort_feed.childImageSharp.fluid} />
-      {/* <Profile has={data.strapiPartnerResorts.partner_resort_profile} photo={data.strapiPartnerResorts.partner_resort_profile.childImageSharp.fluid} />
-      <Activity has={data.strapiPartnerResorts.partner_resort_activity} photo={data.strapiPartnerResorts.partner_resort_activity.childImageSharp.fluid} /> */}
+      <Profile has={data.strapiPartnerResorts.partner_resort_profile} photo={data.strapiPartnerResorts.partner_resort_profile.childImageSharp.fluid} />
+      <Activity has={data.strapiPartnerResorts.partner_resort_activity} photo={data.strapiPartnerResorts.partner_resort_activity.childImageSharp.fluid} />
       <DefaultFriendImage />
     </div>
 
