@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/layout'
 
 const BlogsPage = ({ data }) => (
@@ -14,6 +15,11 @@ const BlogsPage = ({ data }) => (
                     {document.node.title}
                 </Link>
             </h2>
+
+            
+            <Link to={`/blogs/${document.node.slug}`} className="teamcoverimage">
+                  <Img fluid={document.node.blog_cover.childImageSharp.fluid} />
+                </Link>
 
             <p>{document.node.Content}</p>
         </article>
@@ -33,6 +39,14 @@ export const pageQuery = graphql`
           title
           content
           slug
+
+          blog_cover {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

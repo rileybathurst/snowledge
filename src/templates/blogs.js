@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import Layout from '../components/layout'
 
 import ReactMarkdown from "react-markdown"
@@ -9,6 +10,12 @@ const BlogTemplate = ({ data }) => (
 
     <div className="regular-page">
       <h1 className="regular-measure">{data.strapiBlogs.title}</h1>
+
+      {data.strapiBlogs.teams.map(document => (
+        <h4 className="regular-measure">
+        Featured Ambassadors {document.name}
+        </h4>
+      ))}
 
       <div className="regular-measure">
         <ReactMarkdown
@@ -26,6 +33,10 @@ const BlogTemplate = ({ data }) => (
                     {document.node.title}
                 </Link>
             </h2>
+
+            <Link to={`/blogs/${document.node.slug}`} className="teamcoverimage">
+                  <Img fluid={document.node.blog_cover.childImageSharp.fluid} />
+                </Link>
 
             <p>{document.node.Content}</p>
         </li>
@@ -47,6 +58,9 @@ export const query = graphql`
     strapiBlogs(id: {eq: $id}) {
       title
       content
+      teams {
+        name
+      }
     }
 
     allStrapiBlogs {
@@ -56,6 +70,14 @@ export const query = graphql`
           title
           content
           slug
+
+          blog_cover {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
