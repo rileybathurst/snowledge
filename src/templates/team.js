@@ -43,6 +43,14 @@ const TeamTemplate = ({ data }) => (
             <h2>
               <Link to={`/blogs/${blog.slug}`}>{blog.title}</Link>
             </h2>
+
+
+
+            <Link to={`/blogs/${blog.slug}`} className="teamcoverimage">
+
+                  <Img fluid={blog.blog_cover.childImageSharp.fluid} />
+                </Link>
+                
             <p>{blog.content}</p>
           </li>
         ))}
@@ -55,9 +63,9 @@ const TeamTemplate = ({ data }) => (
         {data.allStrapiTeam.edges.map(document => (
             <article className="mini-card">
 
-                <Link to={`/team/${document.node.slug}`} className="mini-card_profile">
+                {/* <Link to={`/team/${document.node.slug}`} className="mini-card_profile"> */}
                   <Img fluid={document.node.profile.childImageSharp.fluid}  className="profile"/>
-                </Link>
+                {/* </Link> */}
 
                 <h2>
                     <Link to={`/team/${document.node.slug}`}>
@@ -104,6 +112,13 @@ export const query = graphql`
       blogs {
           title
           slug
+          blog_cover {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
       }
     }
 

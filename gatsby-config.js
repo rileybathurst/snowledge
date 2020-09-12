@@ -18,8 +18,6 @@ module.exports = {
       options: {
         apiURL: 'http://159.65.99.246',
         contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
-          'anythings',
-          // 'user',
           'partner-resorts',
           'blogs',
           'team'

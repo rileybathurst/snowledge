@@ -128,21 +128,7 @@ const ScreenshotSlideshow = () => (
     </div>
 )
 
-
-
-
-
-
-
-
-
 export default ScreenshotSlideshow
-
-
-
-
-
-
 
 /* 
 var slideIndex = 0;

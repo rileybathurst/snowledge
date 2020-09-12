@@ -9,14 +9,14 @@ import HeroImage from "../components/hero-image"
 import PhonePlaceholder from "../components/phonePlaceholder"
 import SEO from "../components/seo"
 
-import SmallMenu from "../components/smallMenu"
-import Logo from "../components/logo"
+// import SmallMenu from "../components/smallMenu"
+// import Logo from "../components/logo"
 // import LogoGreen from "../components/logoGreen"
 import Download from "../components/download"
 // import TextSlider from "../components/textSlider"
 // testing things Im not using other than reference
 // import Square from "../components/square" // testing click
-import Top from "../components/top"
+// import Top from "../components/top"
 import ScreenshotSlideshow from "../components/screenshot-slideshow"
 
 import Header from "../components/header"

@@ -5,29 +5,101 @@ import Layout from '../components/layout'
 
 import ReactMarkdown from "react-markdown"
 
+function YT(props) {
+  if (props.has) {
+    return (
+      <div className="blog_tube">
+      <iframe title="{data.strapiBlogs.title}" width="560" height="315" src={`https://www.youtube.com/embed/${props.has}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div className="blog_tube__backgound">{/* stay gold */}</div>
+    </div>
+    )
+  }
+  return null
+}
+
+function Cz(props) {
+  if (props.moving) {
+    return (
+      <>hey</>
+    )
+  }
+  return null 
+}
+
 const BlogTemplate = ({ data }) => (
   <Layout>
 
+<Img fluid={data.strapiBlogs.blog_cover.childImageSharp.fluid} className="blog-measure" />
+
     <div className="regular-page">
-      <h1 className="regular-measure">{data.strapiBlogs.title}</h1>
+      <h1 className="blog-measure">{data.strapiBlogs.title}</h1>
 
-      {data.strapiBlogs.teams.map(document => (
-        <h4 className="regular-measure">
-        Featured Ambassadors {document.name}
-        </h4>
-      ))}
 
-      <div className="regular-measure">
+        <Cz moving={data.strapiBlogs.Cover_is_video} />
+
+
+{/*       <h4 className="blog-measure">
+        Featured Ambassadors&nbsp;
+        {data.strapiBlogs.teams.map(document => (
+          
+          <><Link to={`/team/${document.slug}`}>{document.name}</Link></>
+          
+        ))}
+      </h4> */}
+
+      <h4 className="blog-measure">
+        {data.strapiBlogs.created_at}
+      </h4>
+
+
+      <YT has={data.strapiBlogs.blog_video} />
+
+      {/* needs an if on the video */}
+{/*       <div className="blog_tube">
+        <iframe title="{data.strapiBlogs.title}" width="560" height="315" src={`https://www.youtube.com/embed/${data.strapiBlogs.blog_video}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div className="blog_tube__backgound">{/* stay gold </div>
+      </div> */}
+
+      <div className="blog-measure">
         <ReactMarkdown
           source={data.strapiBlogs.content}
         />
       </div>
 
+      <h4 className="blog-measure">
+      Featured Ambassadors&nbsp;
+</h4>
+
+      <section className="mini-cards">
+      {data.strapiBlogs.teams.map(document => (
+            <article className="mini-card">
+
+                <Link to={`/team/${document.slug}`} className="mini-card_profile">
+                
+                  <Img fluid={document.profile.childImageSharp.fluid}  className="profile"/>
+                </Link>
+
+                <h2>
+                  <Link to={`/team/${document.slug}`}>
+                      {document.name}
+                    </Link>
+                </h2>
+
+                <section>
+                  <p>{document.Sport}</p>
+                  <p>{document.excerpt}</p>
+                </section>
+
+                <div className="profile-background"></div>
+            </article>
+        ))}
+    </section>
+
       <h3 className="mid-title">More articles</h3>
 
-      <ul className="list-list">
+      <section className="team--grid">
         {data.allStrapiBlogs.edges.map(document => (
-          <li className="li-card">
+          <article className="team-card">
             <h2>
                 <Link to={`/blogs/${document.node.slug}`}>
                     {document.node.title}
@@ -39,15 +111,10 @@ const BlogTemplate = ({ data }) => (
                 </Link>
 
             <p>{document.node.Content}</p>
-        </li>
+        </article>
       ))}
-    </ul>
-
-
+    </section>
     </div>
-
-
-
   </Layout>
 )
 
@@ -58,12 +125,35 @@ export const query = graphql`
     strapiBlogs(id: {eq: $id}) {
       title
       content
+      created_at(formatString: "MMMM Do, YYYY")
+      cover_is_video
+
       teams {
         name
+        slug
+        excerpt
+        Sport
+        profile {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
+
+      blog_cover {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+
+      blog_video
     }
 
-    allStrapiBlogs {
+    allStrapiBlogs(limit: 9) {
       edges {
         node {
           id

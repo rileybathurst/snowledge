@@ -1,74 +1,21 @@
 import React from "react"
 // import { Link } from "gatsby"
-import { graphql } from 'gatsby'
+// import { graphql } from 'gatsby'
 
 // import Layout from "../components/layout"
 import Footer from "../components/footer"
 // import Image from "../components/image"
-import HeroImage from "../components/hero-image"
+// import HeroImage from "../components/hero-image"
 import PhonePlaceholder from "../components/phonePlaceholder"
 import SEO from "../components/seo"
 
-import Logo from "../components/logo"
+// import Logo from "../components/logo"
 // import LogoGreen from "../components/logoGreen"
-import Download from "../components/download"
+// import Download from "../components/download"
 
-const ContactPage = ({ data }) => (
+const ContactPage = () => (
   <>
     <SEO title="Home" />
-    <header id="header-hero">
-      <h1 className="screen-reader">Snowledge</h1> {/* always start with an h tag and make this screenreader friendly */}
-      <Logo />
-      <HeroImage />
-      <div className="header-hero_color-blocking">
-        <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-          <polygon fill="#239C9B" points="0,25 100,0 100,75 0,100"/>
-        </svg>
-      </div>
-
-      <button id="menu">Menu</button>
-      
-      <nav>
-        {/* <ul id="off-canvas">
-          <li><Link to="/#features">Features</Link></li>
-          <li><Link to="/team">Team</Link></li>
-          <li><Link to="/partner-resorts">Partner Resorts</Link>
-            <ul>
-              <li><Link to="/partner-resorts/west">West</Link></li>
-              <li><Link to="/partner-resorts/rockies">Rockies</Link></li>
-              <li><Link to="/partner-resorts/midwest">Midwest</Link></li>
-              <li><Link to="/partner-resorts/northeast">Northeast</Link></li>
-              <li><Link to="/partner-resorts/canada">Canada</Link></li>
-            </ul>
-          </li>
-          <li><Link to="/blog">Blog</Link></li>
-          <li>
-            <ul>
-              <li><a href to="https://www.instagram.com/snowledge.co/">instagram</a></li>
-              <li><a href to="https://www.facebook.com/snowledge.co">facebook</a></li>
-              <li><a href to="https://www.youtube.com/channel/UCtao0k3KRU8kur7pyPJPK0w">YouTube</a></li>
-              <li><a href to="https://twitter.com/snowledge_co">twitter</a></li>
-            </ul>
-          </li>
-          <li><Link to="/download">Download</Link></li>
-        </ul> */}
-      </nav>
-
-      <div id="header-byline">
-        <h2><em>Snowledge&nbsp;Is&nbsp;Powder</em></h2>
-        <h3><em>Discover. Ride. Share.</em></h3>
-      </div>
-      
-      <Download />
-
-      <div className="bottom-block">
-        <svg title="header-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 25">
-          <polygon fill="#fff" points="0,25 100,0 100,25"/>
-        </svg>
-      </div>
-    </header>
-
-
     <main id="home-main">
       <h2 id="our-story-title"><em>Our<br />Story</em></h2>
 
@@ -116,25 +63,7 @@ const ContactPage = ({ data }) => (
     </main>
     <Footer />
 
-
-    {data.allStrapiAnythings.edges.map(document => (
-          <h2>{document.node.title}</h2>
-      ))}
-
-
   </>
 )
 
 export default ContactPage
-
-export const pageQuery = graphql`  
-  query ContactQuery {
-    allStrapiAnythings {
-      edges {
-        node {
-          title
-        }
-      }
-    }
-  }
-`
