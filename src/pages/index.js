@@ -114,13 +114,14 @@ const IndexPage = ({ data }) => (
 
 export default IndexPage
 
+// currently im not using these I should pull them out but theres other stuff coming so dont delete it
 export const pageQuery = graphql`  
   query IndexQuery {
     allStrapiPartnerResorts {
       edges {
         node {
-          name
-          slug
+          pr_name
+          pr_slug
         }
       }
     }

@@ -11,25 +11,21 @@ const PartnerResortsPage = ({ data }) => (
         <hr />
 
         {data.west.edges.map(document => (
-            <article className="team-card">{/* again check this HTML */}
+          <article className="team-card">{/* again check this HTML */}
+            <Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
+              <Img fluid={document.node.pr_official.childImageSharp.fluid} />
+            </Link>
 
-              <Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
-                <Img fluid={document.node.official.childImageSharp.fluid} />
+            <h2>
+              <Link to={`/partner-resorts/${document.node.pr_slug}`}>
+                {document.node.pr_name}
               </Link>
+            </h2>
 
-              
-
-              <h2>
-                  <Link to={`/partner-resorts/${document.node.slug}`}>
-                      {document.node.name}
-                  </Link>
-              </h2>
-
-              {/* <p>{document.node.Content}</p> */}
-              <div className="profile-background">{/* stay gold */}</div>
-            </article>
+            <div className="profile-background">{/* stay gold */}</div>
+          </article>
         ))}
-    </section>
+      </section>
 
     <section className="team--grid">
       <h3>Rockies</h3>
@@ -39,13 +35,13 @@ const PartnerResortsPage = ({ data }) => (
       {data.rockies.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
 
-<Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
-                <Img fluid={document.node.official.childImageSharp.fluid} />
+<Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
+                <Img fluid={document.node.pr_official.childImageSharp.fluid} />
               </Link>
 
           <h2>
-            <Link to={`/partner-resorts/${document.node.slug}`}>
-              {document.node.name}
+            <Link to={`/partner-resorts/${document.node.pr_slug}`}>
+              {document.node.pr_name}
             </Link>
            </h2>
 
@@ -63,13 +59,13 @@ const PartnerResortsPage = ({ data }) => (
       {data.midwest.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
 
-<Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
-                <Img fluid={document.node.official.childImageSharp.fluid} />
+<Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
+                <Img fluid={document.node.pr_official.childImageSharp.fluid} />
               </Link>
 
           <h2>
-            <Link to={`/partner-resorts/${document.node.slug}`}>
-              {document.node.name}
+            <Link to={`/partner-resorts/${document.node.pr_slug}`}>
+              {document.node.pr_name}
             </Link>
            </h2>
 
@@ -87,13 +83,13 @@ const PartnerResortsPage = ({ data }) => (
       {data.northeast.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
 
-<Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
-                <Img fluid={document.node.official.childImageSharp.fluid} />
+<Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
+                <Img fluid={document.node.pr_official.childImageSharp.fluid} />
               </Link>
 
           <h2>
-            <Link to={`/partner-resorts/${document.node.slug}`}>
-              {document.node.name}
+            <Link to={`/partner-resorts/${document.node.pr_slug}`}>
+              {document.node.pr_name}
             </Link>
            </h2>
 
@@ -111,13 +107,13 @@ const PartnerResortsPage = ({ data }) => (
       {data.canada.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
 
-<Link to={`/partner-resorts/${document.node.slug}`} className="teamcoverimage">
-                <Img fluid={document.node.official.childImageSharp.fluid} />
+<Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
+                <Img fluid={document.node.pr_official.childImageSharp.fluid} />
               </Link>
               
           <h2>
-            <Link to={`/partner-resorts/${document.node.slug}`}>
-              {document.node.name}
+            <Link to={`/partner-resorts/${document.node.pr_slug}`}>
+              {document.node.pr_name}
             </Link>
            </h2>
 
@@ -133,14 +129,14 @@ export default PartnerResortsPage
 
 export const pageQuery = graphql`  
   query PartnerResortQuery {
-    west: allStrapiPartnerResorts (filter: {region: {eq: "west"}}) {
+    west: allStrapiPartnerResorts (filter: {pr_region: {eq: "west"}}) {
       edges {
         node {
           id
-          name
-          slug
+          pr_name
+          pr_slug
 
-          official {
+          pr_cover {
             childImageSharp {
               fluid(maxWidth: 960) {
                 ...GatsbyImageSharpFluid
@@ -152,14 +148,14 @@ export const pageQuery = graphql`
       }
     }
 
-    rockies: allStrapiPartnerResorts (filter: {region: {eq: "rockies"}}) {
+    rockies: allStrapiPartnerResorts (filter: {pr_region: {eq: "rockies"}}) {
       edges {
         node {
           id
-          name
-          slug
+          pr_name
+          pr_slug
 
-          official {
+          pr_cover {
             childImageSharp {
               fluid(maxWidth: 960) {
                 ...GatsbyImageSharpFluid
@@ -170,14 +166,14 @@ export const pageQuery = graphql`
       }
     }
 
-    midwest: allStrapiPartnerResorts (filter: {region: {eq: "midwest"}}) {
+    midwest: allStrapiPartnerResorts (filter: {pr_region: {eq: "midwest"}}) {
       edges {
         node {
           id
-          name
-          slug
+          pr_name
+          pr_slug
 
-          official {
+          pr_cover {
             childImageSharp {
               fluid(maxWidth: 960) {
                 ...GatsbyImageSharpFluid
@@ -188,14 +184,14 @@ export const pageQuery = graphql`
       }
     }
 
-    northeast: allStrapiPartnerResorts (filter: {region: {eq: "northeast"}}) {
+    northeast: allStrapiPartnerResorts (filter: {pr_region: {eq: "northeast"}}) {
       edges {
         node {
           id
-          name
-          slug
+          pr_name
+          pr_slug
 
-          official {
+          pr_cover {
             childImageSharp {
               fluid(maxWidth: 960) {
                 ...GatsbyImageSharpFluid
@@ -206,14 +202,14 @@ export const pageQuery = graphql`
       }
     }
 
-    canada: allStrapiPartnerResorts (filter: {region: {eq: "canada"}}) {
+    canada: allStrapiPartnerResorts (filter: {pr_region: {eq: "canada"}}) {
       edges {
         node {
           id
-          name
-          slug
+          pr_name
+          pr_slug
 
-          official {
+          pr_cover {
             childImageSharp {
               fluid(maxWidth: 960) {
                 ...GatsbyImageSharpFluid

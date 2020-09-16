@@ -7,35 +7,32 @@ import Img from 'gatsby-image'
 
 const TeamPage = ({ data }) => (
   <Layout>
-      <section className="team--grid"> {/* is this a section? ddouble check that */}
-        {data.allStrapiTeam.edges.map(document => (
-            <article className="team-card">{/* again check this HTML */}
+    <section className="team--grid"> {/* is this a section? ddouble check that */}
+      {data.allStrapiTeam.edges.map(document => (
+        <article className="team-card">{/* again check this HTML */}
 
-                <Link to={`/team/${document.node.slug}`} className="teamcoverimage">
-                  <Img fluid={document.node.teamcoverimage.childImageSharp.fluid} />
-                </Link>
+          <Link to={`/team/${document.node.team_slug}`} className="teamcoverimage">
+            <Img fluid={document.node.team_cover.childImageSharp.fluid} />
+          </Link>
 
-                <Link to={`/team/${document.node.slug}`} className="teamcoverprofile">
-                  <Img fluid={document.node.profile.childImageSharp.fluid}  className="profile"/>
-                </Link>
+          <Link to={`/team/${document.node.team_slug}`} className="teamcoverprofile">
+            <Img fluid={document.node.team_headshot.childImageSharp.fluid}  className="profile"/>
+          </Link>
 
-                <h2>
-                    <Link to={`/team/${document.node.slug}`}>
-                        {document.node.name}
-                    </Link>
-                </h2>
+          <h2>
+              <Link to={`/team/${document.node.team_slug}`}>
+                {document.node.team_name}
+              </Link>
+          </h2>
 
-                <section>
-                  <p>{document.node.Sport}</p>
-                  <p>{document.node.excerpt}</p>
-                  {/* <p>Mountain</p> no one is on a partner resort as a home so mayeb we skip this for now? */}
-                </section>
+          <section>
+            <p>{document.node.team_sport}</p>
+            <p>{document.node.team_excerpt}</p>
+          </section>
 
-                <div className="profile-background">{/* stay gold */}</div>
-
-                {/* <p>{document.node.Content}</p> */}
-            </article>
-        ))}
+          <div className="profile-background">{/* stay gold */}</div>
+        </article>
+      ))}
     </section>
   </Layout>
 )
@@ -48,13 +45,14 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          name
-          bio
-          instagram
-          slug
+          team_name
+          team_bio
+          team_instagram
+          team_slug
+          team_sport
+          team_excerpt
 
-          teamcoverimage {
-            atime
+          team_cover {
             childImageSharp {
               fluid(maxWidth: 300) {
                 ...GatsbyImageSharpFluid
@@ -62,27 +60,16 @@ export const pageQuery = graphql`
             }
           }
 
-          profile {
+          team_headshot {
             childImageSharp {
               fluid(maxWidth: 300) {
                 ...GatsbyImageSharpFluid
               }
             }
           }
-
-          Sport
-          excerpt
 
         }
       }
     }
   }
 `
-
-/* teamcoverimage {
-  childImageSharp {
-    fluid(maxWidth: 300) {
-      ...GatsbyImageSharpFluid
-    }
-  }
-} */

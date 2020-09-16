@@ -6,6 +6,7 @@ import FacebookLogo from "./facebookLogo"
 import YouTubeLogo from "./youtubelogo"
 import TwitterLogo from "./twitterLogo"
 
+// these queries are not doing anything
 export default function Top() {
   return (
     <StaticQuery
@@ -14,8 +15,8 @@ export default function Top() {
           allStrapiPartnerResorts {
             edges {
               node {
-                name
-                slug
+                pr_name
+                pr_slug
               }
             }
           }
