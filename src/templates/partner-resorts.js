@@ -46,7 +46,7 @@ function Activity(props) {
 
 const PartnerResortTemplate = ({ data }) => (
   <Layout>
-    <Img fluid={data.strapiPartnerResorts.pr_official.childImageSharp.fluid} />
+    <Img fluid={data.strapiPartnerResorts.pr_cover.childImageSharp.fluid} />
 
     <h1 className="regular-measure">{data.strapiPartnerResorts.pr_name}</h1>
 

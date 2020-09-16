@@ -13,7 +13,7 @@ const PartnerResortsPage = ({ data }) => (
         {data.west.edges.map(document => (
           <article className="team-card">{/* again check this HTML */}
             <Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
-              <Img fluid={document.node.pr_official.childImageSharp.fluid} />
+              <Img fluid={document.node.pr_cover.childImageSharp.fluid} />
             </Link>
 
             <h2>
@@ -36,7 +36,7 @@ const PartnerResortsPage = ({ data }) => (
         <article className="team-card">{/* again check this HTML */}
 
 <Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
-                <Img fluid={document.node.pr_official.childImageSharp.fluid} />
+                <Img fluid={document.node.pr_cover.childImageSharp.fluid} />
               </Link>
 
           <h2>
@@ -59,9 +59,9 @@ const PartnerResortsPage = ({ data }) => (
       {data.midwest.edges.map(document => (
         <article className="team-card">{/* again check this HTML */}
 
-<Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
-                <Img fluid={document.node.pr_official.childImageSharp.fluid} />
-              </Link>
+            <Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
+              <Img fluid={document.node.pr_cover.childImageSharp.fluid} />
+            </Link>
 
           <h2>
             <Link to={`/partner-resorts/${document.node.pr_slug}`}>
@@ -84,7 +84,7 @@ const PartnerResortsPage = ({ data }) => (
         <article className="team-card">{/* again check this HTML */}
 
 <Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
-                <Img fluid={document.node.pr_official.childImageSharp.fluid} />
+                <Img fluid={document.node.pr_cover.childImageSharp.fluid} />
               </Link>
 
           <h2>
@@ -108,7 +108,7 @@ const PartnerResortsPage = ({ data }) => (
         <article className="team-card">{/* again check this HTML */}
 
 <Link to={`/partner-resorts/${document.node.pr_slug}`} className="teamcoverimage">
-                <Img fluid={document.node.pr_official.childImageSharp.fluid} />
+                <Img fluid={document.node.pr_cover.childImageSharp.fluid} />
               </Link>
               
           <h2>

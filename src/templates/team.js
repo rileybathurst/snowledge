@@ -36,24 +36,24 @@ const TeamTemplate = ({ data }) => (
     <h3 className="mid-title">Blogs containing {data.strapiTeam.team_name}</h3>
 
     <ul className="team--grid blog-cards">
-        {data.strapiTeam.blogs.map(blog => (
-          <li className="team-card">
-            <h2>
-              <Link to={`/blogs/${blog.blog_slug}`}>{blog.blog_title}</Link>
-            </h2>
+      {data.strapiTeam.blogs.map(blog => (
+        <li className="team-card">
+          <h2>
+            <Link to={`/blogs/${blog.blog_slug}`}>{blog.blog_title}</Link>
+          </h2>
 
-            <Link to={`/blogs/${blog.blog_slug}`} className="teamcoverimage">
-              <Img fluid={blog.blog_cover.childImageSharp.fluid} />
-            </Link>
+          <Link to={`/blogs/${blog.blog_slug}`} className="teamcoverimage">
+            <Img fluid={blog.blog_cover.childImageSharp.fluid} />
+          </Link>
 
-            <p>{blog.blog_content}</p>
-          </li>
-        ))}
+          <p>{blog.blog_content}</p>
+        </li>
+      ))}
     </ul>
 
     <h3 className="mid-title">Check out some other Snowledge Team</h3>
 
-  {/* this needs to filter out the person we are currenttly showing */}
+  {/* this needs to filter out the person we are currently showing */}
     <section className="mini-cards">
         {data.allStrapiTeam.edges.map(document => (
             <article className="mini-card">

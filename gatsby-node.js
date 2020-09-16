@@ -32,8 +32,8 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             id
-            name
-            slug
+            pr_name
+            pr_slug
           }
         }
       }
@@ -42,7 +42,7 @@ exports.createPages = ({ actions, graphql }) => {
     // Create pages for each partner resorts.
     result.data.allStrapiPartnerResorts.edges.forEach(({ node }) => {
       createPage({
-        path: `/partner-resorts/${node.slug}`,
+        path: `/partner-resorts/${node.pr_slug}`,
         component: path.resolve(`src/templates/partner-resorts.js`),
         context: {
           id: node.id,
@@ -57,9 +57,9 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             id
-            title
-            content
-            slug
+            blog_title
+            blog_content
+            blog_slug
           }
         }
       }
@@ -68,7 +68,7 @@ exports.createPages = ({ actions, graphql }) => {
     // Create pages for each blogs.
     result.data.allStrapiBlogs.edges.forEach(({ node }) => {
       createPage({
-        path: `/blogs/${node.slug}`,
+        path: `/blogs/${node.blog_slug}`,
         component: path.resolve(`src/templates/blogs.js`),
         context: {
           id: node.id,
@@ -83,8 +83,8 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             id
-            name
-            slug
+            team_name
+            team_slug
           }
         }
       }
@@ -93,7 +93,7 @@ exports.createPages = ({ actions, graphql }) => {
     // Create pages for each team member.
     result.data.allStrapiTeam.edges.forEach(({ node }) => {
       createPage({
-        path: `/team/${node.slug}`,
+        path: `/team/${node.team_slug}`,
         component: path.resolve(`src/templates/team.js`),
         context: {
           id: node.id,
