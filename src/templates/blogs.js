@@ -64,8 +64,9 @@ const BlogTemplate = ({ data }) => (
 
       {data.strapiBlogs.teams.map(team => (
 
-
+        <Link to={`/team/${team.team_slug}`}>
           <p>{team.team_name}</p>
+        </Link>
       ))}
 
 
@@ -121,6 +122,7 @@ export const query = graphql`
 
       teams {
         team_name
+        team_slug
       }
     }
 

@@ -20,7 +20,7 @@ const BlogsPage = ({ data }) => (
             <Img fluid={document.node.blog_cover.childImageSharp.fluid} />
           </Link>
 
-          <p>{document.node.blog_content}</p>
+          {/* <p>{document.node.blog_content}</p> */}
         </article>
       ))}
     </section>
