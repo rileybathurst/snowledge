@@ -5,6 +5,18 @@ import Img from 'gatsby-image'
 
 import InstagramLogo from "../components/instagramLogo"
 
+function Hero(props) {
+  if (props.latest !== null) {
+    return (
+      <div className="blog_tube">
+        <iframe title="{data.strapiBlogs.title}" width="560" height="315" src={`https://www.youtube.com/embed/${props.latest}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div className="blog_tube__backgound">{/* stay gold */}</div>
+      {/* blog_tube */}</div>
+    )
+  }
+  return null
+}
+
 const TeamTemplate = ({ data }) => (
   <Layout>
 
@@ -32,6 +44,11 @@ const TeamTemplate = ({ data }) => (
     <p className="bio">{data.strapiTeam.team_bio}</p>
 
     </main>
+
+    {/* This needs to become only the latest as currently its any clips */}
+    {data.strapiTeam.blogs.map(blog => (
+      <Hero latest={blog.blog_cover_yt} />
+    ))}
 
     <h3 className="mid-title">Blogs containing {data.strapiTeam.team_name}</h3>
 
@@ -116,6 +133,8 @@ export const query = graphql`
               }
             }
           }
+
+          blog_cover_yt
       }
     }
 

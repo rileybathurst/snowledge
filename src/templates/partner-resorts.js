@@ -72,6 +72,26 @@ const PartnerResortTemplate = ({ data }) => (
         <li>Get lift status updates, conditions, and parking information, as well as offers and contests from your favorite resorts.</li>
       </ul>
 
+      <hr />
+
+      <ul className="team--grid blog-cards">
+        {data.strapiPartnerResorts.blogs.map(blog => (
+
+          <li className="team-card">
+            <h2>
+              <Link to={`/blogs/${blog.blog_slug}`}>
+                {blog.blog_title}
+              </Link>
+          </h2>
+
+          <Link to={`/blogs/${blog.blog_slug}`} className="teamcoverimage">
+            <Img fluid={blog.blog_cover.childImageSharp.fluid} />
+          </Link>
+        </li>
+
+        ))}
+      </ul>
+
   </Layout>
 )
 
@@ -109,6 +129,18 @@ export const query = graphql`
         childImageSharp {
           fluid(maxWidth: 960) {
             ...GatsbyImageSharpFluid
+          }
+        }
+      }
+
+      blogs {
+        blog_title
+        blog_slug
+        blog_cover {
+          childImageSharp {
+            fluid(maxWidth: 960) {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }

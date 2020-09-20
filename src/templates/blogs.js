@@ -2,29 +2,22 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
+import ScreenshotSlideshow from '../components/screenshot-slideshow'
+import Download from '../components/download'
 
 import ReactMarkdown from "react-markdown"
 
-function YT(props) {
-  if (props.has) {
+function Cover(props) {
+  if (props.is === "Photo") {
+    return (
+      <Img fluid={props.photo} className="blog-measure" />
+    )
+  } else if (props.is === "YouTube") {
     return (
       <div className="blog_tube">
-        <iframe title="{data.strapiBlogs.blog_title}" width="560" height="315" src={`https://www.youtube.com/embed/${props.has}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe title="{data.strapiBlogs.title}" width="560" height="315" src={`https://www.youtube.com/embed/${props.youtube}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div className="blog_tube__backgound">{/* stay gold */}</div>
-    </div>
-    )
-  }
-  return null
-}
-
-function Cz(props) {
-  if (props.moving === "photo") {
-    return (
-      <>photo</>
-    )
-  } else if (props.moving === "youtube") {
-    return (
-      <>youtube</>
+      {/* blog_tube */}</div>
     )
   
   }
@@ -33,42 +26,87 @@ function Cz(props) {
 
 const BlogTemplate = ({ data }) => (
   <Layout>
-    <Img fluid={data.strapiBlogs.blog_cover.childImageSharp.fluid} className="blog-measure" />
+    <Cover is={data.strapiBlogs.blog_cover_media} photo={data.strapiBlogs.blog_cover.childImageSharp.fluid} youtube={data.strapiBlogs.blog_cover_yt} title={data.strapiBlogs.blog_title} />
     
-    <div className="regular-page">
-      <h1 className="blog-measure">{data.strapiBlogs.blog_title}</h1>
+      <div className="regular-page">
+        <h1 className="blog-measure">{data.strapiBlogs.blog_title}</h1>
 
-      <Cz moving={data.strapiBlogs.Cover_is_video} check={data.strapiBlogs.title} />
 
       <h4 className="blog-measure">
         {data.strapiBlogs.created_at}
       </h4>
       
-      <YT has={data.strapiBlogs.blog_cover_yt} />
-      
-      <div className="blog_tube">
-        <iframe title="{data.strapiBlogs.title}" width="560" height="315" src={`https://www.youtube.com/embed/${data.strapiBlogs.blog_video}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div className="blog_tube__backgound">{/* stay gold */}</div>
-      </div>{/* blog_tube */}
-      
-      <div className="blog-measure">
+      <div>
+        <div className="blog-floater">
+          <h3>DOWNLOAD</h3>
+          <div className="blog-floater-back">{/* stay gold*/}</div>
+          <Download />
+          <ScreenshotSlideshow />
+        </div>
+
         <ReactMarkdown
           source={data.strapiBlogs.blog_content}
+          className="blog-measure"
         />
       </div>
+
+      
+      {data.allStrapiAds.edges.map(document => (
+        <Link to="/">
+          <Img fluid={document.node.ad_cover.childImageSharp.fluid} />
+        </Link>
+      ))}
+
+      <hr />
+
+      <h4 className="blog-measure">
+        This article was captured at our Partner Resort(s)
+      </h4>
+
+      <section className="team--grid">
+        {data.strapiBlogs.partner_resorts.map(pr => (
+          <article className="team-card">
+            <h2>
+              <Link to={`/partner-resorts/${pr.pr_slug}`}>
+                {pr.pr_name}
+              </Link>
+            </h2>
+
+            <Link to={`/partner-resorts/${pr.pr_slug}`} className="teamcoverimage">
+              <Img fluid={pr.pr_cover.childImageSharp.fluid} />
+            </Link>
+          </article>
+        ))}
+      </section>
+
+
+      <hr />
 
       <h4 className="blog-measure">
         Featured Ambassadors&nbsp;
       </h4>
-      
 
-      {data.strapiBlogs.teams.map(team => (
+      <section className="team--grid">
+        {data.strapiBlogs.teams.map(team => (
+          <article className="team-card">
+            <h2>
+              <Link to={`/team/${team.team_slug}`}>
+                {team.team_name}
+              </Link>
+            </h2>
 
-        <Link to={`/team/${team.team_slug}`}>
-          <p>{team.team_name}</p>
-        </Link>
-      ))}
+            <Link to={`/team/${team.team_slug}`} className="teamcoverimage">
+              <Img fluid={team.team_cover.childImageSharp.fluid} />
+            </Link>
 
+            <Link to={`/team/${team.team_slug}`} className="teamcoverprofile">
+              <Img fluid={team.team_headshot.childImageSharp.fluid}  className="profile"/>
+            </Link>
+          </article>
+        ))}
+      </section>
+
+      <hr />
 
 
       <h3 className="mid-title">More articles</h3>
@@ -123,6 +161,33 @@ export const query = graphql`
       teams {
         team_name
         team_slug
+        team_cover {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+
+        team_headshot {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+
+      partner_resorts {
+        pr_name
+        pr_slug
+        pr_cover {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
 
@@ -144,5 +209,27 @@ export const query = graphql`
         }
       }
     }
+
+
+    allStrapiAds(limit: 1) {
+      edges{
+        node {
+          ad_title
+          ad_slug
+          ad_cover {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+
   }
 `
+
+
+
+/*  */
