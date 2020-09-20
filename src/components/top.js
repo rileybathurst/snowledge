@@ -3,7 +3,7 @@ import { StaticQuery, graphql, Link } from "gatsby"
 
 import InstagramLogo from "./instagramLogo"
 import FacebookLogo from "./facebookLogo"
-import YouTubeLogo from "./youtubelogo"
+import YouTubeLogo from "./youtubeLogo"
 import TwitterLogo from "./twitterLogo"
 
 // these queries are not doing anything
