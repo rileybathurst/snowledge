@@ -101,11 +101,37 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
   });
+
+  const getAds = makeRequest(graphql, `
+    {
+      allStrapiAds {
+        edges {
+          node {
+            id
+            ad_title
+            ad_slug
+          }
+        }
+      }
+    }
+    `).then(result => {
+    // Create pages for each team member.
+    result.data.allStrapiAds.edges.forEach(({ node }) => {
+      createPage({
+        path: `/ad/${node.ad_slug}`,
+        component: path.resolve(`src/templates/ad.js`),
+        context: {
+          id: node.id,
+        },
+      })
+    })
+  });
   
   // Query for blog nodes to use in creating pages.
   return Promise.all([
     getPartnerResorts,
     getBlogs,
     getTeam,
+    getAds
   ])
 }; // exports.createPages

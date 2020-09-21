@@ -52,7 +52,7 @@ const BlogTemplate = ({ data }) => (
 
       <div className="blog-measure">
         {data.allStrapiAds.edges.map(document => (
-          <Link to="/">
+          <Link to={`/ad/${document.node.ad_slug}`}>
             <Img fluid={document.node.ad_cover.childImageSharp.fluid} />
           </Link>
         ))}
