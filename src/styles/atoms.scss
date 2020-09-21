@@ -935,7 +935,7 @@ h4,
 h5,
 h6 {
   font-family: sans-serif;
-  color: $snowledge-green;
+  // color: $snowledge-green;
 }
 
 // type-scale.com Major Third
@@ -1154,6 +1154,32 @@ a:hover {
     margin-bottom: 3rem;
     border-bottom: 2px solid $snowledge-green;
     // Im not quite sure how I am changing the angle on these
+  }
+
+  li:last-child {
+    border: none;
+  }
+}
+
+#features-list-pr {
+  color: $snowledge-green;
+  font-size: h2;
+  line-height: 1.5em;
+  width: 100%;
+  // max-width: 40rem; // this might have to fall back on regular-measure as it's now used in other places
+  margin: 0 auto;
+
+  @media (min-width: 60rem) {
+    grid-row: 1/8; // I think with it being 1 extra I can fix the heights
+    grid-column: 3;
+    font-size: 1.953rem;
+  }
+
+  li {
+    list-style: none;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid $snowledge-green;
   }
 
   li:last-child {
@@ -1769,6 +1795,12 @@ hr {
   margin: 0 auto;
 }
 
+.extended-measure {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .regular-measure {
   max-width: 60rem;
   // margin: 0 auto;
@@ -1941,10 +1973,37 @@ hr {
   }
 }
 
+.floater {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  @media (min-width: 60rem) {
+    flex-direction: row;
+  }
+
+/*   p,
+  .blog-floater {
+    flex: 1 1 50%;
+  } */
+
+  p {
+    margin-top: 4rem;
+    max-width: 30rem;
+  }
+}
+
+
 .blog-floater {
-  float: right;
-  width: 33%;
-  margin: 1rem;
+  float: right; // I think this is needed when its not in the flex
+  // width: 33%;
+  max-width: 30rem;
+  align-self: center;
+
+  @media (min-width: 60rem) {
+    max-width: 30rem;
+  }
+    margin: 1rem;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1972,9 +2031,20 @@ hr {
 
   }
 
-  #slideshow {
+  #slideshow,
+  .profile {
     grid-row: 1/3;
     grid-column: 2;
     margin: 0.5rem;
   }
+}
+
+.hero-shadow {
+  box-shadow: 5px 2px 2px lightgray;
+}
+
+.hero-card {
+  background: whitesmoke;
+  padding: 0.5rem 1rem;
+  box-shadow: 5px 2px 2px lightgray;
 }
