@@ -24,6 +24,9 @@ const BlogsPage = ({ data }) => (
         </article>
       ))}
     </section>
+
+    <h3 className="mid-title">Pagination</h3>
+    <Link to="/blogs/2">next</Link>
   </Layout>
 )
 
@@ -31,7 +34,11 @@ export default BlogsPage
 
 export const pageQuery = graphql`  
   query BlogsQuery {
-    allStrapiBlogs {
+    allStrapiBlogs(
+      sort: {order: DESC, fields: created_at},
+      limit: 9,
+      skip: 10
+      ) {
       edges {
         node {
           id

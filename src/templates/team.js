@@ -50,6 +50,20 @@ const TeamTemplate = ({ data }) => (
       <Hero latest={blog.blog_cover_yt} />
     ))}
 
+
+    <h3 className="mid-title">Offers associated with {data.strapiTeam.team_name}</h3>
+    <ul className="team--grid blog-cards">
+      {data.strapiTeam.ads.map(ad => (
+        <li className="team-card">
+          <h2><Link to={`/blogs/${ad.ad_slug}`}>{ad.ad_title}</Link></h2>
+          <Link to={`/blogs/${ad.ad_slug}`} className="teamcoverimage"><Img fluid={ad.ad_cover.childImageSharp.fluid} /></Link>
+        </li>
+      ))}
+    </ul> 
+
+
+
+
     <h3 className="mid-title">Blogs containing {data.strapiTeam.team_name}</h3>
 
     <ul className="team--grid blog-cards">
@@ -135,6 +149,18 @@ export const query = graphql`
           }
 
           blog_cover_yt
+      }
+
+      ads {
+        ad_title
+        ad_slug
+        ad_cover {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
 
