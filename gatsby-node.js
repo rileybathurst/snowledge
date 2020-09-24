@@ -49,7 +49,7 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
-  });
+  }); // .then(result)
   
   const getBlogs = makeRequest(graphql, `
     {
@@ -64,18 +64,42 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-    `).then(result => {
-    // Create pages for each blogs.
-    result.data.allStrapiBlogs.edges.forEach(({ node }) => {
+  `).then(result => {
+
+    // Create blog posts pages.
+    const blogs = result.data.allStrapiBlogs.edges
+
+    blogs.forEach((post, index) => {
+      // Create pages for each blogs.
+      result.data.allStrapiBlogs.edges.forEach(({ node }) => {
+
+        createPage({
+          path: `/blog/${node.blog_slug}`,
+          component: path.resolve(`src/templates/blog.js`),
+          context: {
+            id: node.id,
+          }, // context
+        }) // createPage
+      }) // result.data
+    }) // blogs.forEach
+
+    // Create blog post list pages
+    const postsPerPage = 9;
+    const numPages = Math.ceil(blogs.length / postsPerPage);
+
+    Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: `/blogs/${node.blog_slug}`,
-        component: path.resolve(`src/templates/blogs.js`),
+        path: i === 0 ? `/blogs/` : `/blogs/${i + 1}`,
+        component: path.resolve('./src/templates/blogs.js'),
         context: {
-          id: node.id,
-        },
-      })
-    })
-  });
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1
+        }, // context
+      }); // createPage
+    }); // Array.from
+  }); // then(result)
   
   const getTeam = makeRequest(graphql, `
     {
@@ -101,6 +125,7 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
   });
+
 
   const getAds = makeRequest(graphql, `
     {

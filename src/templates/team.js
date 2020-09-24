@@ -70,10 +70,10 @@ const TeamTemplate = ({ data }) => (
       {data.strapiTeam.blogs.map(blog => (
         <li className="team-card">
           <h2>
-            <Link to={`/blogs/${blog.blog_slug}`}>{blog.blog_title}</Link>
+            <Link to={`/blog/${blog.blog_slug}`}>{blog.blog_title}</Link>
           </h2>
 
-          <Link to={`/blogs/${blog.blog_slug}`} className="teamcoverimage">
+          <Link to={`/blog/${blog.blog_slug}`} className="teamcoverimage">
             <Img fluid={blog.blog_cover.childImageSharp.fluid} />
           </Link>
 

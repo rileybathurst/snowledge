@@ -47,7 +47,7 @@ const PartnerResortTemplate = ({ data }) => (
 
           <li className="team-card">
             <h2>
-              <Link to={`/blogs/${blog.blog_slug}`}>
+              <Link to={`/blog/${blog.blog_slug}`}>
                 {blog.blog_title}
               </Link>
           </h2>
