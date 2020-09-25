@@ -61,9 +61,6 @@ const TeamTemplate = ({ data }) => (
       ))}
     </ul> 
 
-
-
-
     <h3 className="mid-title">Blogs containing {data.strapiTeam.team_name}</h3>
 
     <ul className="team--grid blog-cards">

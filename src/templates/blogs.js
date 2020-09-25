@@ -12,7 +12,7 @@ function More(props) {
     return (
       <>
         {/* $plus */}
-        <Link to={`/blogs/${props.current + 1}`}>{props.current + 1}</Link>
+        <h4 className="mid-title"><Link to={`/blogs/${props.current + 1}`}>Older Articles &nbsp;{props.current + 1} of {props.total}</Link></h4>
       </>
     )
   }
@@ -26,14 +26,14 @@ function Less(props) {
     return (
       <>
         {/* $plus */}
-        <Link to="/blogs">1</Link>
+        <h4 className="mid-title"><Link to="/blogs">Newer Articles &nbsp;1 of {props.total}</Link></h4>
       </>
     )
   } else if (props.down) {
     return (
       <>
         {/* $plus */}
-        <Link to={`/blogs/${props.current - 1}`}>{props.current - 1}</Link>
+        <h4 className="mid-title"><Link to={`/blogs/${props.current - 1}`}>Newer Articles &nbsp;{props.current - 1} of {props.total}</Link></h4>
       </>
     )
   }
@@ -61,10 +61,8 @@ const BlogsPage = ({ data }) => (
     </section>
 
     <h3 className="mid-title">Pagination</h3>
-    more &nbsp; <More is={data.allStrapiBlogs.pageInfo.hasNextPage} current={data.allStrapiBlogs.pageInfo.currentPage} />
-    <hr /> less &nbsp;
-    <Less down={data.allStrapiBlogs.pageInfo.hasPreviousPage} current={data.allStrapiBlogs.pageInfo.currentPage} />
-
+    <Less down={data.allStrapiBlogs.pageInfo.hasPreviousPage} current={data.allStrapiBlogs.pageInfo.currentPage} total={data.allStrapiBlogs.pageInfo.pageCount} />
+    <More is={data.allStrapiBlogs.pageInfo.hasNextPage} current={data.allStrapiBlogs.pageInfo.currentPage} total={data.allStrapiBlogs.pageInfo.pageCount} />
   </Layout>
 )
 
@@ -101,6 +99,7 @@ export const pageQuery = graphql`
         hasNextPage
         currentPage
         hasPreviousPage
+        pageCount
       }
     }
   }
