@@ -2048,3 +2048,96 @@ hr {
   padding: 0.5rem 1rem;
   box-shadow: 5px 2px 2px lightgray;
 }
+
+.card-stack {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.simple-card {
+  flex: 1 1 15rem;
+  background: $snowledge-green_lighten;
+  color: whitesmoke;
+  fill: whitesmoke;
+  padding: 1rem;
+  margin: 1rem;
+
+  .simple-card-svg-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    svg {
+      width: 3rem;
+      height: auto;
+    }
+  }
+
+  h2 {
+    @extend h5;
+    text-align: center;
+  }
+
+  li {
+    list-style: "❄ ";
+    font-family: sans-serif;
+  }
+}
+
+.tiny-card-stack {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tiny-card {
+  flex: 1 1 15rem;
+  margin: 1rem;
+
+  h2 {
+    @extend h5;
+  }
+}
+
+.tiny-card-header {
+  background: $snowledge-green_lighten;
+  color: whitesmoke;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.split-flex {
+  display: flex;
+  flex-wrap: wrap;
+
+  .gatsby-image-wrapper,
+  ul,
+  .split-flex-wrap {
+    flex: 1 1 20rem;
+    margin: 1rem; // needs a flex gap // I think its coming at some point
+  }
+}
+
+.greenback {
+  background: $snowledge-green;
+  color: whitesmoke;
+  padding: 1rem;
+
+  form {
+    font-family: sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+
+    input, div {
+      flex: 1 1 10rem;
+      // display: block;
+      margin-bottom: 1rem;
+    }
+
+    input[type="submit"] {
+      background: none;
+      border: 1px solid whitesmoke;
+      color: whitesmoke;
+      align-self: flex-end;
+    }
+  }
+}

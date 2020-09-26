@@ -1,5 +1,5 @@
-// this is the category page
-// multiple
+// this is the blogs page
+// the reason its a template not a page is due to pagination its a bunch of pages
 
 import React from 'react'
 import { Link, graphql } from 'gatsby'

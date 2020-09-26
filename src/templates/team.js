@@ -55,8 +55,8 @@ const TeamTemplate = ({ data }) => (
     <ul className="team--grid blog-cards">
       {data.strapiTeam.ads.map(ad => (
         <li className="team-card">
-          <h2><Link to={`/blogs/${ad.ad_slug}`}>{ad.ad_title}</Link></h2>
-          <Link to={`/blogs/${ad.ad_slug}`} className="teamcoverimage"><Img fluid={ad.ad_cover.childImageSharp.fluid} /></Link>
+          <h2><Link to={`/ad/${ad.ad_slug}`}>{ad.ad_title}</Link></h2>
+          <Link to={`/ad/${ad.ad_slug}`} className="teamcoverimage"><Img fluid={ad.ad_cover.childImageSharp.fluid} /></Link>
         </li>
       ))}
     </ul> 
@@ -64,7 +64,8 @@ const TeamTemplate = ({ data }) => (
     <h3 className="mid-title">Blogs containing {data.strapiTeam.team_name}</h3>
 
     <ul className="team--grid blog-cards">
-      {data.strapiTeam.blogs.map(blog => (
+      {/* The slice limits this to 9 results */}
+      {data.strapiTeam.blogs.slice(0, 9).map(blog => (
         <li className="team-card">
           <h2>
             <Link to={`/blog/${blog.blog_slug}`}>{blog.blog_title}</Link>
@@ -78,6 +79,13 @@ const TeamTemplate = ({ data }) => (
         </li>
       ))}
     </ul>
+
+
+
+
+
+
+    
 
     <h3 className="mid-title">Check out some other Snowledge Team</h3>
 
