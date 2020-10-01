@@ -18,7 +18,7 @@ const OnboardingRmp = () => {
     query {
       placeholderImage: file(relativePath: { eq: "onboarding-rmp.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
+          fluid(maxWidth: 600) {
             ...GatsbyImageSharpFluid
           }
         }

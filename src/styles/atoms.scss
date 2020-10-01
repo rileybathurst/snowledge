@@ -2117,6 +2117,20 @@ hr {
   }
 }
 
+.split-flip {
+  flex-direction: column;
+
+  @media (min-width: 60rem) {
+    flex-direction: row-reverse;
+  }
+}
+
+.split-tower {
+  flex: 1 1 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .greenback {
   background: $snowledge-green;
   color: whitesmoke;
@@ -2133,11 +2147,35 @@ hr {
       margin-bottom: 1rem;
     }
 
-    input[type="submit"] {
+    input {
+      border: none;
+      border-radius: 2px;
+    }
+
+    input[type="submit"],
+    button {
       background: none;
       border: 1px solid whitesmoke;
       color: whitesmoke;
       align-self: flex-end;
     }
+
+
   }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important; // deal with the specificity this shouldnt need to be important
+}
+
+blockquote h4 {
+  @extend h6;
+}
+
+.square-shadow {
+  box-shadow: 5px 5px lightgray;
 }
