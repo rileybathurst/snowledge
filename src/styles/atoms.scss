@@ -2171,6 +2171,20 @@ box-shadow: 10px 10px whitesmoke;
   }
 }
 
+.split-flip {
+  flex-direction: column;
+
+  @media (min-width: 60rem) {
+    flex-direction: row-reverse;
+  }
+}
+
+.split-tower {
+  flex: 1 1 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .greenback {
   background: $snowledge-green;
   color: whitesmoke;
@@ -2196,12 +2210,20 @@ box-shadow: 10px 10px whitesmoke;
       margin-bottom: 1rem;
     }
 
-    input[type="submit"] {
+    input {
+      border: none;
+      border-radius: 2px;
+    }
+
+    input[type="submit"],
+    button {
       background: none;
       border: 1px solid whitesmoke;
       color: whitesmoke;
       align-self: flex-end;
     }
+
+
   }
 } // .greenback
 
