@@ -18,7 +18,7 @@ const OnboardingContest = () => {
     query {
       placeholderImage: file(relativePath: { eq: "onboarding-contest.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
+          fluid(maxWidth: 900) {
             ...GatsbyImageSharpFluid
           }
         }

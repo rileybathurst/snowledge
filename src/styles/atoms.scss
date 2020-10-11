@@ -621,6 +621,9 @@ pre tt:after {
   }
 }
 
+// end of gatsby default
+// start of snowledge custom
+
 $snowledge-green: #009D9B;
 $snowledge-green_lighten: #39C4C5;
 
@@ -928,6 +931,7 @@ $snowledge-green_lighten: #39C4C5;
   fill: $snowledge-green;
 }
 
+// type scale
 h1,
 h2,
 h3,
@@ -954,8 +958,21 @@ h5 {font-size: 1.25em;}
 
 small, .text_small {font-size: 0.8em;}
 
-p {
+p,
+a {
   font-family: sans-serif;
+}
+
+.header-reducer {
+  font-size: 1.953em; // @extend h3; // Im not allowed this with media queries
+
+  @media (min-width: 40rem) {
+    font-size: 2.441em;  // h2
+  }
+
+  @media (min-width: 78rem) {
+    font-size: 3.052em; // h1
+  }
 }
 
 #hero-video {
@@ -1398,6 +1415,11 @@ footer {
     svg:hover {
       fill: $snowledge-green_lighten;
     }
+
+  } // .footer-logo
+
+  .footer-logo_extra {
+    margin-top: 3rem;
   }
 
   nav {
@@ -2059,8 +2081,12 @@ hr {
   background: $snowledge-green_lighten;
   color: whitesmoke;
   fill: whitesmoke;
+  margin-bottom: 1rem;
   padding: 1rem;
-  margin: 1rem;
+
+  @media (min-width: 38rem) {
+    margin-right: 1rem;
+  }
 
   .simple-card-svg-header {
     display: flex;
@@ -2091,7 +2117,7 @@ hr {
 
 .tiny-card {
   flex: 1 1 15rem;
-  margin: 1rem;
+  margin-right: 1rem;
 
   h2 {
     @extend h5;
@@ -2103,6 +2129,10 @@ hr {
   color: whitesmoke;
   padding: 1rem;
   margin-bottom: 1rem;
+
+//   -webkit-box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.75);
+// -moz-box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px whitesmoke;
 }
 
 .split-flex {
@@ -2111,9 +2141,33 @@ hr {
 
   .gatsby-image-wrapper,
   ul,
-  .split-flex-wrap {
+  .split-flex-wrap,
+  div {
     flex: 1 1 20rem;
-    margin: 1rem; // needs a flex gap // I think its coming at some point
+    margin-right: 1rem; // needs a flex gap // I think its coming at some point
+  }
+
+  .gatsby-image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+// this became a bigger thing so it should be renamed
+.split-two {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  text-align: center;
+
+  div {
+    margin-right: 1rem;
+
+  }
+}
+
+.flip-flex {
+  @media (min-width: 40rem) {
+    flex-direction: row-reverse;
   }
 }
 
@@ -2121,6 +2175,15 @@ hr {
   background: $snowledge-green;
   color: whitesmoke;
   padding: 1rem;
+  padding-top: 3rem;
+
+  a {
+    color: whitesmoke;
+  }
+
+  a:hover {
+    color: lightgoldenrodyellow;
+  }
 
   form {
     font-family: sans-serif;
@@ -2139,5 +2202,56 @@ hr {
       color: whitesmoke;
       align-self: flex-end;
     }
+  }
+} // .greenback
+
+.extra-push { // I don't like this quick hack but its fine for now
+  margin-left: 1rem;
+}
+
+blockquote {
+  margin-left: 0;
+
+  p {
+    font-style: italic;
+  }
+
+  h4 {
+    @extend small;
+  }
+}
+
+.big-link {
+  @extend h5;
+}
+
+.simple-footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 1rem;
+
+  svg {
+    fill: whitesmoke;
+    width: 8rem;
+    margin: 2rem;
+  }
+
+  svg:hover {
+    fill: $snowledge-green;
+  }
+}
+
+.simple-header {
+  background: $snowledge-green;
+  color: whitesmoke;
+  padding: 2rem;
+
+  svg {
+    fill: whitesmoke;
+    width: 10rem;
+    margin-bottom: 2rem;
   }
 }

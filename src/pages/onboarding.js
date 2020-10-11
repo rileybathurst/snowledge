@@ -8,11 +8,28 @@ import OnboardingRmp from "../components/onboarding-rmp"
 import OnboardingApp from "../components/onboarding-app"
 import OnboardingContest from "../components/onboarding-contest"
 
+// things needed for the old site
+import Footer from "../components/footer" // while it running on the old site
+import Logo from "../components/logo"
+
 const DownloadPage = () => (
-  <Layout>
+    <>
+    <header className="simple-header">
+        <h1 className="screen-reader">Snowledge</h1>
+        {/* always start with an h tag and make this screenreader friendly */}
+        <div className="regular-measure">
+            <Logo />
+        </div>
+        <h2 className="regular-measure">GET YOUR RESORT STARTED ON SNOWLEDGE</h2>
+  </header>
+
+  {/*
+  <Layout> I have to skip some of this while its a build for the old site 
+    but this was the wrapper and will go back to being the main site wrapper
+  */}
     <main className="regular-page">
         <SEO title="Onboarding" />
-        <h1 className="regular-measure">Start Set Up On Your Snowledge Profile</h1>
+        <h1 className="regular-measure header-reducer">Start Set Up On Your Snowledge Profile</h1>
         <p className="regular-measure">Introducing Snowledge: The fastest, most cost effective way to enable your mobile customer experience.</p>
 
         <div className="card-stack regular-measure">
@@ -49,7 +66,6 @@ const DownloadPage = () => (
                     <li>Resort Profile visible to Snowledge Community</li>
                 </ul>
             </div>
-
 
             <div className="simple-card">
                 
@@ -103,9 +119,10 @@ const DownloadPage = () => (
 
 
         <div className="split-flex regular-measure">
-            <OnboardingRmp />
+            {/* <OnboardingRmp /> currently not using gatsby image as this page is a wierd half build */}
+            <img src="https://www.snowledge.co/wp-content/uploads/2020/10/onboarding-rmp.jpg" alt="snowledge resort mountain profile" />
 
-            <ul className="regular-measure">
+            <ul className="regular-measure extra-push">
                 <li>Manage messaging with in-app & push notifications</li>
                 <li>Turnkey engagement campaigns and events</li>
                 <li>Guest Insights and Analytics Suite</li>
@@ -116,8 +133,9 @@ const DownloadPage = () => (
         
         <p className="regular-measure"><strong>Exclusive content and services:</strong></p>
 
-        <div className="split-flex regular-measure">
-            <OnboardingApp />
+        <div className="split-flex flip-flex regular-measure">
+            {/* <OnboardingApp /> */}
+            <img src="https://www.snowledge.co/wp-content/uploads/2020/10/onboarding-app.jpg" alt="snowledge app" />
 
             <ul>
                 <li>Exclusive ambassador content</li>
@@ -137,27 +155,35 @@ const DownloadPage = () => (
         <p className="regular-measure">Partner resort Holiday Valley saw huge success with our end of the season ‘Keep the Stoke Alive’ promotion.</p>
 
         <div className="split-flex regular-measure">
-            <div className="split-flex-wrap">
-                <div className="">
-                    <h2>700</h2>
-                    <p>Photos posted</p>
-                </div>
+            <div className="split-one">
 
-                <div className="">
-                    <h2>$2,500</h2>
-                    <p>In brand prizes &amp; promotion</p>
-                </div>
+                <div className="split-two">
+                    <div className="split-three">
+                        <h2>700</h2>
+                        <p>Photos posted</p>
+                    </div>
 
-                <p>“With the sudden closing of resorts, we were trying to figure out how to keep our customers engaged and thinking about buying a 20-21 season pass. Snowledge provided us with a campaign that we were able to launch quickly, with minimal effort on our part. We feel this momentum will carry over to next season.”</p>
-                <h4>- Jane Eshbaugh, Marketing Director<br />
-                Holiday Valley</h4>
-            </div>{/* split-flex-wrap */}
+                    <div className="">
+                        <h2>$2,500</h2>
+                        <p>In brand prizes &amp; promotion</p>
+                    </div>
+                </div>{/* split-two */}
 
-            <OnboardingContest />
+                <blockquote>
+                    <p>“With the sudden closing of resorts, we were trying to figure out how to keep our customers engaged and thinking about buying a 20-21 season pass. Snowledge provided us with a campaign that we were able to launch quickly, with minimal effort on our part. We feel this momentum will carry over to next season.”</p>
+                    <h4>- Jane Eshbaugh, Marketing Director<br />
+                    Holiday Valley</h4>
+                </blockquote>
+            </div> {/* split-one */}
+
+            {/* <OnboardingContest /> */}
+            <img src="https://www.snowledge.co/wp-content/uploads/2020/10/onboarding-contest.jpg" alt="snowledge contest" />
         </div>{/* .split-flex */}
     </main>
 
-    <div className="greenback">
+  {/* </Layout> while its running on the old site */}
+
+  <div className="greenback">
         <div className="split-flex regular-measure">
             <div className="split-flex-wrap">
                 <h4 className="regular-measure">Exclusive discount</h4>
@@ -170,7 +196,8 @@ const DownloadPage = () => (
 
                 <p className="regular-measure">We’ll reach to set up a quick call and get you on your way to a new mobile experience on the mountain.</p>
 
-                <form className="regular-measure">
+                {/* this form wont work yet as its not on netlify */}
+                {/* <form className="regular-measure">
                     <div>
                         <label for="name">Full Name</label>
                         <input type="text" placeholder="Full Name" />
@@ -192,11 +219,24 @@ const DownloadPage = () => (
                     </div>
 
                     <input type="submit" value="Submit" />
-                </form>
+                </form> */}
+                < a href="mailto:info@snowledge.co?subject=Snowledge Onboarding" className="big-link">info@snowledge.co</a>
             </div>{/* .split-flex-wrap */}
         </div>{/* .split-flex */}
     </div>{/* .greenback */}
-  </Layout>
+
+  {/* this is pretty toned down for right now */}
+  <footer className="simple-footer">
+        
+        <div className="regular-measure footer-logo footer-logo_extra">
+            <Logo />
+        </div>
+
+        <p className="regular-measure footer-copyright">© 2020 Snowledge Corp. All Rights Reserved.</p>
+        {/* this punctuation is really wierd but its how it is on the current site */}
+
+    </footer>
+  </>
 )
 
 export default DownloadPage
