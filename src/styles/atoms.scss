@@ -686,7 +686,11 @@ $snowledge-green_lighten: #39C4C5;
     grid-row: 2;
     grid-column: 1;
     max-width: 80rem;
-    margin: 0 auto;
+    margin-left: 2rem;
+
+    @media (min-width: 60rem) {
+      margin: 0 auto;
+    }
   }
 
   #menu_toggle {
@@ -738,13 +742,17 @@ $snowledge-green_lighten: #39C4C5;
     grid-row: 1/4;
     grid-column: 1/3;
     z-index: -3;
+    // clockwise from top left
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), 0 100%);
+    // guess and check
 
     @media (min-width: 60rem) {
       grid-column: 1/5;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10rem), 0 100%);
     }
 
-    // clockwise from top left
-    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%); // guess and check probably needs a calc
+    
+    
   }
 
   
@@ -753,14 +761,17 @@ $snowledge-green_lighten: #39C4C5;
     grid-row: 1/4;
     grid-column: 1/3;
     z-index: -2;
-    // background: $snowledge-green;
+    background: $snowledge-green;
     mix-blend-mode: multiply;
     padding: 1rem;
     // max-width: 60rem; // guess and check
     // justify-self: center;
 
+    clip-path: polygon(1rem 3rem, calc(100% - 1rem) 0, calc(100% - 1rem) calc(100% - 3rem), 1rem 100%);
+
     @media (min-width: 60rem) {
       grid-column: 2/4;
+      clip-path: polygon(0 10rem, 100% 0, 100% calc(100% - 10rem), 0 100%);
     }
     
   }
@@ -1013,7 +1024,7 @@ a:hover {
   grid-gap: 2rem;
   grid-template-columns: 1fr;
 
-  @media (min-width: 78rem) { // this is the widest so it locks down
+  @media (min-width: 80rem) { // this is the widest so it locks down
     grid-template-columns: 1fr 35rem 35rem 1fr;
   }
 
@@ -1050,12 +1061,14 @@ a:hover {
     grid-column: 1;
     z-index: -1;
     background: whitesmoke;
-
-    clip-path: polygon(0 10rem, 100% 0, 100% calc(100% - 10rem), 0 100%);
+    clip-path: polygon(0 3rem, 100% 0, 100% calc(100% - 3rem), 0 100%);
+    
 
     @media (min-width: 60rem) {
       grid-row: 1/7;
       grid-column: 1/5;
+
+      clip-path: polygon(0 10rem, 100% 0, 100% calc(100% - 10rem), 0 100%);
     }
 
 
@@ -1090,6 +1103,12 @@ a:hover {
     grid-row: 1;
     grid-column: 1;
     z-index: -1;
+    background: $snowledge-green;
+    clip-path: polygon(0 3rem, 100% 0, 100% calc(100% - 3rem), 0 100%);
+
+    @media (min-width: 60rem) {
+
+    }
   }
 
 } // #hero-video
@@ -1153,16 +1172,17 @@ a:hover {
 
 #features-list {
   color: $snowledge-green;
-  font-size: 2.441em;
+  font-size: 1.953rem;
+  // font-size: 2.441em; // h2
   line-height: 1.5em;
-  width: 100%;
+  width: calc(100% - 2rem);
   max-width: 40rem; // this might have to fall back on regular-measure as it's now used in other places
   margin: 0 auto;
 
   @media (min-width: 60rem) {
-    grid-row: 1/8; // I think with it being 1 extra I can fix the heights
+    grid-row: 1/7; // I think with it being 1 extra I can fix the heights
     grid-column: 3;
-    font-size: 1.953rem;
+    font-size: 1.953rem; // h3
   }
 
   li {
@@ -1175,6 +1195,8 @@ a:hover {
 
   li:last-child {
     border: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -1359,18 +1381,25 @@ footer {
   }
 
   .footer-color-blocking-black {
-    margin-top: 50%; // guess and check
+    height: 4rem; // guess and check
+    align-self: end;
     grid-row: 1/3;
     grid-column: 1/3;
     // align-self: end;
     z-index: 1;
     background: black;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%); // guess and check
+
+    @media (min-width: 40rem) {
+      grid-column: 1/3;
+    }
 
     @media (min-width: 76rem) {
-      grid-row: 1/4;
-      grid-column: 1/6;
+      height: 8rem;
+      grid-row: 1/3;
+
       margin-top: 0;
-      clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%); // guess and check
+      
     }
   }
 
@@ -1381,8 +1410,10 @@ footer {
     max-width: 76rem;
 
     @media (min-width: 76rem) {
-      grid-column: 2/5;
+      // grid-column: 2/5;
       z-index: 4;
+      margin: 0 auto;
+      min-width: 60rem;
     }
   }
 } // footer
@@ -1906,6 +1937,14 @@ hr {
   > ul {
     margin: 0;
 
+    li {
+      margin-right: 1rem;
+    }
+
+    li:last-child {
+      margin-right: 0;
+    }
+
     a:hover {
       background: none !important;
 
@@ -2142,7 +2181,8 @@ box-shadow: 10px 10px whitesmoke;
   .gatsby-image-wrapper,
   ul,
   .split-flex-wrap,
-  div {
+  div,
+  img {
     flex: 1 1 20rem;
     margin-right: 1rem; // needs a flex gap // I think its coming at some point
   }
@@ -2275,5 +2315,57 @@ blockquote {
     fill: whitesmoke;
     width: 10rem;
     margin-bottom: 2rem;
+  }
+}
+
+.take2-color {
+  // background: #ff0;
+  grid-row: 1/3;
+  grid-column: 1/3;
+  z-index: 9;
+  clip-path: polygon(0 2rem, 100% 0, 100% calc(100% - 2rem), 0 100%);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  max-width: 20rem;
+  justify-self: end;
+  margin-right: 2rem;
+
+  @media (min-width: 76rem) {
+    // grid-column: 4;
+  }
+
+  .t2c-left {
+    grid-row: 1;
+    grid-column: 1;
+    background: $snowledge-green;
+
+
+  }
+
+  .t2c-right {
+    grid-row: 1;
+    grid-column: 2;
+    background: darkslategray;
+
+    .t2c-social {
+      list-style: none;
+      margin: 1rem;
+
+      li {
+
+      }
+    }
+  }
+}
+
+.black2 {
+  background: black;
+  grid-row: 3;
+  grid-column: 1/3;
+  z-index: -1;
+
+  @media (min-width: 60rem) {
+    grid-row: 3;
+    grid-column: 1/3;
   }
 }

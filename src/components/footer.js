@@ -19,22 +19,22 @@ const Footer = () => (
             </svg>
         </div> */}
 
-        <h3 id="footer-title"><em>Down<br />
+{/*         <h3 id="footer-title"><em>Down<br />
             Load</em></h3>
 
         <div className="footer-download-badges">
             
             <Download />
-        </div>
+        </div> */}
 
         {/* snowledge green */}
-        <div className="footer-download-badges-color-blocking">
+        {/* <div className="footer-download-badges-color-blocking"> */}
 {/*             <svg title="download-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <polygon fill="#009D9B" points="0,25 100,0 100,75 0,100"/>
             </svg> */}
-        </div>{/* footer-download-badges-color-blocking */}
+        {/* </div>footer-download-badges-color-blocking */}
         
-        <ul id="footer-social">
+        {/* <ul id="footer-social">
             <li><a href to="https://www.instagram.com/snowledge.co/">
                 <span className="screen-reader">instagram</span>
                 <InstagramLogo />
@@ -51,13 +51,13 @@ const Footer = () => (
                 <span className="screen-reader">twitter</span>
                 <TwitterLogo />
             </a></li>
-        </ul>
+        </ul> */}
 
-        <div id="footer-social-blocking">
+        {/* <div id="footer-social-blocking"> */}
 {/*             <svg title="download-color-blocking" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <polygon fill="#1a1a1a" points="0,25 100,0 100,75 0,100"/>
             </svg> */}
-        </div>
+        {/* </div> */}
 
 {/*         <div className="footer-color-blocking-primary">
             <svg title="footer-color-blocking-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 25">
@@ -93,6 +93,49 @@ const Footer = () => (
             </nav>
 
         </div>{/* #footer-color */}
+
+        <div className="take2-color">
+            {/* stay gold */}
+            {/* gonna make a single box that has the crop */}
+            <div className="t2c-left">
+                <h3 id="footer-title"><em>Down<br />
+                Load</em></h3>
+
+                <div className="footer-download-badges">
+                    <Download />
+                </div>
+            </div>
+            <div className="t2c-right">
+                <ul className="t2c-social">
+                    <li>
+                        <a href to="https://www.instagram.com/snowledge.co/">
+                            <span className="screen-reader">instagram</span>
+                            <InstagramLogo />
+                        </a>
+                    </li>
+                    <li>
+                        <a href to="https://www.facebook.com/snowledge.co">
+                            <span className="screen-reader">facebook</span>
+                            <FacebookLogo />
+                        </a>
+                    </li>
+                    <li>
+                        <a href to="https://www.youtube.com/channel/UCtao0k3KRU8kur7pyPJPK0w">
+                            <span className="screen-reader">YouTube</span>
+                            <YouTubeLogo />
+                        </a>
+                    </li>
+                    <li>
+                        <a href to="https://twitter.com/snowledge_co">
+                            <span className="screen-reader">twitter</span>
+                            <TwitterLogo />
+                        </a>
+                    </li>
+                </ul>    
+            </div>
+        </div> {/* .take2-color */}
+
+        <div className="black2">{/* stay gold */}</div>
     </footer>
 )
 

@@ -2,15 +2,15 @@
 
 import React from "react"
 
-import Layout from "../components/layout"
+// import Layout from "../components/layout"
 import SEO from "../components/seo"
-import OnboardingRmp from "../components/onboarding-rmp"
-import OnboardingApp from "../components/onboarding-app"
-import OnboardingContest from "../components/onboarding-contest"
-import Onform from "../components/onform"
+// import OnboardingRmp from "../components/onboarding-rmp"
+// import OnboardingApp from "../components/onboarding-app"
+// import OnboardingContest from "../components/onboarding-contest"
+// import Onform from "../components/onform"
 
 // things needed for the old site
-import Footer from "../components/footer" // while it running on the old site
+// import Footer from "../components/footer" // while it running on the old site
 import Logo from "../components/logo"
 
 const DownloadPage = () => (
