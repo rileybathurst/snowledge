@@ -21,7 +21,7 @@ const DownloadPage = () => (
         <div className="regular-measure">
             <Logo />
         </div>
-        <h2 className="regular-measure">GET YOUR RESORT STARTED ON SNOWLEDGE</h2>
+        <h2 className="blog-measure simple-title">GET YOUR RESORT STARTED ON SNOWLEDGE</h2>
   </header>
 
   {/*
@@ -30,10 +30,30 @@ const DownloadPage = () => (
   */}
     <main className="regular-page">
         <SEO title="Onboarding" />
-        <h1 className="regular-measure header-reducer">Start Set Up On Your Snowledge Profile</h1>
-        <p className="regular-measure">Introducing Snowledge: The fastest, most cost effective way to enable your mobile customer experience.</p>
+        <h1 className="regular-measure header-reducer">Introducing Snowledge: The fastest, most cost effective way to enable your mobile guest experience</h1>
+        <p className="regular-measure">Maintaining real time connection and communication with your guests will be critical this 20/21 season. Give your guests a feature-rich app they’ll love, powered by the mobile resort marketing tools and content you need to keep them informed, engaged, and inspired.</p>
 
         <div className="card-stack regular-measure">
+            {/* Pink card */}
+            <div className="simple-card square-shadow" style={{ background: '#d3447b' }}>
+                <div className="simple-card-svg-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                </div>
+            
+                <h2>Full Featued Mobile Experience</h2>
+
+                <p>The fastest, most cost effective way to enable a full- featured mobile app and marketing solution.</p>
+
+                <ul>
+                    <li>GPS Run Tracking</li>
+                    <li>Lift & Run Status</li>
+                    <li>Weather & Snow Conditions</li>
+                    <li>Finding Friends & family on the Mountain</li>
+                </ul>
+            </div>
+
+
+            {/* Purple Card */}
             <div className="simple-card square-shadow" style={{ background: '#6e2de8' }}>
                 
                 <div className="simple-card-svg-header">
@@ -42,7 +62,7 @@ const DownloadPage = () => (
             
                 <h2>Streamlined &amp; Amplified Marketing</h2>
 
-                <p>The easiest way to attract and stay connected with guests. Engaging and eddicient mobile marketing campaigns so you can focus on guests on the mountain.</p>
+                <p>The easiest way to attract and stay connected with guests on the mountain, with engaging and efficient mobile marketing campaigns.</p>
 
                 <ul>
                     <li>Prices &amp; Services</li>
@@ -51,37 +71,21 @@ const DownloadPage = () => (
                 </ul>
             </div>
 
-            <div className="simple-card square-shadow" style={{ background: '#d3447b' }}>
-                
-                <div className="simple-card-svg-header">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                </div>
-            
-                <h2>Streamlined &amp; Amplified Marketing</h2>
-
-                <p>The easiest way to attract and stay connected with guests. Engaging and eddicient mobile marketing campaigns so you can focus on guests on the mountain.</p>
-
-                <ul>
-                    <li>Prices &amp; Services</li>
-                    <li>Social Feed Posts</li>
-                    <li>Resort Profile visible to Snowledge Community</li>
-                </ul>
-            </div>
-
+            {/* Teal Card */}
             <div className="simple-card">
                 
                 <div className="simple-card-svg-header">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"/></svg>
                 </div>
             
-                <h2>Streamlined &amp; Amplified Marketing</h2>
+                <h2>Measureable Results</h2>
 
-                <p>The easiest way to attract and stay connected with guests. Engaging and eddicient mobile marketing campaigns so you can focus on guests on the mountain.</p>
+                <p>Insightful performance dashboard to better understand your guests needs and track campaign performance and ROI.</p>
 
                 <ul>
-                    <li>Prices &amp; Services</li>
-                    <li>Social Feed Posts</li>
-                    <li>Resort Profile visible to Snowledge Community</li>
+                    <li>Guest Insights</li>
+                    <li>Skier Data</li>
+                    <li>Marketing & Operations Dashboards</li>
                 </ul>
             </div>
         </div>{/* card-stack */}
@@ -93,26 +97,41 @@ const DownloadPage = () => (
         <div className="tiny-card-stack regular-measure">
             <div className="tiny-card">
                 <div className="tiny-card-header square-shadow">
-                    <h2>Discover</h2>
-                    <h2 className="no-margin-bottom"><em>Stay in the Know</em></h2>
+                <h2 className="no-margin-bottom">{/* Im not sold on putting the svg in the h2 here so that can probably be cleaned up at some point */}
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z" fill="white"/></svg>&nbsp;
+                    Stay in the Know</h2>
                 </div>
-                <p>Get real-time weather and condition information, access to contests and exclusive deals, and daily photos/videos/insights from locals on the mountain.</p>
+                <ul>
+                    <li>Real-time weather conditions</li>
+                    <li>Access to contests, deals and daily photos and videos</li>
+                    <li>Insights from locals on the mountain</li>
+                </ul>
             </div>
             
             <div className="tiny-card">
                 <div className="tiny-card-header square-shadow">
-                    <h2>Ride</h2>
-                    <h2 className="no-margin-bottom"><em>Track and Locate</em></h2>
+                <h2 className="no-margin-bottom">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"/><path d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2zM9 9l4.34-4.34L12 10h9v2l-3 7H9V9zM1 9h4v12H1z" fill="white"/></svg>&nbsp;
+                    Track and Locate</h2>
                 </div>
-                <p>Location-based app features to find family and friends on the mountain, track your runs and challenge yourself and others.</p>
+                <ul>
+                    <li>Find Family and Friends on the mountain</li>
+                    <li>Track your runs</li>
+                    <li>Challenge yourself and others</li>
+                </ul>
             </div>
             
             <div className="tiny-card">
                 <div className="tiny-card-header square-shadow">
-                    <h2>Share</h2>
-                    <h2 className="no-margin-bottom"><em>Share and Connect</em></h2>
+                <h2 className="no-margin-bottom">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" fill="white"/></svg>&nbsp;
+                    Share and Connect</h2>
                 </div>
-                <p>Stay connected with a like-minded community of snow sports enthusiasts, resorts you love, and top brands.</p>
+                <ul>
+                    <li>Like Minded community of snowsports enthusiasts</li>
+                    <li>Resorts you love</li>
+                    <li>Top Brands</li>
+                </ul>
             </div>
         </div>{/* .tiny-card-stack */}
 
@@ -123,11 +142,11 @@ const DownloadPage = () => (
             <img src="https://www.snowledge.co/wp-content/uploads/2020/10/onboarding-rmp.jpg" alt="snowledge resort mountain profile" />
 
             <ul className="regular-measure extra-push">
-                <li>Manage messaging with in-app & push notifications</li>
-                <li>Turnkey engagement campaigns and events</li>
-                <li>Guest Insights and Analytics Suite</li>
-                <li>Marketing & Operations Dashboard</li>
-                <li>Advanced Skier Data (time on hill, days skied, vertical feet skied, runs skied, other resorts skied)</li>
+                <li>Messaging with In-App & Push Notifications*</li>
+                <li>Turnkey engagement campaigns and events*</li>
+                <li>Guest insights and analytics suite</li>
+                <li>Marketing & operations dashboard</li>
+                <li>Advanced Skier Data</li>
             </ul>
         </div>{/* split-flex */}
         
@@ -139,16 +158,16 @@ const DownloadPage = () => (
 
             <ul>
                 <li>Exclusive ambassador content</li>
-                <li>Roster of brand partners for additional promotions + prizes</li>
+                <li>Brand Partners for promotions + prizes*</li>
                 <li>Broader Snowledge community promotion</li>
-                <li>Promotion of resort through Snowledge media channels (in-app website, email, social)</li>
-                <li>Promotion of your resort by Snowledge ambassadors</li>
+                <li>Resort promotion through Snowledge app, website, email, social channels</li>
+                <li>Resort promotion by Snowledge ambassadors</li>
             </ul>
         </div>{/* split-flex */}
 
         <p className="regular-measure"><strong>Affordable and scalable:</strong></p>
 
-        <p className="regular-measure">Get started with Snowledge for FREE. Premium features available. Join the growing family of resorts already benefiting from the Snowledge App and Marketing platform.</p>
+        <p className="regular-measure">Get started and stay with Snowledge Standard features for FREE, You can also take advantage of our Premium marketing and operations features to further enhance your resort’s experience*. Join the growing family of resorts already benefiting from the Snowledge App and Marketing platform.</p>
 
         {/* Logos will go here these will come in grom Strapi */}
 
@@ -188,13 +207,13 @@ const DownloadPage = () => (
             <div className="split-flex-wrap">
                 <h4 className="regular-measure">Exclusive discount</h4>
 
-                <p className="regular-measure">Get set up before Oct 1 to claim for a special offer on Snowledge premium engagement features and campaigns and an exclusive discount from our partner brands.</p>
+                <p className="regular-measure">Get set up before November 1st to claim for a special offer on Snowledge premium engagement features and campaigns and an exclusive discount from our partner brands.</p>
             </div>
 
             <div className="split-flex-wrap">
                 <h4 className="regular-measure">Set up your resort’s Snowledge profile</h4>
 
-                <p className="regular-measure">We’ll reach to set up a quick call and get you on your way to a new mobile experience on the mountain.</p>
+                <p className="regular-measure">We’ll follow up with a quick call to get you set up with a new mobile experience for your guests on the mountain!</p>
 
                 {/* this form wont work yet as its not on netlify */}
                 {/* <form className="regular-measure">

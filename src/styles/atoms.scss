@@ -969,12 +969,15 @@ h5 {font-size: 1.25em;}
 
 small, .text_small {font-size: 0.8em;}
 
+// this can be done way better
 p,
-a {
+a,
+li {
   font-family: sans-serif;
 }
 
 .header-reducer {
+  font-weight: 400;
   font-size: 1.953em; // @extend h3; // Im not allowed this with media queries
 
   @media (min-width: 40rem) {
@@ -2166,7 +2169,7 @@ hr {
 .tiny-card-header {
   background: $snowledge-green_lighten;
   color: whitesmoke;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   margin-bottom: 1rem;
 
 //   -webkit-box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.75);
@@ -2368,4 +2371,14 @@ blockquote {
     grid-row: 3;
     grid-column: 1/3;
   }
+}
+
+.simple-title {
+  // font-weight: bold;
+  text-align: center;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important; // overwriting the h2,
+  // this can probably be done better with specificty
 }
