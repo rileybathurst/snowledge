@@ -237,7 +237,7 @@ const OnboardPage = ({ data }) => (
             <div className="split-flex-wrap">
                 <h4 className="regular-measure">Set up your resort’s Snowledge profile</h4>
 
-                <p className="regular-measure">We’ll follow up with a quick call to get you set up with a new mobile experience for your guests on the mountain!</p>
+                <p className="regular-measure">Shoot us an email and we'll get you set up with a new mobile experience for your guests on the mountain!</p>
 
                 {/* this form wont work yet as its not on netlify */}
                 {/* <form className="regular-measure">
