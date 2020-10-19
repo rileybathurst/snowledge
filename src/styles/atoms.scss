@@ -980,13 +980,13 @@ li {
   font-weight: 400;
   font-size: 1.953em; // @extend h3; // Im not allowed this with media queries
 
-  @media (min-width: 40rem) {
+/*   @media (min-width: 40rem) {
     font-size: 2.441em;  // h2
-  }
+  } */
 
-  @media (min-width: 78rem) {
+/*   @media (min-width: 78rem) {
     font-size: 3.052em; // h1
-  }
+  } */
 }
 
 #hero-video {
@@ -2381,4 +2381,28 @@ blockquote {
 .no-margin-bottom {
   margin-bottom: 0 !important; // overwriting the h2,
   // this can probably be done better with specificty
+}
+
+.img-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+
+  li {
+    flex: 1 1 8rem;
+    align-self: center;
+    padding: 0.5rem 1rem; // needs to be padding for the hover
+    border: 2px solid white;
+    border-radius: 5px;
+  }
+
+  li:hover {
+    border: 2px solid $snowledge-green_lighten;
+  }
+}
+
+.not-bold {
+  font-weight: 400 !important; // deal with the specificity
 }

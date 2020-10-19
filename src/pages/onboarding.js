@@ -1,6 +1,8 @@
 // This page is a little different as Riley didn't design it
 
 import React from "react"
+import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 // import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -13,7 +15,7 @@ import SEO from "../components/seo"
 // import Footer from "../components/footer" // while it running on the old site
 import Logo from "../components/logo"
 
-const DownloadPage = () => (
+const OnboardPage = ({ data }) => (
     <>
     <header className="simple-header">
         <h1 className="screen-reader">Snowledge</h1>
@@ -90,7 +92,7 @@ const DownloadPage = () => (
             </div>
         </div>{/* card-stack */}
 
-        <h4 className="regular-measure">Snowledge is a technology and service solution that includes everything you need:</h4>
+        <h4 className="regular-measure not-bold">Snowledge is a technology and service solution that includes everything you need:</h4>
 
         <p className="regular-measure"><strong>Full featured app your customers will love:</strong></p>
 
@@ -170,10 +172,20 @@ const DownloadPage = () => (
         <p className="regular-measure">Get started and stay with Snowledge Standard features for FREE, You can also take advantage of our Premium marketing and operations features to further enhance your resort’s experience*. Join the growing family of resorts already benefiting from the Snowledge App and Marketing platform.</p>
 
         {/* Logos will go here these will come in grom Strapi */}
+        <ul className="regular-measure img-list">
+            {data.allStrapiPartnerResorts.edges.map(document => (
+                <li>
+                    <Link to={`/partner-resorts/${document.node.pr_slug}`}>
+                        {/* {document.node.pr_name} */}
+                        <Img fluid={document.node.pr_logo.childImageSharp.fluid} />
+                    </Link>
+                </li>
+            ))}
+        </ul>
 
         <p className="regular-measure">Partner resort Holiday Valley saw huge success with our end of the season ‘Keep the Stoke Alive’ promotion.</p>
 
-        <div className="split-flex regular-measure">
+        <div className="split-flex regular-measure flip-flex">
             <div className="split-one">
 
                 <div className="split-two">
@@ -257,7 +269,30 @@ const DownloadPage = () => (
         {/* this punctuation is really wierd but its how it is on the current site */}
 
     </footer>
+
   </>
 )
 
-export default DownloadPage
+export default OnboardPage
+
+export const pageQuery = graphql`  
+  query OnboardQuery {
+    allStrapiPartnerResorts(filter: {pr_slug: {in: ["holiday", "Revelstoke", "meadows", "angel", "brundage", "eaglecrest"]}}) {
+      edges {
+        node {
+          pr_name
+          pr_slug
+
+          pr_logo {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+`
