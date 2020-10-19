@@ -15,6 +15,9 @@ import SEO from "../components/seo"
 // import Footer from "../components/footer" // while it running on the old site
 import Logo from "../components/logo"
 
+// <link href="https://www.snowledge.co/onboard/styles.b1a30ae235daba03390a.css" rel="stylesheet">
+// this is what I need to copy paste to the ghetto build
+
 const OnboardPage = ({ data }) => (
     <>
     <header className="simple-header">
@@ -44,7 +47,7 @@ const OnboardPage = ({ data }) => (
             
                 <h2>Full Featued Mobile Experience</h2>
 
-                <p>The fastest, most cost effective way to enable a full- featured mobile app and marketing solution.</p>
+                {/* <p>The fastest, most cost effective way to enable a full- featured mobile app and marketing solution.</p> */}
 
                 <ul>
                     <li>GPS Run Tracking</li>
@@ -64,7 +67,7 @@ const OnboardPage = ({ data }) => (
             
                 <h2>Streamlined &amp; Amplified Marketing</h2>
 
-                <p>The easiest way to attract and stay connected with guests on the mountain, with engaging and efficient mobile marketing campaigns.</p>
+                {/* <p>The easiest way to attract and stay connected with guests on the mountain, with engaging and efficient mobile marketing campaigns.</p> */}
 
                 <ul>
                     <li>Prices &amp; Services</li>
@@ -82,7 +85,7 @@ const OnboardPage = ({ data }) => (
             
                 <h2>Measureable Results</h2>
 
-                <p>Insightful performance dashboard to better understand your guests needs and track campaign performance and ROI.</p>
+                {/* <p>Insightful performance dashboard to better understand your guests needs and track campaign performance and ROI.</p> */}
 
                 <ul>
                     <li>Guest Insights</li>
@@ -172,16 +175,25 @@ const OnboardPage = ({ data }) => (
         <p className="regular-measure">Get started and stay with Snowledge Standard features for FREE, You can also take advantage of our Premium marketing and operations features to further enhance your resort’s experience*. Join the growing family of resorts already benefiting from the Snowledge App and Marketing platform.</p>
 
         {/* Logos will go here these will come in grom Strapi */}
-        <ul className="regular-measure img-list">
+{/*         <ul className="regular-measure img-list">
             {data.allStrapiPartnerResorts.edges.map(document => (
                 <li>
                     <Link to={`/partner-resorts/${document.node.pr_slug}`}>
-                        {/* {document.node.pr_name} */}
                         <Img fluid={document.node.pr_logo.childImageSharp.fluid} />
                     </Link>
                 </li>
             ))}
+        </ul> */}
+
+        <ul className="regular-measure img-list">
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/HolidayValleyEllicottville.png"/></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Revelstoke-Logo1.png"/></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/MHM_Horizontal_Logo_4Color.jpg"/></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/HomewoodLogo.png"/></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Brundage_woodgrain.png"/></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Square-Logo-Outlined-Text-PNG-EAGLECREST.png"/></li>
         </ul>
+
 
         <p className="regular-measure">Partner resort Holiday Valley saw huge success with our end of the season ‘Keep the Stoke Alive’ promotion.</p>
 
@@ -219,7 +231,7 @@ const OnboardPage = ({ data }) => (
             <div className="split-flex-wrap">
                 <h4 className="regular-measure">Exclusive discount</h4>
 
-                <p className="regular-measure">Get set up before November 1st to claim for a special offer on Snowledge premium engagement features and campaigns and an exclusive discount from our partner brands.</p>
+                <p className="regular-measure">Get set up before November 15th to claim for a special offer on Snowledge premium engagement features and campaigns and an exclusive discount from our partner brands.</p>
             </div>
 
             <div className="split-flex-wrap">
@@ -253,7 +265,10 @@ const OnboardPage = ({ data }) => (
                 </form> */}
 
 
-                < a href="mailto:info@snowledge.co?subject=Snowledge Onboarding" className="big-link">info@snowledge.co</a>
+                {/* <a href="mailto:info@snowledge.co?subject=Snowledge Onboarding" className="big-link">info@snowledge.co</a> */}
+                <a href="mailto:info@snowledge.co?subject=Snowledge Onboarding" className="button-link">info@snowledge.co</a>
+                {/* this has a dumb name because I know its dumb to do this */}
+
             </div>{/* .split-flex-wrap */}
         </div>{/* .split-flex */}
     </div>{/* .greenback */}

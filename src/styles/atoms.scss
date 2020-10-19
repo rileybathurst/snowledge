@@ -2290,6 +2290,20 @@ blockquote {
   @extend h5;
 }
 
+.button-link {
+  @extend h5;
+  background: #d3447b;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  box-shadow: 5px 5px 5px darkcyan;
+  display: inline-block;
+}
+
+.button-link:hover {
+  background: darken(#d3447b, 10%);
+}
+
 .simple-footer {
   display: flex;
   flex-direction: column;
