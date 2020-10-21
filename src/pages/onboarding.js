@@ -192,6 +192,7 @@ const OnboardPage = ({ data }) => (
             <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/HomewoodLogo.png"/></li>
             <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Brundage_woodgrain.png"/></li>
             <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Square-Logo-Outlined-Text-PNG-EAGLECREST.png"/></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/indy_pass_logo.png"/></li>
         </ul>
 
 
