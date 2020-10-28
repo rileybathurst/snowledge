@@ -117,7 +117,13 @@ const TeamTemplate = ({ data }) => (
 
 
           <h1>second try get the blogs right</h1>
-
+          <ul>
+          {data.allStrapiBlogs.edges.map(document => (
+            <ol>
+            {document.node.blog_title}
+            </ol>
+))}
+</ul>
 
 
 
@@ -198,7 +204,27 @@ export const query = graphql`
     }
 
 
-    
+    allStrapiBlogs(
+      sort: {
+        order: DESC,
+        fields: created_at
+      },
+      limit: 9
+    ) {
+      edges {
+        node {
+          blog_title
+          blog_slug
+          blog_cover {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
 
   }
 `
