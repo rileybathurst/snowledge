@@ -30,13 +30,14 @@ function Cover(props) {
 }
 
 // there is always an array of answers but only a length if there are actually resorts
+// check into a more than 1 for resort(s)?
 function IfResort(props) {
   if ( props.place.length > 0) {
     return (
       <>
         <hr />
         <h4 className="blog-measure">
-          This article was captured at our Partner Resort(s)
+          This article was captured at our Partner Resort
         </h4>
       </>
     )
@@ -50,7 +51,7 @@ function IfTeam(props) {
     return (
       <>
         <hr />
-        <h4 className="blog-measure">
+        <h4 className="blog-measure mid-title">
           Featured Ambassadors
         </h4>
       </>
@@ -81,7 +82,7 @@ const BlogTemplate = ({ data }) => (
 
         <ReactMarkdown
           source={data.strapiBlogs.blog_content}
-          className="blog-measure"
+          className="blog-measure bigger-than-download"
         />
       </div>
 
@@ -150,7 +151,7 @@ const BlogTemplate = ({ data }) => (
                 </Link>
               </h2>
   
-              <Link to={`/blogs/${document.node.blog_slug}`} className="teamcoverimage">
+              <Link to={`/blog/${document.node.blog_slug}`} className="teamcoverimage">
                 <Img fluid={document.node.blog_cover.childImageSharp.fluid} />
               </Link>
   

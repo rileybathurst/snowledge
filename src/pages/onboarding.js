@@ -1,8 +1,8 @@
 // This page is a little different as Riley didn't design it
 
 import React from "react"
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import graphql from 'gatsby'
+// import Img from 'gatsby-image'
 
 // import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -186,13 +186,13 @@ const OnboardPage = ({ data }) => (
         </ul> */}
 
         <ul className="regular-measure img-list">
-            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/HolidayValleyEllicottville.png"/></li>
-            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Revelstoke-Logo1.png"/></li>
-            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/MHM_Horizontal_Logo_4Color.jpg"/></li>
-            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/HomewoodLogo.png"/></li>
-            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Brundage_woodgrain.png"/></li>
-            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Square-Logo-Outlined-Text-PNG-EAGLECREST.png"/></li>
-            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/indy_pass_logo.png"/></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/HolidayValleyEllicottville.png" alt="holiday valley logo" /></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Revelstoke-Logo1.png" alt="revelstoke logo" /></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/MHM_Horizontal_Logo_4Color.jpg" alt="mt hood meadows logo" /></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/HomewoodLogo.png" alt="homewood logo" /></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Brundage_woodgrain.png" alt="brundage logo" /></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Square-Logo-Outlined-Text-PNG-EAGLECREST.png" alt="eaglecrest logo" /></li>
+            <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/indy_pass_logo.png" alt="indy pass logo" /></li>
         </ul>
 
 
@@ -290,7 +290,7 @@ const OnboardPage = ({ data }) => (
 )
 
 export default OnboardPage
-
+/* 
 export const pageQuery = graphql`  
   query OnboardQuery {
     allStrapiPartnerResorts(filter: {pr_slug: {in: ["holiday", "Revelstoke", "meadows", "angel", "brundage", "eaglecrest"]}}) {
@@ -311,4 +311,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+` */

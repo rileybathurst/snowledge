@@ -85,13 +85,6 @@ const TeamTemplate = ({ data }) => (
       ))}
     </ul>
 
-
-
-
-
-
-    
-
     <h3 className="mid-title">Check out some other Snowledge Team</h3>
 
   {/* this needs to filter out the person we are currently showing */}
@@ -119,6 +112,15 @@ const TeamTemplate = ({ data }) => (
             </article>
         ))}
     </section>
+
+
+
+
+          <h1>second try get the blogs right</h1>
+
+
+
+
   </Layout>
 )
 
@@ -174,7 +176,10 @@ export const query = graphql`
       }
     }
 
-    allStrapiTeam(sort: {order: ASC, fields: team_name}) {
+    allStrapiTeam(
+      sort: {order: ASC, fields: team_name},
+      filter: {id: {ne: $id}}
+      ) {
       edges {
         node {
           team_name
@@ -191,5 +196,38 @@ export const query = graphql`
         }
       }
     }
+
+
+    
+
   }
 `
+
+// hmm the seconf filter out doesnt seem to work
+// filter: {team_name: {ne: "Riley Bathurst"}}
+// (filter: {id: {ne: $id}})
+
+// allStrapiPartnerResorts(filter: {pr_slug: {in: ["holiday", "Revelstoke", "meadows", "angel", "brundage", "eaglecrest"]}}) {
+
+
+/*   allStrapiBlogs(
+    sort: {
+      order: DESC,
+      fields: created_at
+    },
+    limit: 9
+  ) {
+    edges {
+      node {
+        blog_title
+        blog_slug
+        blog_cover {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  } */
