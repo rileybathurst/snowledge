@@ -23,6 +23,10 @@ const TeamTemplate = ({ data }) => (
 {/* this needs a better naming structure */}
     <main className="team"> 
 
+    <div className="team-cover">
+      <Img fluid={data.strapiTeam.team_cover.childImageSharp.fluid} />
+    </div>
+
     {/* Not 100% sure how Im using the cover at this point vs just adding it to the gallery
     <Img fluid={data.strapiTeam.teamcoverimage.childImageSharp.fluid}  className="teamcoverimage"/> */}
 
@@ -51,6 +55,7 @@ const TeamTemplate = ({ data }) => (
     ))}
 
 
+{/*     this will go back in but it's not first round
     <h3 className="mid-title">Offers associated with {data.strapiTeam.team_name}</h3>
     <ul className="team--grid blog-cards">
       {data.strapiTeam.ads.map(ad => (
@@ -59,7 +64,7 @@ const TeamTemplate = ({ data }) => (
           <Link to={`/ad/${ad.ad_slug}`} className="teamcoverimage"><Img fluid={ad.ad_cover.childImageSharp.fluid} /></Link>
         </li>
       ))}
-    </ul> 
+    </ul>  */}
 
     <h3 className="mid-title">Blogs containing {data.strapiTeam.team_name}</h3>
 
@@ -95,9 +100,9 @@ const TeamTemplate = ({ data }) => (
             <article className="mini-card">
 
                 {/* Im not sure why this is currently commented out but Im trying not to break things */}
-                {/* <Link to={`/team/${document.node.slug}`} className="mini-card_profile"> */}
+                <Link to={`/team/${document.node.team_slug}`} className="mini-card_profile">
                   <Img fluid={document.node.team_headshot.childImageSharp.fluid}  className="profile"/>
-                {/* </Link> */}
+                </Link>
 
                 <h2>
                     <Link to={`/team/${document.node.team_slug}`}>
@@ -136,7 +141,7 @@ export const query = graphql`
 
       team_cover {
         childImageSharp {
-          fluid(maxWidth: 300) {
+          fluid(maxWidth: 900) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -169,7 +174,7 @@ export const query = graphql`
       }
     }
 
-    allStrapiTeam {
+    allStrapiTeam(sort: {order: ASC, fields: team_name}) {
       edges {
         node {
           team_name

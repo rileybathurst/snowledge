@@ -39,9 +39,11 @@ const TeamPage = ({ data }) => (
 
 export default TeamPage
 
+// were going alphabetical, maybe we should structure the order at some point
+
 export const pageQuery = graphql`  
   query TeamQuery {
-    allStrapiTeam {
+    allStrapiTeam(sort: {order: ASC, fields: team_name}) {
       edges {
         node {
           id

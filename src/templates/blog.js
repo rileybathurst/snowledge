@@ -12,7 +12,10 @@ import ReactMarkdown from "react-markdown"
 function Cover(props) {
   if (props.is === "Photo") {
     return (
-      <Img fluid={props.photo} className="blog-measure" />
+      <div className="blog_tube">
+       <Img fluid={props.photo} className="blog-measure" />
+       <div className="blog_tube__backgound">{/* stay gold */}</div>
+      </div>
     )
   } else if (props.is === "YouTube") {
     return (
@@ -22,6 +25,36 @@ function Cover(props) {
       {/* blog_tube */}</div>
     )
   
+  }
+
+}
+
+// there is always an array of answers but only a length if there are actually resorts
+function IfResort(props) {
+  if ( props.place.length > 0) {
+    return (
+      <>
+        <hr />
+        <h4 className="blog-measure">
+          This article was captured at our Partner Resort(s)
+        </h4>
+      </>
+    )
+  }
+  return null
+}
+
+// there is always an array of answers but only a length if there are actually resorts
+function IfTeam(props) {
+  if ( props.crew.length > 0) {
+    return (
+      <>
+        <hr />
+        <h4 className="blog-measure">
+          Featured Ambassadors
+        </h4>
+      </>
+    )
   }
   return null
 }
@@ -52,19 +85,17 @@ const BlogTemplate = ({ data }) => (
         />
       </div>
 
+      {/* 
+      Ads will get there just not quite yet
       <div className="blog-measure">
         {data.allStrapiAds.edges.map(document => (
           <Link to={`/ad/${document.node.ad_slug}`}>
             <Img fluid={document.node.ad_cover.childImageSharp.fluid} />
           </Link>
         ))}
-      </div>
+      </div> */}
 
-      <hr />
-
-      <h4 className="blog-measure">
-        This article was captured at our Partner Resort(s)
-      </h4>
+      <IfResort place={data.strapiBlogs.partner_resorts.map(pr => (<>{pr.id}</>))} />
 
       <section className="team--grid">
         {data.strapiBlogs.partner_resorts.map(pr => (
@@ -83,11 +114,7 @@ const BlogTemplate = ({ data }) => (
       </section>
 
 
-      <hr />
-
-      <h4 className="blog-measure">
-        Featured Ambassadors&nbsp;
-      </h4>
+      <IfTeam crew={data.strapiBlogs.teams.map(pr => (<>{pr.id}</>))} />
 
       <section className="team--grid">
         {data.strapiBlogs.teams.map(team => (
@@ -155,18 +182,19 @@ export const query = graphql`
       
       blog_cover {
         childImageSharp {
-          fluid(maxWidth: 300) {
+          fluid(maxWidth: 900) {
             ...GatsbyImageSharpFluid
           }
         }
       }
 
       teams {
+        id
         team_name
         team_slug
         team_cover {
           childImageSharp {
-            fluid(maxWidth: 300) {
+            fluid(maxWidth: 900) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -182,11 +210,12 @@ export const query = graphql`
       }
 
       partner_resorts {
+        id
         pr_name
         pr_slug
         pr_cover {
           childImageSharp {
-            fluid(maxWidth: 300) {
+            fluid(maxWidth: 600) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -204,7 +233,7 @@ export const query = graphql`
 
           blog_cover {
             childImageSharp {
-              fluid(maxWidth: 300) {
+              fluid(maxWidth: 600) {
                 ...GatsbyImageSharpFluid
               }
             }
@@ -221,7 +250,7 @@ export const query = graphql`
           ad_slug
           ad_cover {
             childImageSharp {
-              fluid(maxWidth: 300) {
+              fluid(maxWidth: 900) {
                 ...GatsbyImageSharpFluid
               }
             }

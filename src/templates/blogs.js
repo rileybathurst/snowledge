@@ -42,6 +42,9 @@ function Less(props) {
 
 const BlogsPage = ({ data }) => (
   <Layout>
+
+    <h2 className="mid-title">Stories from Snowledge</h2>
+
     <section className="team--grid">
       {data.allStrapiBlogs.edges.map(document => (
         <article className="team-card">
