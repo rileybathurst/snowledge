@@ -69,18 +69,15 @@ const TeamTemplate = ({ data }) => (
     <h3 className="mid-title">Blogs containing {data.strapiTeam.team_name}</h3>
 
     <ul className="team--grid blog-cards">
-      {/* The slice limits this to 9 results */}
-      {data.strapiTeam.blogs.slice(0, 9).map(blog => (
+      {data.allStrapiBlogs.edges.map(document => (
         <li className="team-card">
           <h2>
-            <Link to={`/blog/${blog.blog_slug}`}>{blog.blog_title}</Link>
+            <Link to={`/blog/${document.node.blog_slug}`}>{document.node.blog_title}</Link>
           </h2>
 
-          <Link to={`/blog/${blog.blog_slug}`} className="teamcoverimage">
-            <Img fluid={blog.blog_cover.childImageSharp.fluid} />
+          <Link to={`/blog/${document.node.blog_slug}`} className="teamcoverimage">
+            <Img fluid={document.node.blog_cover.childImageSharp.fluid} />
           </Link>
-
-          <p>{blog.blog_content}</p>
         </li>
       ))}
     </ul>
@@ -113,27 +110,16 @@ const TeamTemplate = ({ data }) => (
         ))}
     </section>
 
-
-
-
-          <h1>second try get the blogs right</h1>
-          <ul>
-          {data.allStrapiBlogs.edges.map(document => (
-            <ol>
-            {document.node.blog_title}
-            </ol>
-))}
-</ul>
-
-
-
   </Layout>
 )
 
 export default TeamTemplate
 
 export const query = graphql`
-  query TeamTemplate($id: String!) {
+  query TeamTemplate(
+    $id: String!,
+    $ambassador: String!,
+    ) {
     strapiTeam(id: {eq: $id}) {
       team_name
       team_bio
@@ -203,13 +189,13 @@ export const query = graphql`
       }
     }
 
-
     allStrapiBlogs(
       sort: {
         order: DESC,
         fields: created_at
       },
-      limit: 9
+      limit: 9,
+      filter: {teams: {elemMatch: {team_name: {eq: $ambassador}}}}
     ) {
       edges {
         node {
@@ -228,32 +214,3 @@ export const query = graphql`
 
   }
 `
-
-// hmm the seconf filter out doesnt seem to work
-// filter: {team_name: {ne: "Riley Bathurst"}}
-// (filter: {id: {ne: $id}})
-
-// allStrapiPartnerResorts(filter: {pr_slug: {in: ["holiday", "Revelstoke", "meadows", "angel", "brundage", "eaglecrest"]}}) {
-
-
-/*   allStrapiBlogs(
-    sort: {
-      order: DESC,
-      fields: created_at
-    },
-    limit: 9
-  ) {
-    edges {
-      node {
-        blog_title
-        blog_slug
-        blog_cover {
-          childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-  } */

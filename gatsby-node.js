@@ -121,6 +121,7 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve(`src/templates/team.js`),
         context: {
           id: node.id,
+          ambassador: node.team_name
         },
       })
     })
