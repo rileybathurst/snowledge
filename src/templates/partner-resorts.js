@@ -11,7 +11,6 @@ function IfResort(props) {
   if ( props.blogs.length > 1) {
     return (
       <>
-        <hr />
         <h4 className="blog-measure">
           Explore our articles from {props.name}
         </h4>
@@ -87,6 +86,56 @@ const PartnerResortTemplate = ({ data }) => (
         ))}
       </ul>
 
+
+
+
+
+
+
+
+      <h3 className="mid-title">Check out some other Snowledge partner resorts in the {data.strapiPartnerResorts.pr_region} region</h3>
+
+  {/* this needs to filter out the resort we are currently showing */}
+  <ul className="regular-measure logo-list">
+        {data.allStrapiPartnerResorts.edges.map(resort => (
+            <li>
+
+              <Link to={`/partner-resorts/${resort.node.pr_slug}`}>
+                  <Img fluid={resort.node.pr_logo.childImageSharp.fluid}  alt={resort.node.pr_name}/>
+              </Link>
+
+               {/*  <h2>
+                    <Link to={`/partner-resorts/${resort.node.pr_slug}`}>
+                        {resort.node.pr_name}
+                    </Link>
+                </h2> */}
+
+                {/* <section>
+                  <p>{document.node.team_sport}</p>
+                  <p>{document.node.team_excerpt}</p>
+                </section>
+
+                <div className="profile-background"></div>  */}
+            </li>
+        ))}
+    </ul>
+
+
+{/*     theres a way to query for all the other enum variables to show regions
+    https://snowtooth.moonhighway.com/
+    
+    # Replace <ENUM TYPE> with the name of an actual enumeration type
+query EnumerationValues {
+  __type(name: "LiftStatus") {
+    enumValues {
+      name
+    }
+  }
+}
+
+I dont have this sorted yet tho */}
+
+
   </Layout>
 )
 
@@ -110,13 +159,17 @@ export default PartnerResortTemplate
 // I have to requery the blogs as otherwise the order is wrong
 // I cant use the $ID as the query for the Blogs as it wants a string
 
+// $region: String!, doesnt work it does for some reason want to be an array
+
 export const query = graphql`
   query PartnerResortTemplate(
     $id: String!,
     $resort: String!,
+    $region: [String]
     ) {
     strapiPartnerResorts(id: {eq: $id}) {
       pr_name
+      pr_region
 
       pr_cover {
         childImageSharp {
@@ -174,6 +227,28 @@ export const query = graphql`
           blog_cover {
             childImageSharp {
               fluid(maxWidth: 600) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+
+    allStrapiPartnerResorts(
+      filter: {
+        id: {ne: $id},
+        pr_region: {in: $region}
+      }
+    ) {
+      edges {
+        node {
+          pr_name
+          pr_slug
+
+          pr_logo {
+            childImageSharp {
+              fluid(maxWidth: 300) {
                 ...GatsbyImageSharpFluid
               }
             }

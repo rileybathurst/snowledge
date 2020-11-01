@@ -34,6 +34,7 @@ exports.createPages = ({ actions, graphql }) => {
             id
             pr_name
             pr_slug
+            pr_region
           }
         }
       }
@@ -47,6 +48,7 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           id: node.id,
           resort: node.pr_name,
+          region: node.pr_region,
         },
       })
     })

@@ -58,12 +58,23 @@ const BlogsPage = ({ data }) => (
             <Img fluid={document.node.blog_cover.childImageSharp.fluid} />
           </Link>
 
-          {/* <p>{document.node.blog_content}</p> */}
+          {/* Add in the featured resorts logos, they are more important than the team */}
+          {document.node.partner_resorts.map(pr => (
+
+            <div className="teamlogoimage">
+              <Link to={pr.pr_slug} className="">
+                <Img fluid={pr.pr_logo.childImageSharp.fluid} />
+              </Link>
+              </div>
+
+          ))}
+
         </article>
       ))}
     </section>
 
-    <h3 className="mid-title">Pagination</h3>
+    {/* <h3 className="mid-title">Pagination</h3> */}
+    {/* I need to do something cooler with this design but really its not that important */}
     <Less down={data.allStrapiBlogs.pageInfo.hasPreviousPage} current={data.allStrapiBlogs.pageInfo.currentPage} total={data.allStrapiBlogs.pageInfo.pageCount} />
     <More is={data.allStrapiBlogs.pageInfo.hasNextPage} current={data.allStrapiBlogs.pageInfo.currentPage} total={data.allStrapiBlogs.pageInfo.pageCount} />
   </Layout>
@@ -94,6 +105,18 @@ export const pageQuery = graphql`
                 ...GatsbyImageSharpFluid
               }
             }
+          }
+
+          partner_resorts {
+            pr_slug
+            pr_logo {
+              childImageSharp {
+                fluid(maxWidth: 300) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+
           }
         }
       }

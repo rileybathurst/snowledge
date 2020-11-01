@@ -79,6 +79,10 @@ const Footer = () => (
                 <Logo />
             </div>
 
+            <section className="mid-title">
+      <Link to="onboarding" className="button-link">Get Your  Resort Started on Snowledge</Link>
+    </section>
+
             <p className="footer-copyright">© 2020 Snowledge Corp. All Rights Reserved.</p> {/* this punctuation is really wierd but its how it is on the current site */}
             <nav>
                 <ul id="footer-info">
@@ -91,6 +95,8 @@ const Footer = () => (
                     <li><a href="https://snowledge.zendesk.com/hc/en-us" target="_blank" rel="nofollow noreferrer" >Support</a></li>
                 </ul>
             </nav>
+
+
 
         </div>{/* #footer-color */}
 
@@ -136,6 +142,7 @@ const Footer = () => (
         </div> {/* .take2-color */}
 
         <div className="black2">{/* stay gold */}</div>
+
     </footer>
 )
 

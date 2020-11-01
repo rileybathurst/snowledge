@@ -14,7 +14,7 @@ import SEO from "../components/seo"
 // things needed for the old site
 import Footer from "../components/footer" // while it running on the old site
 import Header from "../components/header" // while it running on the old site
-import Logo from "../components/logo"
+// import Logo from "../components/logo"
 
 // <link href="https://www.snowledge.co/onboard/styles.b1a30ae235daba03390a.css" rel="stylesheet">
 // this is what I need to copy paste to the ghetto build
@@ -192,7 +192,7 @@ const OnboardPage = ({ data }) => (
 
             {data.allStrapiPartners.edges.map(parts => (
                 <li>
-                    <a href={parts.node.partner_website} target="_blank">
+                    <a href={parts.node.partner_website} target="_blank" rel="noreferrer">
                         {/* {parts.node.partner_name} */}
                         <Img fluid={parts.node.partner_logo.childImageSharp.fluid} />
                     </a>

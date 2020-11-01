@@ -35,7 +35,6 @@ function IfResort(props) {
   if ( props.place.length > 0) {
     return (
       <>
-        <hr />
         <h4 className="blog-measure">
           This article was captured at our Partner Resort
         </h4>
@@ -50,7 +49,6 @@ function IfTeam(props) {
   if ( props.crew.length > 0) {
     return (
       <>
-        <hr />
         <h4 className="blog-measure mid-title">
           Featured Ambassadors
         </h4>
@@ -62,10 +60,21 @@ function IfTeam(props) {
 
 const BlogTemplate = ({ data }) => (
   <Layout>
-    <Cover is={data.strapiBlogs.blog_cover_media} photo={data.strapiBlogs.blog_cover.childImageSharp.fluid} youtube={data.strapiBlogs.blog_cover_yt} title={data.strapiBlogs.blog_title} />
     
+    <div className="regular-page">
+      <h6 className="blog-measure">
+        <Link to="/">Snowledge</Link> / <Link to="/blogs">Blog</Link> / {data.strapiBlogs.blog_title}
+      </h6>
+    </div>
+
+{/*     <div className="greenback">
+        <h1 className="regular-measure">{data.strapiBlogs.blog_title}</h1>
+      </div> */}
+
+    <Cover is={data.strapiBlogs.blog_cover_media} photo={data.strapiBlogs.blog_cover.childImageSharp.fluid} youtube={data.strapiBlogs.blog_cover_yt} title={data.strapiBlogs.blog_title} />
+    <h1 className="regular-measure">{data.strapiBlogs.blog_title}</h1>
+
       <div className="regular-page">
-        <h1 className="blog-measure">{data.strapiBlogs.blog_title}</h1>
 
 
       <h4 className="blog-measure">
@@ -136,8 +145,6 @@ const BlogTemplate = ({ data }) => (
           </article>
         ))}
       </section>
-
-      <hr />
 
 
       <h3 className="mid-title">More articles</h3>
@@ -224,7 +231,14 @@ export const query = graphql`
       }
     }
 
-    allStrapiBlogs(limit: 9) {
+    allStrapiBlogs(
+      sort: {
+        order: DESC,
+        fields: created_at
+      },
+      limit: 9,
+      filter: {id: {ne: $id}},
+      ) {
       edges {
         node {
           id

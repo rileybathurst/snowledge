@@ -1470,8 +1470,22 @@ footer {
     grid-column: 1;
   }
 
-  .footer-copyright {
+  .mid-title {
     grid-row: 3;
+    margin: 0;
+
+    .button-link {
+box-shadow: none;
+   margin: 0;
+    }
+
+    .button-link:hover {
+color: lightgoldenrodyellow;
+    }
+  }
+
+  .footer-copyright {
+    grid-row: 4;
     grid-column: 1;
     margin: 0 1rem 3rem 1rem;
 
@@ -1673,6 +1687,18 @@ footer {
   }
 }
 
+header {
+  .mid-title {
+    margin-top: 0;
+    margin-bottom: 0;
+  
+    a {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
 .team--grid {
   display: flex;
 
@@ -1825,6 +1851,30 @@ hr {
 
 .teamcoverimage:hover {
   filter: brightness(0.8);
+}
+
+.teamlogoimage {
+  justify-self: end;
+  z-index: 9;
+  grid-row: 1;
+  grid-column: 2;
+  // margin: 0.5rem;
+  // padding: 0.5rem;
+  min-width: 5rem; // guess and check
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+  justify-content: end;
+
+
+  a {
+    flex: 1 1 4rem;
+    max-width: 8rem;
+    padding: 0.5rem; // this doesnt work which I'm annoyed by
+    background: white;
+    width: calc(100% - 1rem);
+    box-shadow: 0 5px 5px rgb(100, 100, 100);
+  }
 }
 
 .team {
@@ -2482,7 +2532,7 @@ blockquote {
 
 
   li {
-    flex: 1 1 8rem;
+    flex: 1 1 8rem; // guess and check
     align-self: center;
     padding: 0.5rem 1rem; // needs to be padding for the hover
     border: 2px solid white;
@@ -2491,6 +2541,16 @@ blockquote {
 
   li:hover {
     border: 2px solid $snowledge-green_lighten;
+  }
+}
+
+.logo-list {
+  @extend .img-list;
+
+  li {
+    flex: 1 1 14rem; // guess and check
+    // might also need a max for the smaller regions
+    max-width: 28rem;
   }
 }
 
@@ -2520,6 +2580,10 @@ blockquote {
     font-size: 1rem;
     padding-bottom: 0.5rem !important;
     margin-bottom: 0.5rem !important;
+  }
+
+  svg {
+    max-width: 17.5rem !important; // a little scrappy as this is held to the other grid
   }
 }
 

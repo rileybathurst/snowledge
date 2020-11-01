@@ -27,7 +27,6 @@ export default function Top() {
           <ul className="top-bar__Menu">
 
               <li><Link to="/#features-list">Features</Link></li>
-              <li><Link to="/team">Team</Link></li>
               <li><Link to="/partner-resorts">Partner Resorts</Link>
               <ul className="reveal-later">
                   <li><Link to="/partner-resorts/west">West</Link></li>
@@ -37,6 +36,7 @@ export default function Top() {
                   <li><Link to="/partner-resorts/canada">Canada</Link></li>
               </ul>
               </li>
+              <li><Link to="/team">Team</Link></li>
               <li><Link to="/blogs">Blog</Link></li>
                 {/* I'm really not sure we need this up here.
                 <li>
@@ -57,7 +57,15 @@ export default function Top() {
                   </ul>
                 </li>
 
+
+
                 </ul>
+
+                <section className="mid-title">
+      <Link to="onboarding" className="button-link">Get Your  Resort Started on Snowledge</Link>
+    </section>
+
+
 
           </header>
       )}
