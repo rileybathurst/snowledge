@@ -1,6 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 // import Layout from "../components/layout"
 import Footer from "../components/footer"
@@ -103,6 +103,20 @@ const IndexPage = ({ data }) => (
         <li>Get lift status updates, conditions, and parking information, as well as offers and contests from your favorite resorts.</li>
       </ul>
 
+
+        <ul className="home-resorts logo-list">
+        {data.allStrapiPartnerResorts.edges.map(document => (
+
+            <li>
+              <Link to={`/partner-resorts/${document.node.pr_slug}`}>
+                        <Img fluid={document.node.pr_logo.childImageSharp.fluid} />
+                    </Link>
+              </li>
+
+        ))}
+        <li className="mid-title"><h4><Link to="partner-resorts">and more.</Link></h4></li>
+          </ul>
+
       {/* <div className="home-blank"> fill the bottom of the grid this shouldnt be needed if everything is great </div> */}
     </main>
     <Footer />
@@ -114,14 +128,27 @@ const IndexPage = ({ data }) => (
 
 export default IndexPage
 
-// currently im not using these I should pull them out but theres other stuff coming so dont delete it
 export const pageQuery = graphql`  
   query IndexQuery {
-    allStrapiPartnerResorts {
+    allStrapiPartnerResorts(filter: {pr_slug: {in: [
+      "holiday",
+      "Revelstoke",
+      "meadows",
+      "brundage",
+      "eaglecrest",
+      "homewood"
+    ]}}) {
       edges {
         node {
-          pr_name
+
           pr_slug
+          pr_logo {
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

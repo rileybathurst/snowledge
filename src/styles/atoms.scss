@@ -893,6 +893,10 @@ $snowledge-green_lighten: #39C4C5;
       width: 100%; // needed with justify-self
     }
   }
+
+  .download svg {
+    max-width: 17.5rem; // guess and check
+  }
 } // #header-hero
 
 .download {
@@ -915,6 +919,7 @@ $snowledge-green_lighten: #39C4C5;
     min-height: 6rem; // guess and check
     transition: 1s ease;
     margin-left: 1rem; // match the google badge
+    margin-right: 1rem; // neccary for small sizes
   }
 
    svg:hover {
@@ -1083,6 +1088,17 @@ a:hover {
     }
 
 
+  }
+
+  .home-resorts {
+    grid-row: 8;
+    grid-column: 1;
+    list-style: none;
+
+    @media (min-width: 60rem) {
+      grid-row: 6;
+grid-column: 2;
+    }
   }
 } // #home-main
 
@@ -1476,7 +1492,7 @@ footer {
 
     .button-link {
 box-shadow: none;
-   margin: 0;
+   margin: 0 0.5rem;
     }
 
     .button-link:hover {
@@ -1973,9 +1989,20 @@ hr {
 
 .mid-title {
   @extend .regular-page;
-  text-align-last: center;
+  text-align: center;
   margin-top: 3rem;
   margin-bottom: 2rem;
+}
+
+.home-resorts {
+
+  .mid-title {
+    margin-top: 0;
+  }
+
+  .mid-title:hover {
+    border-color: transparent;
+  }
 }
 
 // .header--sliders {
@@ -2535,7 +2562,7 @@ blockquote {
     flex: 1 1 8rem; // guess and check
     align-self: center;
     padding: 0.5rem 1rem; // needs to be padding for the hover
-    border: 2px solid white;
+    border: 2px solid transparent;
     border-radius: 5px;
   }
 
