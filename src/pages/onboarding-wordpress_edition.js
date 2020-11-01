@@ -1,8 +1,8 @@
 // This page is a little different as Riley didn't design it
 
 import React from "react"
-import {graphql, Link} from 'gatsby'
-import Img from 'gatsby-image'
+// import graphql from 'gatsby'
+// import Img from 'gatsby-image'
 
 // import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -12,8 +12,7 @@ import SEO from "../components/seo"
 // import Onform from "../components/onform"
 
 // things needed for the old site
-import Footer from "../components/footer" // while it running on the old site
-import Header from "../components/header" // while it running on the old site
+// import Footer from "../components/footer" // while it running on the old site
 import Logo from "../components/logo"
 
 // <link href="https://www.snowledge.co/onboard/styles.b1a30ae235daba03390a.css" rel="stylesheet">
@@ -21,19 +20,14 @@ import Logo from "../components/logo"
 
 const OnboardPage = ({ data }) => (
     <>
-{/*     <header className="simple-header">
+    <header className="simple-header">
         <h1 className="screen-reader">Snowledge</h1>
+        {/* always start with an h tag and make this screenreader friendly */}
         <div className="regular-measure">
             <Logo />
         </div>
         <h2 className="blog-measure simple-title">GET YOUR RESORT STARTED ON SNOWLEDGE</h2>
-  </header> */}
-
-  <Header />
-
-  <div className="greenback">
-      <h2 className="blog-measure simple-title">GET YOUR RESORT STARTED ON SNOWLEDGE</h2>
-      </div>
+  </header>
 
   {/*
   <Layout> I have to skip some of this while its a build for the old site 
@@ -181,7 +175,7 @@ const OnboardPage = ({ data }) => (
         <p className="regular-measure">Get started and stay with Snowledge Standard features for FREE, You can also take advantage of our Premium marketing and operations features to further enhance your resort’s experience*. Join the growing family of resorts already benefiting from the Snowledge App and Marketing platform.</p>
 
         {/* Logos will go here these will come in grom Strapi */}
-        <ul className="regular-measure img-list">
+{/*         <ul className="regular-measure img-list">
             {data.allStrapiPartnerResorts.edges.map(document => (
                 <li>
                     <Link to={`/partner-resorts/${document.node.pr_slug}`}>
@@ -189,18 +183,8 @@ const OnboardPage = ({ data }) => (
                     </Link>
                 </li>
             ))}
+        </ul> */}
 
-            {data.allStrapiPartners.edges.map(parts => (
-                <li>
-                    <a href={parts.node.partner_website} target="_blank">
-                        {/* {parts.node.partner_name} */}
-                        <Img fluid={parts.node.partner_logo.childImageSharp.fluid} />
-                    </a>
-                </li>
-            ))}
-        </ul>
-
-{/*     wordpress list    
         <ul className="regular-measure img-list">
             <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/HolidayValleyEllicottville.png" alt="holiday valley logo" /></li>
             <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Revelstoke-Logo1.png" alt="revelstoke logo" /></li>
@@ -209,7 +193,7 @@ const OnboardPage = ({ data }) => (
             <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Brundage_woodgrain.png" alt="brundage logo" /></li>
             <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/Square-Logo-Outlined-Text-PNG-EAGLECREST.png" alt="eaglecrest logo" /></li>
             <li><img src="https://www.snowledge.co/wp-content/uploads/2020/10/indy_pass_logo.png" alt="indy pass logo" /></li>
-        </ul> */}
+        </ul>
 
 
         <p className="regular-measure">Partner resort Holiday Valley saw huge success with our end of the season ‘Keep the Stoke Alive’ promotion.</p>
@@ -243,7 +227,7 @@ const OnboardPage = ({ data }) => (
 
   {/* </Layout> while its running on the old site */}
 
-  <div className="purpleback">
+  <div className="greenback">
         <div className="split-flex regular-measure">
             <div className="split-flex-wrap">
                 <h4 className="regular-measure">Exclusive discount</h4>
@@ -290,8 +274,8 @@ const OnboardPage = ({ data }) => (
         </div>{/* .split-flex */}
     </div>{/* .greenback */}
 
-  {/* this is pretty toned down for right now on the wordpress version */}
-{/*   <footer className="simple-footer">
+  {/* this is pretty toned down for right now */}
+  <footer className="simple-footer">
         
         <div className="regular-measure footer-logo footer-logo_extra">
             <Logo />
@@ -300,22 +284,16 @@ const OnboardPage = ({ data }) => (
         <p className="regular-measure footer-copyright">© 2020 Snowledge Corp. All Rights Reserved.</p>
         {/* this punctuation is really wierd but its how it is on the current site */}
 
-
-
-
-    {/* </footer> */}
-    <div className="barney-below">
-    <Footer />
-    </div>
+    </footer>
 
   </>
 )
 
 export default OnboardPage
-
+/* 
 export const pageQuery = graphql`  
   query OnboardQuery {
-    allStrapiPartnerResorts(filter: {pr_slug: {in: ["holiday", "Revelstoke", "meadows", "brundage", "eaglecrest", "homewood"]}}) {
+    allStrapiPartnerResorts(filter: {pr_slug: {in: ["holiday", "Revelstoke", "meadows", "angel", "brundage", "eaglecrest"]}}) {
       edges {
         node {
           pr_name
@@ -332,24 +310,5 @@ export const pageQuery = graphql`
         }
       }
     }
-
-    allStrapiPartners(filter: {partner_name: {in: ["Indy Pass"]}})  {
-        edges {
-            node {
-                partner_name
-                partner_website
-
-                partner_logo {
-                    childImageSharp {
-                      fluid(maxWidth: 300) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-            }
-        }
-    }
-
-
   }
-`
+` */

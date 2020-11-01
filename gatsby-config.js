@@ -21,7 +21,8 @@ module.exports = {
           'partner-resorts',
           'blogs',
           'team',
-          'ads'
+          'ads',
+          'partners'
         ],
         queryLimit: 1000,
         // // Possibility to login with a strapi user, when content types are not publically available (optional).

@@ -5,6 +5,31 @@ import Layout from '../components/layout'
 import DefaultFriendImage from '../components/default-friend'
 import Download from '../components/download'
 
+// there is always an array of answers but only a length if there are actually resorts
+// check into a more than 1 for resort(s)?
+function IfResort(props) {
+  if ( props.blogs.length > 1) {
+    return (
+      <>
+        <hr />
+        <h4 className="blog-measure">
+          Explore our articles from {props.name}
+        </h4>
+      </>
+    )
+  } else if ( props.blogs.length > 0) {
+    return (
+      <>
+        <hr />
+        <h4 className="blog-measure">
+          Explore our article from
+        </h4>
+      </>
+    )
+  }
+  return null
+}
+
 const PartnerResortTemplate = ({ data }) => (
   <Layout>
     <Img fluid={data.strapiPartnerResorts.pr_cover.childImageSharp.fluid} className="regular-measure hero-shadow" />
@@ -40,20 +65,22 @@ const PartnerResortTemplate = ({ data }) => (
     </div>
 
 
-    <h3 className="regular-measure">Explore our articles from {data.strapiPartnerResorts.pr_name}</h3>
+    {/* <h3 className="regular-measure">Explore our articles from {data.strapiPartnerResorts.pr_name}</h3> */}
 
-      <ul className="team--grid blog-cards regular-measure">
-        {data.strapiPartnerResorts.blogs.map(blog => (
+    <IfResort blogs={data.strapiPartnerResorts.blogs.map(blogs => (<>{blogs.id}</>))} name={data.strapiPartnerResorts.pr_name} />
+
+    <ul className="team--grid blog-cards regular-measure">
+        {data.allStrapiBlogs.edges.map(document => (
 
           <li className="team-card">
             <h2>
-              <Link to={`/blog/${blog.blog_slug}`}>
-                {blog.blog_title}
+              <Link to={`/blog/${document.node.blog_slug}`}>
+                {document.node.blog_title}
               </Link>
           </h2>
 
-          <Link to={`/blogs/${blog.blog_slug}`} className="teamcoverimage">
-            <Img fluid={blog.blog_cover.childImageSharp.fluid} />
+          <Link to={`/blogs/${document.node.blog_slug}`} className="teamcoverimage">
+            <Img fluid={document.node.blog_cover.childImageSharp.fluid} />
           </Link>
         </li>
 
@@ -65,8 +92,29 @@ const PartnerResortTemplate = ({ data }) => (
 
 export default PartnerResortTemplate
 
+//     
+// $resort: String!,
+
+/* blogs {
+  blog_title
+  blog_slug
+  blog_cover {
+    childImageSharp {
+      fluid(maxWidth: 960) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+} */
+
+// I have to requery the blogs as otherwise the order is wrong
+// I cant use the $ID as the query for the Blogs as it wants a string
+
 export const query = graphql`
-  query PartnerResortTemplate($id: String!) {
+  query PartnerResortTemplate(
+    $id: String!,
+    $resort: String!,
+    ) {
     strapiPartnerResorts(id: {eq: $id}) {
       pr_name
 
@@ -104,14 +152,36 @@ export const query = graphql`
       blogs {
         blog_title
         blog_slug
-        blog_cover {
-          childImageSharp {
-            fluid(maxWidth: 960) {
-              ...GatsbyImageSharpFluid
+      }
+
+    }
+
+    allStrapiBlogs(
+      sort: {
+        order: DESC,
+        fields: created_at
+      },
+      limit: 9,
+      filter: {partner_resorts: {elemMatch: {pr_name: {eq: $resort}}}}
+    ) {
+      edges {
+        node {
+          id
+          blog_title
+          blog_content
+          blog_slug
+
+          blog_cover {
+            childImageSharp {
+              fluid(maxWidth: 600) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
       }
     }
+
+
   }
 `

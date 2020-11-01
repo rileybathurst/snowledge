@@ -1,5 +1,5 @@
 import React from "react"
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 import { graphql } from 'gatsby'
 
 // import Layout from "../components/layout"
@@ -53,6 +53,10 @@ const IndexPage = ({ data }) => (
         {/* <PhonePlaceholder /> */}
       </div>
     </header>
+
+    <section className="regular-measure mid-title">
+      <Link to="onboarding" className="button-link">Get Your  Resort Started on Snowledge</Link>
+    </section>
 
     <main id="home-main">
       <h2 id="our-story-title"><em>Our<br />Story</em></h2>

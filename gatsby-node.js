@@ -46,6 +46,7 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve(`src/templates/partner-resorts.js`),
         context: {
           id: node.id,
+          resort: node.pr_name,
         },
       })
     })

@@ -909,11 +909,12 @@ $snowledge-green_lighten: #39C4C5;
   }
 
   > a > svg {
-    padding: 0 1rem; // get this closer to the android
+    // padding: 0 1rem; // get this closer to the android
     width: 100%;
-    max-width: 20rem;
-    min-height: 8rem; // guess and check
+    max-width: 11rem; // guess and check
+    min-height: 6rem; // guess and check
     transition: 1s ease;
+    margin-left: 1rem; // match the google badge
   }
 
    svg:hover {
@@ -1282,6 +1283,7 @@ footer {
     margin-top: 4rem;
     margin-left: 3rem;
     margin-right: 6rem; // guess and check
+    margin-bottom: 0; // the badges have padding so this is fine
 
     @media (min-width: 76rem) {
       grid-column: 3;
@@ -1296,7 +1298,7 @@ footer {
     align-self: end;
     z-index: 99;
     max-width: 20rem; // guess and check
-    margin-left: 3rem;
+    margin-left: 1rem;
     margin-right: 1rem;
 
     @media (min-width: 40rem) {
@@ -1306,7 +1308,7 @@ footer {
 
     @media (min-width: 76rem) {
       grid-column: 3;
-      width: 10rem; // guess and check
+      width: 13rem; // guess and check
       justify-self: end;
     }
 
@@ -2325,6 +2327,15 @@ box-shadow: 10px 10px whitesmoke;
   }
 } // .greenback
 
+.purpleback {
+  @extend .greenback; // could be better named
+  background: #6e2de8;
+
+  .button-link {
+    box-shadow: 5px 5px 5px rebeccapurple !important; // yeah this is messy
+  }
+}
+
 .extra-push { // I don't like this quick hack but its fine for now
   margin-left: 1rem;
 }
@@ -2350,13 +2361,21 @@ blockquote {
   background: #d3447b;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  margin-bottom: 2rem;
-  box-shadow: 5px 5px 5px darkcyan;
+  margin: 2rem;
+  box-shadow: 5px 5px 5px lightgray;
   display: inline-block;
+  color: whitesmoke;
 }
 
 .button-link:hover {
   background: darken(#d3447b, 10%);
+  color: lightgoldenrodyellow;
+}
+
+.greenback {
+  .button-link {
+    box-shadow: 5px 5px 5px darkcyan;
+  }
 }
 
 .simple-footer {
@@ -2502,4 +2521,10 @@ blockquote {
     padding-bottom: 0.5rem !important;
     margin-bottom: 0.5rem !important;
   }
+}
+
+.barney-below {
+  background: #6e2de8;
+  position: relative; // needed for the z-index
+  z-index: 0; // below the footer
 }
